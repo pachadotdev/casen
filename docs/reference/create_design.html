@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Percentiles agrupados usando disenio complejo — percentiles_agrupados • casen</title>
+<title>Create design from tibble/data.frame — create_design • casen</title>
 
 
 <!-- jquery -->
@@ -35,8 +35,8 @@
 
 
 
-<meta property="og:title" content="Percentiles agrupados usando disenio complejo — percentiles_agrupados" />
-<meta property="og:description" content="Percentiles agrupados usando disenio complejo" />
+<meta property="og:title" content="Create design from tibble/data.frame — create_design" />
+<meta property="og:description" content="Create design from tibble/data.frame" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -112,33 +112,27 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Percentiles agrupados usando disenio complejo</h1>
+    <h1>Create design from tibble/data.frame</h1>
     
-    <div class="hidden name"><code>percentiles_agrupados.Rd</code></div>
+    <div class="hidden name"><code>create_design.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Percentiles agrupados usando disenio complejo</p>
+    <p>Create design from tibble/data.frame</p>
     </div>
 
-    <pre class="usage"><span class='fu'>percentiles_agrupados</span>(<span class='no'>datos</span>, <span class='kw'>variable</span> <span class='kw'>=</span> <span class='st'>"ytotcorh"</span>,
-  <span class='kw'>percentiles</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>100</span>/<span class='fl'>100</span>, <span class='kw'>agrupacion</span> <span class='kw'>=</span> <span class='st'>"region"</span>, <span class='kw'>peso</span> <span class='kw'>=</span> <span class='st'>"expr"</span>,
-  <span class='kw'>conglomerado</span> <span class='kw'>=</span> <span class='st'>"varunit"</span>, <span class='kw'>estrato</span> <span class='kw'>=</span> <span class='st'>"varstrat"</span>)</pre>
+    <pre class="usage"><span class='fu'>create_design</span>(<span class='no'>d</span>, <span class='no'>variable</span>, <span class='no'>agrupacion</span>, <span class='no'>peso</span>, <span class='no'>conglomerado</span>, <span class='no'>estrato</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>datos</th>
+      <th>d</th>
       <td><p>un data.frame o tibble con la encuesta CASEN (o un subconjunto acotado a una region, etc)</p></td>
     </tr>
     <tr>
       <th>variable</th>
       <td><p>una columna de tipo numerico, por ejemplo ytotcorh que es la opcion por defecto</p></td>
-    </tr>
-    <tr>
-      <th>percentiles</th>
-      <td><p>percentiles a calcular, si no se especifica calcula todos los percentiles</p></td>
     </tr>
     <tr>
       <th>agrupacion</th>
@@ -158,38 +152,12 @@
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>un tibble con los percentiles y su error estandar</p>
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>r14</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='leer_casen.html'>leer_casen</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"casen"</span>, <span class='st'>"extdata"</span>, <span class='st'>"casen_2017_los_rios.zip"</span>))</div><div class='output co'>#&gt; <span class='message'>Intentando leer el archivo /tmp/RtmpV5bXwB/temp_libpath67fa463e0a6/casen/extdata/casen_2017_los_rios.zip...</span></div><div class='output co'>#&gt; <span class='message'>Los metadatos de /tmp/RtmpV5bXwB/temp_libpath67fa463e0a6/casen/extdata/casen_2017_los_rios.zip indican que el formato comprimido es adecuado, intentando leer...</span></div><div class='output co'>#&gt; Resizing buffer to 32768.
-#&gt; Resizing buffer to 65536.
-#&gt; Resizing buffer to 131072.
-#&gt; Resizing buffer to 262144.</div><div class='output co'>#&gt; <span class='message'>/tmp/RtmpV5bXwB/temp_libpath67fa463e0a6/casen/extdata/casen_2017_los_rios.zip se pudo leer como tibble :-)</span></div><div class='input'><span class='fu'>percentiles_agrupados</span>(<span class='no'>r14</span>, <span class='st'>"ytotcorh"</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.25</span>, <span class='fl'>0.5</span>, <span class='fl'>0.75</span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"comuna"</span>, <span class='st'>"sexo"</span>), <span class='st'>"expc"</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: Con la agregacion proporcionada algunas observaciones tienen cero</span>
-#&gt; <span class='warning'>    grados de libertad, por lo que no se puede estimar la varianza, dando como</span>
-#&gt; <span class='warning'>    resultado algunos elementos no finitos.</span></div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 72 x 7</span><span>
-#&gt;    percentil comuna_etiqueta sexo_etiqueta comuna_codigo sexo_codigo
-#&gt;        </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>           </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      
-#&gt; </span><span style='color: #555555;'> 1</span><span>      0.25 Valdivia        Mujer         14101         2          
-#&gt; </span><span style='color: #555555;'> 2</span><span>      0.25 Valdivia        Hombre        14101         1          
-#&gt; </span><span style='color: #555555;'> 3</span><span>      0.25 Corral          Hombre        14102         1          
-#&gt; </span><span style='color: #555555;'> 4</span><span>      0.25 Corral          Mujer         14102         2          
-#&gt; </span><span style='color: #555555;'> 5</span><span>      0.25 Lanco           Mujer         14103         2          
-#&gt; </span><span style='color: #555555;'> 6</span><span>      0.25 Lanco           Hombre        14103         1          
-#&gt; </span><span style='color: #555555;'> 7</span><span>      0.25 Los Lagos       Hombre        14104         1          
-#&gt; </span><span style='color: #555555;'> 8</span><span>      0.25 Los Lagos       Mujer         14104         2          
-#&gt; </span><span style='color: #555555;'> 9</span><span>      0.25 Máfil           Mujer         14105         2          
-#&gt; </span><span style='color: #555555;'>10</span><span>      0.25 Máfil           Hombre        14105         1          
-#&gt; </span><span style='color: #555555;'># … with 62 more rows, and 2 more variables: mediana_ytotcorh </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>,
-#&gt; #   mediana_ytotcorh_err_est </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>

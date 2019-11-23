@@ -1,5 +1,4 @@
-casen
-==========================
+# gravity <img src="https://pachamaltese.github.io/casen/hexicon.svg" width=150 align="right" alt="sticker"/>
 
 <!-- badges: start -->
 [![R build status](https://github.com/pachamaltese/casen/workflows/R-CMD-check/badge.svg)](https://github.com/pachamaltese/casen/actions?workflow=R-CMD-check)
@@ -8,3 +7,5 @@ casen
 <!-- badges: end -->
   
 La idea de este paquete de R es proporcionar un conjunto de funciones que facilitan el análisis con la encuesta CASEN.
+
+La documentación (en desarrollo) está disponible en https://pacha.hk/casen

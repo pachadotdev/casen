@@ -17,48 +17,123 @@ knitr::opts_chunk$set(eval = TRUE)
 
 Con el paquete `casen` podemos leer la encuesta en formato rar o zip. También es posible leer directamente en formato sav (SPSS) o dta (Stata).
 
-Vamos a leer un subconjunto de los datos proporcionado por este paquete.
+Vamos a leer un subconjunto de los datos proporcionado por este paquete:
 ```{r}
 library(casen)
 r14 <- leer_casen(system.file(package = "casen", "extdata", "casen_2017_los_rios.zip"))
 r14
 ```
 
-Para descargar y leer la encuesta CASEN 2017 completa, se puede hacer lo siguiente.
+Para descargar la encuesta CASEN hay varias opciones:
 ```{r, eval=FALSE}
+# todos los anios disponibles
+descargar_casen()
+
+# solo anio 2017
 descargar_casen(2017)
-casen2017 <- leer_casen("2017_spss.rar")
+
+# todos los anios disponibles en carpeta descargas
+descargar_casen("descargas")
+
+# solo anio 2017 en carpeta descargas
+descargar_casen(2017, "descargas")
 ```
 
 # Medidas de tendencia central con diseño complejo
 
 La función `media_agrupada()` toma en cuenta el diseño complejo y los grados de libertad. Puedo agrupar por una o más variables y la función entrega, además del promedio, el intervalo de confianza.
+
+*Importante:* El conjunto de datos `r14` se incluye con este software para efectos de mostrar el uso de las funciones, 
+la encuesta CASEN *no* asegura representatividad a nivel comunal.
+
 ```{r}
-# Promedio salarial por comuna
+# Media salarial por comuna
 media_agrupada(r14, "ytotcorh", "comuna", "expc")
 
-# Promedio salarial por comuna y sexo
+# Media salarial por comuna y sexo
 media_agrupada(r14, "ytotcorh", c("comuna","sexo"), "expc")
 ```
 
 El uso de `mediana_agrupada()` es exactamente igual al punto anterior.
 ```{r}
-# Promedio salarial por comuna
+# Mediana salarial por comuna
 mediana_agrupada(r14, "ytotcorh", "comuna", "expc")
 
-# Promedio salarial por comuna y sexo
+# Mediana salarial por comuna y sexo
 mediana_agrupada(r14, "ytotcorh", c("comuna","sexo"), "expc")
 ```
+
+# Medidas de tendencia central y grados de libertad
+
+El valor agregado del paquete CASEN es que entrega una forma fácil de hacer cálculos tomando en cuenta, además del
+diseño complejo, los grados de libertad.
+
+Los grados de libertad son los valores de un conjunto de datos que tienen la posibilidad de variar después de haber impuesto alguna restricción sobre los mismos.
+
+Veamos la siguiente expresión:
+$$x + y  = 4$$
+
+Hay infinitos valores de $x$ e $y$ que satisfacen la ecuación, pero solo tenemos la libertad de elegir el valor de una de las dos variables, ya que al hacerlo, inmediatamente queda fijada la otra.
+
+Si agregamos una segunda ecuación, ya no queda ninguna variable en el sistema que podamos mover a nuestro antojo. Por ejemplo:
+$$x + y  = 4\\x - y = 1$$
+
+Pensando en el caso de la media y la desviación estándar:
+$$\mu = \frac{1}{n}\sum_{i=1}^nx_i \quad \sigma = \frac{\sum_{i=1}^n(x_i-\bar{x})^2}{n - 1}$$
+
+Si $n$ es muy grande, la pérdida de grados de libertad se torna irrelevante.
+
+En el contexto de muestreo bietápico, el cálculo de los grados de libertad es un tema no resuelto, pero el paquete casen utiliza la siguiente fórmula que es la misma empleada por el INE:
+$$GD = ConglomeradosInfo − EstratosInfo$$
+
+En dominios de estimación pequeños la pérdida de grados de libertad se vuelve bastante relevante. Esto es muy importante cuando se hacen cálculos agrupando por región, sexo, región y sexo, entre otras.
+
+Al usar la función `svyby` del paquete survey, la función no calcula correctamente los grados de libertad de cada dominio, sino que considera un valor fijo para todos los dominios. Las funciones del paquete casen usan esta función pero incluyen una serie de pasos complejos de programar para usar los grados de libertad adecuados para cada dominio de estimación.
 
 # Uso de las funciones de casen y dplyr
 
 Las funciones de `casen` están pensadas para usarse en conjunto con las de `dplyr`. Un ejemplo simple de esto es el cálculo del porcentaje de hogares pobres.
+
+Veamos el caso puntual de las funciones `mutate` y `filter` de dplyr:
 ```{r}
 library(dplyr)
 
+# con mutate puedo convertir pobreza a una variable binaria
 r14 %>% 
-  # mutate es una funcion de dplyr, con esta puedo convertir pobreza a una variable binaria
   mutate(pobreza = ifelse(pobreza <= 2, 1, 0)) %>% 
-  # ahora puedo usar media_agrupada directamente
   media_agrupada("pobreza", "comuna", "expc")
+```
+
+```{r, eval=FALSE}
+# con filter puedo dejar las observaciones de la 10ma region u otra
+leer_casen("2017_spss.rar") %>% 
+  filter(region == 10)
+```
+
+# Inferencia con diseños complejos
+
+El paquete casen provee dos funciones para sacar el máximo partido
+a las funciones de R tomando en cuenta el diseño complejo y los grados de libertad.
+
+Por ejemplo, si queremos estimar el modelo:
+$$ytotcorh = \beta_0 + \beta_1 comuna + \beta_2 sexo + \varepsilon$$
+
+Los betas del modelo se pueden obtener de dos formas:
+```{r}
+modelo_lineal_generalizado(r14, "ytotcorh", c("comuna", "sexo"), "expc")
+modelo_lineal_generalizado_2(r14, "ytotcorh ~ comuna + sexo", "expc")
+```
+
+La última función permite escribir modelos más complejos con componentes logarítmicas o cuadráticas. Por ejemplo,
+el modelo que relaciona ingresos con el tipo de institución de educación superior y edad (h3 y e8 en cuestionario CASEN 2017) podría ser
+$$ytotcorh = \beta_0 + \beta_1 inst + \beta_2 edad + \beta_3 edad^2 + \varepsilon$$
+Usando la notación de R el modelo se escribe:
+```{r, eval=FALSE}
+ytotcorh ~ factor(e8) + h3 + I(h3^2)
+```
+
+Si quisiera el modelo sin constante, hay dos posibilidades:
+```{r, eval=FALSE}
+ytotcorh ~ factor(e8) + h3 + I(h3^2) - 1
+ytotcorh ~ factor(e8) + h3 + I(h3^2) + 0
 ```
