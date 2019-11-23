@@ -1,0 +1,64 @@
+---
+title: "Uso básico del paquete casen"
+author: "Mauricio Vargas"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Uso básico del paquete casen}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, cache = FALSE, echo = FALSE, message = FALSE, warning = FALSE, tidy = FALSE}
+knitr::opts_chunk$set(eval = TRUE)
+```
+
+# Leer datos
+
+Con el paquete `casen` podemos leer la encuesta en formato rar o zip. También es posible leer directamente en formato sav (SPSS) o dta (Stata).
+
+Vamos a leer un subconjunto de los datos proporcionado por este paquete.
+```{r}
+library(casen)
+r14 <- leer_casen(system.file(package = "casen", "extdata", "casen_2017_los_rios.zip"))
+r14
+```
+
+Para descargar y leer la encuesta CASEN 2017 completa, se puede hacer lo siguiente.
+```{r, eval=FALSE}
+descargar_casen(2017)
+casen2017 <- leer_casen("2017_spss.rar")
+```
+
+# Medidas de tendencia central con diseño complejo
+
+La función `media_agrupada()` toma en cuenta el diseño complejo y los grados de libertad. Puedo agrupar por una o más variables y la función entrega, además del promedio, el intervalo de confianza.
+```{r}
+# Promedio salarial por comuna
+media_agrupada(r14, "ytotcorh", "comuna", "expc")
+
+# Promedio salarial por comuna y sexo
+media_agrupada(r14, "ytotcorh", c("comuna","sexo"), "expc")
+```
+
+El uso de `mediana_agrupada()` es exactamente igual al punto anterior.
+```{r}
+# Promedio salarial por comuna
+mediana_agrupada(r14, "ytotcorh", "comuna", "expc")
+
+# Promedio salarial por comuna y sexo
+mediana_agrupada(r14, "ytotcorh", c("comuna","sexo"), "expc")
+```
+
+# Uso de las funciones de casen y dplyr
+
+Las funciones de `casen` están pensadas para usarse en conjunto con las de `dplyr`. Un ejemplo simple de esto es el cálculo del porcentaje de hogares pobres.
+```{r}
+library(dplyr)
+
+r14 %>% 
+  # mutate es una funcion de dplyr, con esta puedo convertir pobreza a una variable binaria
+  mutate(pobreza = ifelse(pobreza <= 2, 1, 0)) %>% 
+  # ahora puedo usar media_agrupada directamente
+  media_agrupada("pobreza", "comuna", "expc")
+```

@@ -1,0 +1,13 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+rcpp-instructions
+^LICENSE\.md$
+^src/\.clang-format$
+data-raw
+dev
+docs
+windows
+.github
+^\.travis\.yml$
+^codecov\.yml$
+^codemeta\.json$

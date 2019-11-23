@@ -1,0 +1,62 @@
+Package: casen
+Type: Package
+Title: Conjunto de funciones para descargar, leer y trabajar con la encuesta CASEN
+Version: 0.1.0.9000
+Authors@R: c(
+      person(given = "Mauricio",
+        family = "Vargas",
+        role = c("aut","cre"),
+        email = "mvargas@dcc.uchile.cl",
+        comment = c(ORCID = "0000-0003-1017-7574")),
+      person(given = "Jim",
+        family = "Hester",
+        role = c("ctb"),
+        email = "mvargas@dcc.uchile.cl",
+        comment = c(ORCID = "0000-0003-1017-7574")),
+      person(family = "Pontificia Universidad Catolica de Chile",
+        role = "cph"),
+      person(family = "Ministerio de Desarrollo Social (MDS)",
+        role = "dtc"),
+      person(family = "Subsecretaria de Desarrollo Regional (SUBDERE)",
+        role = "dtc")
+    )
+URL: https://pachamaltese.github.io/casen/
+BugReports: https://github.com/pachamaltese/casen/issues
+Description: Permite leer la encuesta CASEN en formato zip/rar o sav/dta directamente en R
+    y sin la necesidad de que los usuarios de Windows deban instalar software adicional.
+    Utiliza una implementación en C++ de libarchive para cumplir con las políticas de TI del
+    Gobierno de Chile que no permite la instalacion de software necesario como 7-zip/WinRAR y
+    SPSS/Stata para leer la encuesta CASEN.
+License: GPL-3
+Depends: R (>= 3.5.0)
+Imports: 
+    rlang,
+    Rcpp (>= 1.0.2),
+    stats,
+    utils,
+    fs,
+    dplyr,
+    labelled,
+    haven,
+    glue,
+    janitor,
+    magrittr,
+    tidyr,
+    tibble,
+    broom,
+    survey,
+    srvyr,
+    purrr
+Suggests:
+    knitr,
+    rmarkdown,
+    covr,
+    testthat
+SystemRequirements: libarchive: libarchive-dev (deb), libarchive-devel (rpm), libarchive
+  (homebrew), libarchive_dev (csw)
+Encoding: UTF-8
+LinkingTo: Rcpp
+ByteCompile: true
+LazyData: true
+RoxygenNote: 6.1.1
+VignetteBuilder: knitr
