@@ -57,7 +57,7 @@ CPPFLAGS=$("${R_HOME}"/bin/R CMD config CPPFLAGS)
 echo "PKG_CFLAGS=$PKG_CFLAGS"
 echo "PKG_LIBS=$PKG_LIBS"
 
-# Test for odbc
+# Test for libarchive
 echo "#include $PKG_TEST_HEADER" | ${CXXCPP} ${CPPFLAGS} ${PKG_CFLAGS} ${CXXFLAGS} -xc++ - > /dev/null
 if [ $? -ne 0 ]; then
   echo "------------------------- ANTICONF ERROR ---------------------------"
