@@ -8,3 +8,5 @@ src/*.dll
 data-raw/*.zip
 data-raw/*.rar
 data-raw/*.sav
+tests/testthat/here/*.zip
+ 
