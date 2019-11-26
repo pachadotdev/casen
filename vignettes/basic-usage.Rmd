@@ -41,26 +41,14 @@ descargar_casen(2017, "descargas")
 
 # Medidas de tendencia central con diseño complejo
 
-La función `media_agrupada()` toma en cuenta el diseño complejo y los grados de libertad. Puedo agrupar por una o más variables y la función entrega, además del promedio, el intervalo de confianza.
+La función `estadistica_descriptiva()` toma en cuenta el diseño complejo y los grados de libertad. Puedo agrupar por una o más variables y la función entrega, además del promedio, el intervalo de confianza.
 
 *Importante:* El conjunto de datos `r14` se incluye con este software para efectos de mostrar el uso de las funciones, 
 la encuesta CASEN *no* asegura representatividad a nivel comunal.
 
 ```{r}
-# Media salarial por comuna
-media_agrupada(r14, "ytotcorh", "comuna", "expc")
-
-# Media salarial por comuna y sexo
-media_agrupada(r14, "ytotcorh", c("comuna","sexo"), "expc")
-```
-
-El uso de `mediana_agrupada()` es exactamente igual al punto anterior.
-```{r}
-# Mediana salarial por comuna
-mediana_agrupada(r14, "ytotcorh", "comuna", "expc")
-
-# Mediana salarial por comuna y sexo
-mediana_agrupada(r14, "ytotcorh", c("comuna","sexo"), "expc")
+# Media, mediana y percentil 70
+estadistica_descriptiva(r14, "ytotcorh", c("comuna", "sexo"), "expc", 0.7)
 ```
 
 # Medidas de tendencia central y grados de libertad
@@ -70,21 +58,7 @@ diseño complejo, los grados de libertad.
 
 Los grados de libertad son los valores de un conjunto de datos que tienen la posibilidad de variar después de haber impuesto alguna restricción sobre los mismos.
 
-Veamos la siguiente expresión:
-$$x + y  = 4$$
-
-Hay infinitos valores de $x$ e $y$ que satisfacen la ecuación, pero solo tenemos la libertad de elegir el valor de una de las dos variables, ya que al hacerlo, inmediatamente queda fijada la otra.
-
-Si agregamos una segunda ecuación, ya no queda ninguna variable en el sistema que podamos mover a nuestro antojo. Por ejemplo:
-$$x + y  = 4\\x - y = 1$$
-
-Pensando en el caso de la media y la desviación estándar:
-$$\mu = \frac{1}{n}\sum_{i=1}^nx_i \quad \sigma = \frac{\sum_{i=1}^n(x_i-\bar{x})^2}{n - 1}$$
-
-Si $n$ es muy grande, la pérdida de grados de libertad se torna irrelevante.
-
-En el contexto de muestreo bietápico, el cálculo de los grados de libertad es un tema no resuelto, pero el paquete casen utiliza la siguiente fórmula que es la misma empleada por el INE:
-$$GD = ConglomeradosInfo − EstratosInfo$$
+En el contexto de muestreo bietápico, el cálculo de los grados de libertad es un tema no resuelto, pero el paquete casen utiliza la siguiente definición del INE: "Los grados de libertad corresponden a la diferencia entre el número de conglomerados no vacíos (con presencia de la variable de interés) y el número de estratos no vacíos".
 
 En dominios de estimación pequeños la pérdida de grados de libertad se vuelve bastante relevante. Esto es muy importante cuando se hacen cálculos agrupando por región, sexo, región y sexo, entre otras.
 
@@ -99,9 +73,11 @@ Veamos el caso puntual de las funciones `mutate` y `filter` de dplyr:
 library(dplyr)
 
 # con mutate puedo convertir pobreza a una variable binaria
-r14 %>% 
+hogares_pobres <- r14 %>% 
   mutate(pobreza = ifelse(pobreza <= 2, 1, 0)) %>% 
-  media_agrupada("pobreza", "comuna", "expc")
+  estadistica_descriptiva("pobreza", "comuna", "expc", solo_media = T)
+
+hogares_pobres$media
 ```
 
 ```{r, eval=FALSE}
@@ -115,25 +91,8 @@ leer_casen("2017_spss.rar") %>%
 El paquete casen provee dos funciones para sacar el máximo partido
 a las funciones de R tomando en cuenta el diseño complejo y los grados de libertad.
 
-Por ejemplo, si queremos estimar el modelo:
-$$ytotcorh = \beta_0 + \beta_1 comuna + \beta_2 sexo + \varepsilon$$
-
-Los betas del modelo se pueden obtener de dos formas:
+Ajuste del modelo:
 ```{r}
-modelo_lineal_generalizado(r14, "ytotcorh", c("comuna", "sexo"), "expc")
-modelo_lineal_generalizado_2(r14, "ytotcorh ~ comuna + sexo", "expc")
-```
-
-La última función permite escribir modelos más complejos con componentes logarítmicas o cuadráticas. Por ejemplo,
-el modelo que relaciona ingresos con el tipo de institución de educación superior y edad (h3 y e8 en cuestionario CASEN 2017) podría ser
-$$ytotcorh = \beta_0 + \beta_1 inst + \beta_2 edad + \beta_3 edad^2 + \varepsilon$$
-Usando la notación de R el modelo se escribe:
-```{r, eval=FALSE}
-ytotcorh ~ factor(e8) + h3 + I(h3^2)
-```
-
-Si quisiera el modelo sin constante, hay dos posibilidades:
-```{r, eval=FALSE}
-ytotcorh ~ factor(e8) + h3 + I(h3^2) - 1
-ytotcorh ~ factor(e8) + h3 + I(h3^2) + 0
+# ytotcorh = b0 + b1 comuna + b2 sexo + e
+modelo_lineal_generalizado(r14, "ytotcorh ~ comuna + sexo", "expc")
 ```

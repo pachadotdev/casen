@@ -4,30 +4,37 @@
 \alias{modelo_lineal_generalizado}
 \title{Modelo lineal generalizado con disenio complejo}
 \usage{
-modelo_lineal_generalizado(datos, variable_dependiente = "ytotcorh",
-  variables_independientes = "region", peso = "expr",
-  conglomerado = "varunit", estrato = "varstrat")
+modelo_lineal_generalizado(datos, modelo = "ytotcorh ~ sexo",
+  peso = "expr", conglomerado = "varunit", estrato = "varstrat")
 }
 \arguments{
-\item{datos}{un data.frame o tibble con la encuesta CASEN (o un subconjunto acotado a una region, etc)}
+\item{datos}{un data.frame o tibble con la encuesta CASEN (o un subconjunto 
+acotado a una region, etc)}
 
-\item{variable_dependiente}{una columna de tipo numerico, por ejemplo ytotcorh que es la opcion por defecto}
+\item{modelo}{una expresion sinmbolica escrita como cadena de texto, consulta
+[stats::formula()] para los detalles de modelos con componentes logaritmicas,
+cuadraticas, etc.}
 
-\item{variables_independientes}{una o mas columnas de tipo numerico o factor, por ejemplo region que es la opcion por defecto}
+\item{peso}{una columna de tipo numerico, por defecto es expr que corresponde
+al factor de expansion regional de acuerdo al manual CASEN 2017}
 
-\item{peso}{una columna de tipo numerico, por defecto es expr que corresponde al factor de expansion regional de acuerdo al manual CASEN 2017}
+\item{conglomerado}{una columna de tipo numerico, por defecto es varunit de
+acuerdo al manual CASEN 2017}
 
-\item{conglomerado}{una columna de tipo numerico, por defecto es varunit de acuerdo al manual CASEN 2017}
-
-\item{estrato}{una columna de tipo numerico, por defecto es varunit de acuerdo al manual CASEN 2017}
+\item{estrato}{una columna de tipo numerico, por defecto es varunit de
+acuerdo al manual CASEN 2017}
 }
 \value{
-un tibble con los resultados del modelo lineal generalizado (funcion glm + disenio complejo)
+una lista con dos data frames que contienen los betas del modelo y la
+prediccion asociada
 }
 \description{
-Modelo lineal generalizado con disenio complejo
+\code{modelo_lineal_generalizado} define el disenio a partir de 
+los conglomerados, con base en esto obtiene ajusta un modelo lineal usando 
+minimos cuadrados generalizados.
 }
 \examples{
 r14 <- leer_casen(system.file(package = "casen", "extdata", "casen_2017_los_rios.zip"))
-modelo_lineal_generalizado(r14, "ytotcorh", c("comuna", "sexo"), "expc")
+modelo_lineal_generalizado(r14, "ytotcorh ~ comuna + sexo", "expc")
+
 }

@@ -20,26 +20,18 @@ r14
 #  descargar_casen(2017, "descargas")
 
 ## ------------------------------------------------------------------------
-# Media salarial por comuna
-media_agrupada(r14, "ytotcorh", "comuna", "expc")
-
-# Media salarial por comuna y sexo
-media_agrupada(r14, "ytotcorh", c("comuna","sexo"), "expc")
-
-## ------------------------------------------------------------------------
-# Mediana salarial por comuna
-mediana_agrupada(r14, "ytotcorh", "comuna", "expc")
-
-# Mediana salarial por comuna y sexo
-mediana_agrupada(r14, "ytotcorh", c("comuna","sexo"), "expc")
+# Media, mediana y percentil 70
+estadistica_descriptiva(r14, "ytotcorh", c("comuna", "sexo"), "expc", 0.7)
 
 ## ------------------------------------------------------------------------
 library(dplyr)
 
 # con mutate puedo convertir pobreza a una variable binaria
-r14 %>% 
+hogares_pobres <- r14 %>% 
   mutate(pobreza = ifelse(pobreza <= 2, 1, 0)) %>% 
-  media_agrupada("pobreza", "comuna", "expc")
+  estadistica_descriptiva("pobreza", "comuna", "expc", solo_media = T)
+
+hogares_pobres$media
 
 ## ---- eval=FALSE---------------------------------------------------------
 #  # con filter puedo dejar las observaciones de la 10ma region u otra
@@ -47,13 +39,6 @@ r14 %>%
 #    filter(region == 10)
 
 ## ------------------------------------------------------------------------
-modelo_lineal_generalizado(r14, "ytotcorh", c("comuna", "sexo"), "expc")
-modelo_lineal_generalizado_2(r14, "ytotcorh ~ comuna + sexo", "expc")
-
-## ---- eval=FALSE---------------------------------------------------------
-#  ytotcorh ~ factor(e8) + h3 + I(h3^2)
-
-## ---- eval=FALSE---------------------------------------------------------
-#  ytotcorh ~ factor(e8) + h3 + I(h3^2) - 1
-#  ytotcorh ~ factor(e8) + h3 + I(h3^2) + 0
+# ytotcorh = b0 + b1 comuna + b2 sexo + e
+modelo_lineal_generalizado(r14, "ytotcorh ~ comuna + sexo", "expc")
 

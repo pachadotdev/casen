@@ -1,25 +1,47 @@
-#' Media agrupada usando disenio complejo
-#' @param datos un data.frame o tibble con la encuesta CASEN (o un subconjunto acotado a una region, etc)
-#' @param variable una columna de tipo numerico, por ejemplo ytotcorh que es la opcion por defecto
-#' @param agrupacion una columna de tipo texto/factor, por ejemplo region que es la opcion por defecto
-#' @param peso una columna de tipo numerico, por defecto es expr que corresponde al factor de expansion regional de acuerdo al manual CASEN 2017
-#' @param conglomerado una columna de tipo numerico, por defecto es varunit de acuerdo al manual CASEN 2017
-#' @param estrato una columna de tipo numerico, por defecto es varunit de acuerdo al manual CASEN 2017
+#' Estadistica descriptiva usando disenio complejo
+#' 
+#' @description \code{estadistica_descriptiva} define el disenio a partir de los
+#' conglomerados, estratos y pesos, con base en esto obtiene las medidas de
+#' tendencia central
+#' 
+#' @param datos un data.frame o tibble con la encuesta CASEN (o un subconjunto
+#' acotado a una region, etc)
+#' @param variable una columna de tipo numerico, por ejemplo ytotcorh que es la
+#' opcion por defecto
+#' @param agrupacion una columna de tipo texto/factor, por ejemplo region que es
+#' la opcion por defecto
+#' @param peso una columna de tipo numerico, por defecto es expr que corresponde
+#' al factor de expansion regional de acuerdo al manual CASEN 2017
+#' @param cuantiles un vector de tipo numerico, por defecto es 1:100 / 100
+#' @param conglomerado una columna de tipo numerico, por defecto es varunit de
+#' acuerdo al manual CASEN 2017
+#' @param estrato una columna de tipo numerico, por defecto es varunit de
+#' acuerdo al manual CASEN 2017
+#' @param solo_media valor logico para omitir el calculo de mediana y cuantiles,
+#' por defecto es FALSE
+#'  
 #' @importFrom rlang sym syms expr
 #' @importFrom magrittr %>%
-#' @importFrom dplyr select select_at distinct group_by summarise
+#' @importFrom dplyr filter group_by summarise select select_at select_if mutate mutate_if distinct bind_cols everything slice
 #' @importFrom tidyr drop_na
 #' @importFrom purrr map_dfr map2 negate
 #' @importFrom haven is.labelled
 #' @importFrom labelled to_factor
-#' @importFrom srvyr as_survey_design survey_mean
+#' @importFrom srvyr as_survey_design survey_mean survey_quantile
 #' @importFrom survey degf
-#' @return un tibble con las medias agrupadas y su intervalo de confianza
+#' 
+#' @return una lista con tres data frames que contienen las medias, medianas y
+#' percentiles
+#' 
 #' @examples
 #' r14 <- leer_casen(system.file(package = "casen", "extdata", "casen_2017_los_rios.zip"))
-#' media_agrupada(r14, "ytotcorh", c("comuna", "sexo"), "expc")
+#' estadistica_descriptiva(r14, "ytotcorh", c("comuna", "sexo"), "expc", 0.7)
+#' 
 #' @export
-media_agrupada <- function(datos, variable = "ytotcorh", agrupacion = "region", peso = "expr", conglomerado = "varunit", estrato = "varstrat") {
+
+estadistica_descriptiva <- function(datos, variable = "ytotcorh", agrupacion = "region", peso = "expr",
+                                    cuantiles = 1:100 / 100, conglomerado = "varunit", estrato = "varstrat",
+                                    solo_media = FALSE) {
   # checks ----
   check_input(datos, variable, agrupacion, peso, conglomerado, estrato)
   
@@ -30,83 +52,18 @@ media_agrupada <- function(datos, variable = "ytotcorh", agrupacion = "region", 
   
   d_groups <- unique_groups(d, agrupacion)
   
-  estimate <- mean_median(d_groups, des, stat_fun = srvyr::survey_mean, agrupacion, conglomerado, estrato, peso, variable, col_prefix = "media_")
+  mean_output <- mean_median(d_groups, des, stat_fun = srvyr::survey_mean, agrupacion, conglomerado, estrato, peso, variable, col_prefix = "media_")
+  names(mean_output) <- gsub("_low", "_inf", names(mean_output))
+  names(mean_output) <- gsub("_upp", "_sup", names(mean_output))
   
-  names(estimate) <- gsub("_low", "_inf", names(estimate))
-  names(estimate) <- gsub("_upp", "_sup", names(estimate))
+  if (solo_media == F) {
+  median_output <- mean_median(d_groups, des, stat_fun = srvyr::survey_median, agrupacion, conglomerado, estrato, peso, variable, col_prefix = "mediana_")
+  names(median_output) <- gsub("_low", "_inf", names(median_output))
+  names(median_output) <- gsub("_upp", "_sup", names(median_output))
   
-  check_nas(estimate)
-  return(estimate)
-}
-
-#' Mediana agrupada usando disenio complejo
-#' @param datos un data.frame o tibble con la encuesta CASEN (o un subconjunto acotado a una region, etc)
-#' @param variable una columna de tipo numerico, por ejemplo ytotcorh que es la opcion por defecto
-#' @param agrupacion una columna de tipo texto/factor, por ejemplo region que es la opcion por defecto
-#' @param peso una columna de tipo numerico, por defecto es expr que corresponde al factor de expansion regional de acuerdo al manual CASEN 2017
-#' @param conglomerado una columna de tipo numerico, por defecto es varunit de acuerdo al manual CASEN 2017
-#' @param estrato una columna de tipo numerico, por defecto es varunit de acuerdo al manual CASEN 2017
-#' @return un tibble con las medianas agrupadas y su intervalo de confianza
-#' @examples
-#' r14 <- leer_casen(system.file(package = "casen", "extdata", "casen_2017_los_rios.zip"))
-#' mediana_agrupada(r14, "ytotcorh", c("comuna", "sexo"), "expc")
-#' @export
-mediana_agrupada <- function(datos, variable = "ytotcorh", agrupacion = "region", peso = "expr", conglomerado = "varunit", estrato = "varstrat") {
-  # checks ----
-  check_input(datos, variable, agrupacion, peso, conglomerado, estrato)
-  
-  # compute ----
-  d <- clean_data(datos, variable, agrupacion, peso, conglomerado, estrato)
-  
-  des <- create_design(d, variable, agrupacion, peso, conglomerado, estrato)
-  
-  d_groups <- unique_groups(d, agrupacion)
-  
-  estimate <- mean_median(d_groups, des, stat_fun = srvyr::survey_median, agrupacion, conglomerado, estrato, peso, variable, col_prefix = "mediana_")
-  
-  names(estimate) <- gsub("_low", "_inf", names(estimate))
-  names(estimate) <- gsub("_upp", "_sup", names(estimate))
-  
-  check_nas(estimate)
-  return(estimate)
-}
-
-#' Percentiles agrupados usando disenio complejo
-#' @param datos un data.frame o tibble con la encuesta CASEN (o un subconjunto acotado a una region, etc)
-#' @param variable una columna de tipo numerico, por ejemplo ytotcorh que es la opcion por defecto
-#' @param percentiles percentiles a calcular, si no se especifica calcula todos los percentiles
-#' @param agrupacion una columna de tipo texto/factor, por ejemplo region que es la opcion por defecto
-#' @param peso una columna de tipo numerico, por defecto es expr que corresponde al factor de expansion regional de acuerdo al manual CASEN 2017
-#' @param conglomerado una columna de tipo numerico, por defecto es varunit de acuerdo al manual CASEN 2017
-#' @param estrato una columna de tipo numerico, por defecto es varunit de acuerdo al manual CASEN 2017
-#' @importFrom rlang sym syms expr
-#' @importFrom magrittr %>%
-#' @importFrom dplyr filter group_by summarise select mutate select_if mutate_if bind_cols everything slice
-#' @importFrom purrr map_dfr map2 negate
-#' @importFrom haven is.labelled
-#' @importFrom labelled to_factor
-#' @importFrom srvyr survey_quantile
-#' @importFrom survey degf
-#' @return un tibble con los percentiles y su error estandar
-#' @examples
-#' r14 <- leer_casen(system.file(package = "casen", "extdata", "casen_2017_los_rios.zip"))
-#' percentiles_agrupados(r14, "ytotcorh", c(0.25, 0.5, 0.75), c("comuna", "sexo"), "expc")
-#' @export
-percentiles_agrupados <- function(datos, variable = "ytotcorh", percentiles = 1:100 / 100, agrupacion = "region", peso = "expr", conglomerado = "varunit", estrato = "varstrat") {
-  # checks ----
-  check_input(datos, variable, agrupacion, peso, conglomerado, estrato)
-  stopifnot(is.numeric(percentiles), length(percentiles) >= 1)
-
-  # compute ----
-  d <- clean_data(datos, variable, agrupacion, peso, conglomerado, estrato)
-  
-  des <- create_design(d, variable, agrupacion, peso, conglomerado, estrato)
-
-  d_groups <- unique_groups(d, agrupacion)
-  
-  estimate <- suppressWarnings(
+  quantile_output <- suppressWarnings(
     purrr::map_dfr(
-      percentiles,
+      cuantiles,
       function(p) {
         purrr::map_dfr(
           seq_len(nrow(d_groups)),
@@ -120,7 +77,7 @@ percentiles_agrupados <- function(datos, variable = "ytotcorh", percentiles = 1:
             des2 <- des2 %>% 
               dplyr::group_by(!!!syms(c(agrupacion))) %>% 
               dplyr::summarise(
-                !!sym(paste0("mediana_", variable)) := srvyr::survey_quantile(!!sym(variable), quantile = p, df = survey::degf(des2))
+                !!sym(paste0("cuantil_", variable)) := srvyr::survey_quantile(!!sym(variable), quantile = p, df = survey::degf(des2))
               )
             
             des2_1 <- des2 %>% 
@@ -147,8 +104,8 @@ percentiles_agrupados <- function(datos, variable = "ytotcorh", percentiles = 1:
             names(des2) <- gsub("_q[1-9][0-9]_se$|_q100_se$", "_err_est", names(des2))
             
             des2 <- des2 %>%
-              dplyr::mutate(percentil = p) %>%
-              dplyr::select("percentil", dplyr::everything())
+              dplyr::mutate(cuantil = p) %>%
+              dplyr::select("cuantil", dplyr::everything())
             
             return(des2)
           }
@@ -157,6 +114,18 @@ percentiles_agrupados <- function(datos, variable = "ytotcorh", percentiles = 1:
     )
   )
   
-  check_nas(estimate)
-  return(estimate)
+  check_nas(mean_output)
+  # check_nas(median_output)
+  # check_nas(quantile_output)
+  
+  return(
+    list(
+      media = mean_output,
+      mediana = median_output,
+      cuantiles = quantile_output
+    )
+  )
+  } else {
+    return(list(media = mean_output))
+  }
 }
