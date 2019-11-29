@@ -21,17 +21,17 @@ r14
 
 ## ------------------------------------------------------------------------
 # Media, mediana y percentil 70
-estadistica_descriptiva(r14, "ytotcorh", c("comuna", "sexo"), "expc", 0.7)
+media_agrupada(r14, "ytotcorh", c("comuna", "sexo"), "expc")
+mediana_agrupada(r14, "ytotcorh", c("comuna", "sexo"), "expc")
+percentiles_agrupados(r14, "ytotcorh", c("comuna", "sexo"), "expc")
 
 ## ------------------------------------------------------------------------
 library(dplyr)
 
 # con mutate puedo convertir pobreza a una variable binaria
-hogares_pobres <- r14 %>% 
+r14 %>% 
   mutate(pobreza = ifelse(pobreza <= 2, 1, 0)) %>% 
-  estadistica_descriptiva("pobreza", "comuna", "expc", solo_media = T)
-
-hogares_pobres$media
+  media_agrupada("pobreza", "comuna", "expc")
 
 ## ---- eval=FALSE---------------------------------------------------------
 #  # con filter puedo dejar las observaciones de la 10ma region u otra
