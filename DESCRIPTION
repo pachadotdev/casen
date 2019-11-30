@@ -1,6 +1,6 @@
 Package: casen
 Type: Package
-Title: Conjunto de funciones para descargar, leer y trabajar con la encuesta CASEN
+Title: Conjunto De Funciones Para Descargar, Leer y Trabajar Con La Encuesta CASEN
 Version: 0.1.0.9000
 Authors@R: c(
       person(given = "Mauricio",
@@ -11,8 +11,10 @@ Authors@R: c(
       person(given = "Jim",
         family = "Hester",
         role = c("ctb"),
-        email = "mvargas@dcc.uchile.cl",
-        comment = c(ORCID = "0000-0003-1017-7574")),
+        comment = c(ORCID = "0000-0002-2739-7082", "original libarchive integration")),
+      person(given = "Ricardo",
+        family = "Aravena",
+        role = c("ths")),
       person(family = "Pontificia Universidad Catolica de Chile",
         role = "cph"),
       person(family = "Ministerio de Desarrollo Social (MDS)",

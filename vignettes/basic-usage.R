@@ -26,7 +26,7 @@ cd$disenio
 cd$grupos
 
 ## ------------------------------------------------------------------------
-# Media, mediana y percentil 70
+# media, mediana y percentil 70
 media_agrupada(cd)
 mediana_agrupada(cd)
 percentiles_agrupados(cd)
@@ -34,7 +34,7 @@ percentiles_agrupados(cd)
 ## ------------------------------------------------------------------------
 library(dplyr)
 
-# con mutate puedo convertir pobreza a una variable binaria
+# convierto pobreza a una variable binaria
 r14 %>% 
   mutate(pobreza = ifelse(pobreza <= 2, 1, 0)) %>% 
   configuracion_disenio("pobreza", "comuna", "expc") %>% 
@@ -61,14 +61,26 @@ mod_conf <- confint_tidy(mod, ddf = degf(cd$disenio))
 mod_conf
 
 ## ------------------------------------------------------------------------
-# ordenamos la salida del modelo usando la funcion tidy (broom)
+# ordenamos la salida del modelo
 mod_betas <- tidy(mod)
 
-# pegamos las columnas con bind_cols (dplyr)
+# pegamos las columnas
 mod_betas <- bind_cols(mod_betas, mod_conf)
 
-# clean_names (janitor) ordena los nombres de las columnas
+# ordenamos los nombres de las columnas
 mod_betas <- clean_names(mod_betas)
 
 mod_betas
+
+## ------------------------------------------------------------------------
+codigos_casen %>% 
+  filter(valido_desde == 1990)
+
+## ---- eval=FALSE---------------------------------------------------------
+#  casen1990 <- leer_casen("../data-raw/1990_spss.zip") %>%
+#    mutate(comu = as.integer(comu)) %>%
+#    left_join(
+#      codigos_casen %>% filter(valido_desde == 1990) %>% select(starts_with("codigo")),
+#      by = c("comu" = "codigo_casen")
+#    )
 

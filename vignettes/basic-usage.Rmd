@@ -65,7 +65,7 @@ La función `estadistica_descriptiva()` toma en cuenta el diseño complejo y los
 la encuesta CASEN *no* asegura representatividad a nivel comunal.
 
 ```{r}
-# Media, mediana y percentil 70
+# media, mediana y percentil 70
 media_agrupada(cd)
 mediana_agrupada(cd)
 percentiles_agrupados(cd)
@@ -79,7 +79,7 @@ Veamos el caso puntual de las funciones `mutate` y `filter` de dplyr:
 ```{r}
 library(dplyr)
 
-# con mutate puedo convertir pobreza a una variable binaria
+# convierto pobreza a una variable binaria
 r14 %>% 
   mutate(pobreza = ifelse(pobreza <= 2, 1, 0)) %>% 
   configuracion_disenio("pobreza", "comuna", "expc") %>% 
@@ -128,14 +128,36 @@ Lo anterior se puede ordenar y presentar los betas junto con los intervalos
 de confianza.
 
 ```{r}
-# ordenamos la salida del modelo usando la funcion tidy (broom)
+# ordenamos la salida del modelo
 mod_betas <- tidy(mod)
 
-# pegamos las columnas con bind_cols (dplyr)
+# pegamos las columnas
 mod_betas <- bind_cols(mod_betas, mod_conf)
 
-# clean_names (janitor) ordena los nombres de las columnas
+# ordenamos los nombres de las columnas
 mod_betas <- clean_names(mod_betas)
 
 mod_betas
+```
+
+# Comparabilidad entre encuestas
+
+El paquete casen provee un conjunto de datos (codigos_casen) con la correspondencia de los
+códigos de comunas.
+
+Dejando de lado la representatividad comunal, veamos como convertir los códigos
+de la encuesta CASEN 1990 a códigos SUBDERE 2017.
+
+```{r}
+codigos_casen %>% 
+  filter(valido_desde == 1990)
+```
+
+```{r, eval=FALSE}
+casen1990 <- leer_casen("../data-raw/1990_spss.zip") %>% 
+  mutate(comu = as.integer(comu)) %>% 
+  left_join(
+    codigos_casen %>% filter(valido_desde == 1990) %>% select(starts_with("codigo")),
+    by = c("comu" = "codigo_casen")
+  )
 ```
