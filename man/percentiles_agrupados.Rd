@@ -31,5 +31,5 @@ Percentiles agrupados usando disenio complejo
 }
 \examples{
 r14 <- leer_casen(system.file(package = "casen", "extdata", "casen_2017_los_rios.zip"))
-percentiles_agrupados(r14, "ytotcorh", c(0.25, 0.5, 0.75), c("comuna", "sexo"), "expc")
+percentiles_agrupados(r14, "ytotcorh", c("comuna", "sexo"), "expc", 0.7)
 }

@@ -4,6 +4,7 @@ rcpp-instructions
 ^LICENSE\.md$
 ^src/\.clang-format$
 data-raw
+data-rds
 dev
 docs
 windows
