@@ -3,6 +3,7 @@
 #' @param carpeta si no se indica una carpeta, descarga en la carpeta de
 #' trabajo o la raiz del projecto
 #' @importFrom utils download.file
+#' @importFrom glue glue
 #' @return los archivos comprimidos de la encuesta CASEN descargados desde el
 #' sitio web del MDS
 #' @export
@@ -61,11 +62,15 @@ descargar_casen <- function(anios = NULL, carpeta = getwd()) {
   links <- links[links$year %in% anios, ]
 
   for (j in 1:nrow(links)) {
-    if (!file.exists(links$file[[j]])) {
-      message(sprintf("Intentando descargar CASEN %s...", links$year[[j]]))
-      try(utils::download.file(links$url[[j]], links$file[[j]], mode = "wb"))
+    u <- links$url[[j]]
+    f <- links$file[[j]]
+    y <- links$year[[j]]
+    
+    if (!file.exists(f)) {
+      message(glue::glue("Intentando descargar CASEN {y}..."))
+      try(utils::download.file(u, f, mode = "wb"))
     } else {
-      message(sprintf("CASEN %s ya existe...", links$year[[j]]))
+      message(glue::glue("CASEN {y} ya existe, se omite la descarga"))
     }
   }
 }

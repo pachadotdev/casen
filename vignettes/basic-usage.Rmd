@@ -39,6 +39,24 @@ descargar_casen("descargas")
 descargar_casen(2017, "descargas")
 ```
 
+# Diseños complejos
+
+El valor agregado del paquete CASEN es que entrega una forma fácil de hacer cálculos tomando en cuenta, además del
+diseño complejo, los grados de libertad.
+
+En el contexto de muestreo bietápico, el cálculo de los grados de libertad es un tema no resuelto, pero el paquete casen utiliza la siguiente definición del INE: "Los grados de libertad corresponden a la diferencia entre el número de conglomerados no vacíos (con presencia de la variable de interés) y el número de estratos no vacíos".
+
+En dominios de estimación pequeños la pérdida de grados de libertad se vuelve bastante relevante. Esto es muy importante cuando se hacen cálculos agrupando por región, sexo, región y sexo, entre otras.
+
+Al usar la función `svyby` del paquete survey, la función no calcula correctamente los grados de libertad de cada dominio, sino que considera un valor fijo para todos los dominios. Las funciones del paquete casen usan esta función pero incluyen una serie de pasos programados para usar los grados de libertad adecuados para cada dominio de estimación.
+
+```{r}
+# disenio complejo a partir de  los datos leidos
+cd <- configuracion_disenio(r14, "ytotcorh", c("comuna", "sexo"), "expc")
+cd$disenio
+cd$grupos
+```
+
 # Medidas de tendencia central con diseño complejo
 
 La función `estadistica_descriptiva()` toma en cuenta el diseño complejo y los grados de libertad. Puedo agrupar por una o más variables y la función entrega, además del promedio, el intervalo de confianza.
@@ -48,23 +66,10 @@ la encuesta CASEN *no* asegura representatividad a nivel comunal.
 
 ```{r}
 # Media, mediana y percentil 70
-media_agrupada(r14, "ytotcorh", c("comuna", "sexo"), "expc")
-mediana_agrupada(r14, "ytotcorh", c("comuna", "sexo"), "expc")
-percentiles_agrupados(r14, "ytotcorh", c("comuna", "sexo"), "expc")
+media_agrupada(cd)
+mediana_agrupada(cd)
+percentiles_agrupados(cd)
 ```
-
-# Medidas de tendencia central y grados de libertad
-
-El valor agregado del paquete CASEN es que entrega una forma fácil de hacer cálculos tomando en cuenta, además del
-diseño complejo, los grados de libertad.
-
-Los grados de libertad son los valores de un conjunto de datos que tienen la posibilidad de variar después de haber impuesto alguna restricción sobre los mismos.
-
-En el contexto de muestreo bietápico, el cálculo de los grados de libertad es un tema no resuelto, pero el paquete casen utiliza la siguiente definición del INE: "Los grados de libertad corresponden a la diferencia entre el número de conglomerados no vacíos (con presencia de la variable de interés) y el número de estratos no vacíos".
-
-En dominios de estimación pequeños la pérdida de grados de libertad se vuelve bastante relevante. Esto es muy importante cuando se hacen cálculos agrupando por región, sexo, región y sexo, entre otras.
-
-Al usar la función `svyby` del paquete survey, la función no calcula correctamente los grados de libertad de cada dominio, sino que considera un valor fijo para todos los dominios. Las funciones del paquete casen usan esta función pero incluyen una serie de pasos complejos de programar para usar los grados de libertad adecuados para cada dominio de estimación.
 
 # Uso de las funciones de casen y dplyr
 
@@ -77,7 +82,8 @@ library(dplyr)
 # con mutate puedo convertir pobreza a una variable binaria
 r14 %>% 
   mutate(pobreza = ifelse(pobreza <= 2, 1, 0)) %>% 
-  media_agrupada("pobreza", "comuna", "expc")
+  configuracion_disenio("pobreza", "comuna", "expc") %>% 
+  media_agrupada()
 ```
 
 ```{r, eval=FALSE}
@@ -93,6 +99,43 @@ a las funciones de R tomando en cuenta el diseño complejo y los grados de liber
 
 Ajuste del modelo:
 ```{r}
-# ytotcorh = b0 + b1 comuna + b2 sexo + e
-modelo_lineal_generalizado(r14, "ytotcorh ~ comuna + sexo", "expc")
+# modelo: ytotcorh = b0 + b1 comuna + b2 sexo + e
+mod <- modelo_lineal_generalizado(cd, "ytotcorh ~ comuna + sexo")
+summary(mod)
+```
+
+# Uso de las funciones de casen con paquetes "tidy"
+
+Además de dplyr, casen se integra perfectamente con los paquetes del 
+[Tidyverse](https://www.tidyverse.org/) y otros paquetes que van en la línea
+de expresar las salidas como tablas.
+
+Por ejemplo, el paquete broom permite obtener una tabla con los intervalos
+de confianza para los betas estimados del modelo.
+
+```{r}
+library(broom)
+library(survey)
+library(janitor)
+
+# usamos ddf y degf del paquete survey para hacer el mismo calculo
+# que realiza Stata
+mod_conf <- confint_tidy(mod, ddf = degf(cd$disenio))
+mod_conf
+```
+
+Lo anterior se puede ordenar y presentar los betas junto con los intervalos
+de confianza.
+
+```{r}
+# ordenamos la salida del modelo usando la funcion tidy (broom)
+mod_betas <- tidy(mod)
+
+# pegamos las columnas con bind_cols (dplyr)
+mod_betas <- bind_cols(mod_betas, mod_conf)
+
+# clean_names (janitor) ordena los nombres de las columnas
+mod_betas <- clean_names(mod_betas)
+
+mod_betas
 ```

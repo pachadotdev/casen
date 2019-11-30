@@ -4,29 +4,18 @@
 \alias{modelo_lineal_generalizado}
 \title{Modelo lineal generalizado con disenio complejo}
 \usage{
-modelo_lineal_generalizado(datos, modelo = "ytotcorh ~ sexo",
-  peso = "expr", conglomerado = "varunit", estrato = "varstrat")
+modelo_lineal_generalizado(disenio, modelo = "ytotcorh ~ sexo")
 }
 \arguments{
-\item{datos}{un data.frame o tibble con la encuesta CASEN (o un subconjunto 
-acotado a una region, etc)}
+\item{disenio}{la salida de `configuracion_disenio()` que provee ademas los
+grupos y las variables en forma de lista}
 
 \item{modelo}{una expresion sinmbolica escrita como cadena de texto, consulta
 [stats::formula()] para los detalles de modelos con componentes logaritmicas,
 cuadraticas, etc.}
-
-\item{peso}{una columna de tipo numerico, por defecto es expr que corresponde
-al factor de expansion regional de acuerdo al manual CASEN 2017}
-
-\item{conglomerado}{una columna de tipo numerico, por defecto es varunit de
-acuerdo al manual CASEN 2017}
-
-\item{estrato}{una columna de tipo numerico, por defecto es varunit de
-acuerdo al manual CASEN 2017}
 }
 \value{
-una lista con dos data frames que contienen los betas del modelo y la
-prediccion asociada
+una lista cuyas clases son svyglm, glm y lm
 }
 \description{
 \code{modelo_lineal_generalizado} define el disenio a partir de 
@@ -35,6 +24,7 @@ minimos cuadrados generalizados.
 }
 \examples{
 r14 <- leer_casen(system.file(package = "casen", "extdata", "casen_2017_los_rios.zip"))
-modelo_lineal_generalizado(r14, "ytotcorh ~ comuna + sexo", "expc")
+cd <- configuracion_disenio(r14, "ytotcorh", c("comuna", "sexo"), "expc")
+modelo_lineal_generalizado(cd, "ytotcorh ~ comuna + sexo")
 
 }

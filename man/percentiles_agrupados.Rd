@@ -4,24 +4,14 @@
 \alias{percentiles_agrupados}
 \title{Percentiles agrupados usando disenio complejo}
 \usage{
-percentiles_agrupados(datos, variable = "ytotcorh",
-  agrupacion = "region", peso = "expr", percentiles = 0.7,
-  conglomerado = "varunit", estrato = "varstrat")
+percentiles_agrupados(disenio, percentiles = 0.7)
 }
 \arguments{
-\item{datos}{un data.frame o tibble con la encuesta CASEN (o un subconjunto acotado a una region, etc)}
+\item{disenio}{la salida de `configuracion_disenio()` que provee ademas los
+grupos y las variables en forma de lista}
 
-\item{variable}{una columna de tipo numerico, por ejemplo ytotcorh que es la opcion por defecto}
-
-\item{agrupacion}{una columna de tipo texto/factor, por ejemplo region que es la opcion por defecto}
-
-\item{peso}{una columna de tipo numerico, por defecto es expr que corresponde al factor de expansion regional de acuerdo al manual CASEN 2017}
-
-\item{percentiles}{percentiles a calcular, si no se especifica calcula el percentil 70}
-
-\item{conglomerado}{una columna de tipo numerico, por defecto es varunit de acuerdo al manual CASEN 2017}
-
-\item{estrato}{una columna de tipo numerico, por defecto es varunit de acuerdo al manual CASEN 2017}
+\item{percentiles}{percentiles a calcular, si no se especifica calcula el
+percentil 70}
 }
 \value{
 una tabla con los percentiles y su error estandar
@@ -31,5 +21,6 @@ Percentiles agrupados usando disenio complejo
 }
 \examples{
 r14 <- leer_casen(system.file(package = "casen", "extdata", "casen_2017_los_rios.zip"))
-percentiles_agrupados(r14, "ytotcorh", c("comuna", "sexo"), "expc", 0.7)
+cd <- configuracion_disenio(r14, "ytotcorh", c("comuna", "sexo"), "expc")
+percentiles_agrupados(cd, 0.7)
 }

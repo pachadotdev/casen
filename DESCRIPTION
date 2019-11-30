@@ -39,11 +39,10 @@ Imports:
     labelled,
     haven,
     glue,
-    janitor,
     magrittr,
     tidyr,
     tibble,
-    broom,
+    janitor,
     survey,
     srvyr,
     purrr
@@ -51,7 +50,8 @@ Suggests:
     knitr,
     rmarkdown,
     covr,
-    testthat
+    testthat,
+    broom
 SystemRequirements: libarchive: libarchive-dev (deb), libarchive-devel (rpm), libarchive
   (homebrew), libarchive_dev (csw)
 Encoding: UTF-8

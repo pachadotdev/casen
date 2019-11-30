@@ -20,10 +20,16 @@ r14
 #  descargar_casen(2017, "descargas")
 
 ## ------------------------------------------------------------------------
+# disenio complejo a partir de  los datos leidos
+cd <- configuracion_disenio(r14, "ytotcorh", c("comuna", "sexo"), "expc")
+cd$disenio
+cd$grupos
+
+## ------------------------------------------------------------------------
 # Media, mediana y percentil 70
-media_agrupada(r14, "ytotcorh", c("comuna", "sexo"), "expc")
-mediana_agrupada(r14, "ytotcorh", c("comuna", "sexo"), "expc")
-percentiles_agrupados(r14, "ytotcorh", c("comuna", "sexo"), "expc")
+media_agrupada(cd)
+mediana_agrupada(cd)
+percentiles_agrupados(cd)
 
 ## ------------------------------------------------------------------------
 library(dplyr)
@@ -31,7 +37,8 @@ library(dplyr)
 # con mutate puedo convertir pobreza a una variable binaria
 r14 %>% 
   mutate(pobreza = ifelse(pobreza <= 2, 1, 0)) %>% 
-  media_agrupada("pobreza", "comuna", "expc")
+  configuracion_disenio("pobreza", "comuna", "expc") %>% 
+  media_agrupada()
 
 ## ---- eval=FALSE---------------------------------------------------------
 #  # con filter puedo dejar las observaciones de la 10ma region u otra
@@ -39,6 +46,29 @@ r14 %>%
 #    filter(region == 10)
 
 ## ------------------------------------------------------------------------
-# ytotcorh = b0 + b1 comuna + b2 sexo + e
-modelo_lineal_generalizado(r14, "ytotcorh ~ comuna + sexo", "expc")
+# modelo: ytotcorh = b0 + b1 comuna + b2 sexo + e
+mod <- modelo_lineal_generalizado(cd, "ytotcorh ~ comuna + sexo")
+summary(mod)
+
+## ------------------------------------------------------------------------
+library(broom)
+library(survey)
+library(janitor)
+
+# usamos ddf y degf del paquete survey para hacer el mismo calculo
+# que realiza Stata
+mod_conf <- confint_tidy(mod, ddf = degf(cd$disenio))
+mod_conf
+
+## ------------------------------------------------------------------------
+# ordenamos la salida del modelo usando la funcion tidy (broom)
+mod_betas <- tidy(mod)
+
+# pegamos las columnas con bind_cols (dplyr)
+mod_betas <- bind_cols(mod_betas, mod_conf)
+
+# clean_names (janitor) ordena los nombres de las columnas
+mod_betas <- clean_names(mod_betas)
+
+mod_betas
 
