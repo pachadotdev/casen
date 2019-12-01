@@ -58,7 +58,6 @@ SystemRequirements: libarchive: libarchive-dev (deb), libarchive-devel (rpm), li
   (homebrew), libarchive_dev (csw)
 Encoding: UTF-8
 LinkingTo: Rcpp
-NeedsCompilation: yes
 LazyData: true
 RoxygenNote: 6.1.1
 VignetteBuilder: knitr

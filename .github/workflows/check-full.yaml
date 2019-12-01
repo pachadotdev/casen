@@ -36,6 +36,7 @@ jobs:
         if: runner.os == 'macOS'
         run: |
           brew install libarchive
+          tlmgr update --self
           tlmgr install pdftexcmds
         
       - name: Cache R packages
