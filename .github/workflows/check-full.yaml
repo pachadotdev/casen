@@ -36,8 +36,7 @@ jobs:
         if: runner.os == 'macOS'
         run: |
           brew install libarchive
-          tlmgr update --self
-          tlmgr install pdflatex
+          source <(curl -s http://mirror.ctan.org/systems/texlive/tlnet/update-tlmgr-latest.sh)
           tlmgr install pdftexcmds
         
       - name: Cache R packages
