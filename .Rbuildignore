@@ -2,6 +2,7 @@
 ^\.Rproj\.user$
 rcpp-instructions
 ^LICENSE\.md$
+^src/Makevars$
 ^src/\.clang-format$
 data-raw
 data-rds

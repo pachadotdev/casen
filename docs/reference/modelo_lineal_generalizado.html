@@ -71,7 +71,7 @@ minimos cuadrados generalizados." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">casen</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1</span>
       </span>
     </div>
 
@@ -148,10 +148,10 @@ cuadraticas, etc.</p></td>
     <p>una lista cuyas clases son svyglm, glm y lm</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>r14</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='leer_casen.html'>leer_casen</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"casen"</span>, <span class='st'>"extdata"</span>, <span class='st'>"casen_2017_los_rios.zip"</span>))</div><div class='output co'>#&gt; <span class='message'>Intentando leer el archivo /tmp/RtmpMqJAvD/temp_libpath5ca48a3ad38/casen/extdata/casen_2017_los_rios.zip...</span></div><div class='output co'>#&gt; <span class='message'>Los metadatos de /tmp/RtmpMqJAvD/temp_libpath5ca48a3ad38/casen/extdata/casen_2017_los_rios.zip indican que el formato comprimido es adecuado, intentando leer...</span></div><div class='output co'>#&gt; Resizing buffer to 32768.
+    <pre class="examples"><div class='input'><span class='no'>r14</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='leer_casen.html'>leer_casen</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"casen"</span>, <span class='st'>"extdata"</span>, <span class='st'>"casen_2017_los_rios.zip"</span>))</div><div class='output co'>#&gt; <span class='message'>Intentando leer el archivo /tmp/RtmpM57qrb/temp_libpath35b44ce3ec31/casen/extdata/casen_2017_los_rios.zip...</span></div><div class='output co'>#&gt; <span class='message'>Los metadatos de /tmp/RtmpM57qrb/temp_libpath35b44ce3ec31/casen/extdata/casen_2017_los_rios.zip indican que el formato comprimido es adecuado, intentando leer...</span></div><div class='output co'>#&gt; Resizing buffer to 32768.
 #&gt; Resizing buffer to 65536.
 #&gt; Resizing buffer to 131072.
-#&gt; Resizing buffer to 262144.</div><div class='output co'>#&gt; <span class='message'>/tmp/RtmpMqJAvD/temp_libpath5ca48a3ad38/casen/extdata/casen_2017_los_rios.zip se pudo leer como tibble :-)</span></div><div class='input'><span class='no'>cd</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='configuracion_disenio.html'>configuracion_disenio</a></span>(<span class='no'>r14</span>, <span class='st'>"ytotcorh"</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"comuna"</span>, <span class='st'>"sexo"</span>), <span class='st'>"expc"</span>)
+#&gt; Resizing buffer to 262144.</div><div class='output co'>#&gt; <span class='message'>/tmp/RtmpM57qrb/temp_libpath35b44ce3ec31/casen/extdata/casen_2017_los_rios.zip se pudo leer como tibble :-)</span></div><div class='input'><span class='no'>cd</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='configuracion_disenio.html'>configuracion_disenio</a></span>(<span class='no'>r14</span>, <span class='st'>"ytotcorh"</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"comuna"</span>, <span class='st'>"sexo"</span>), <span class='st'>"expc"</span>)
 <span class='fu'>modelo_lineal_generalizado</span>(<span class='no'>cd</span>, <span class='st'>"ytotcorh ~ comuna + sexo"</span>)</div><div class='output co'>#&gt; Stratified 1 - level Cluster Sampling design (with replacement)
 #&gt; With (83) clusters.
 #&gt; Called via srvyr

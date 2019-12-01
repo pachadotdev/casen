@@ -6,9 +6,9 @@
   "@type": "SoftwareSourceCode",
   "identifier": "casen",
   "description": "Permite leer la encuesta CASEN en formato zip/rar o sav/dta directamente en R\n    y sin la necesidad de que los usuarios de Windows deban instalar software adicional.\n    Utiliza una implementación en C++ de libarchive para cumplir con las políticas de TI del\n    Gobierno de Chile que no permite la instalacion de software necesario como 7-zip/WinRAR y\n    SPSS/Stata para leer la encuesta CASEN.",
-  "name": "casen: Conjunto de funciones para descargar, leer y trabajar con la encuesta CASEN",
+  "name": "casen: Conjunto De Funciones Para Descargar, Leer y Trabajar Con La Encuesta CASEN",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "0.1.0.9000",
+  "version": "0.1",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -29,9 +29,7 @@
     {
       "@type": "Person",
       "givenName": "Jim",
-      "familyName": "Hester",
-      "email": "mvargas@dcc.uchile.cl",
-      "@id": "https://orcid.org/0000-0003-1017-7574"
+      "familyName": "Hester"
     },
     {
       "@type": "Organization",
@@ -40,6 +38,11 @@
     {
       "@type": "Organization",
       "name": "Subsecretaria de Desarrollo Regional (SUBDERE)"
+    },
+    {
+      "@type": "Person",
+      "givenName": "Ricardo",
+      "familyName": "Aravena"
     }
   ],
   "copyrightHolder": [
@@ -106,6 +109,18 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=testthat"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "broom",
+      "name": "broom",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=broom"
     }
   ],
   "softwareRequirements": [
@@ -212,18 +227,6 @@
     },
     {
       "@type": "SoftwareApplication",
-      "identifier": "janitor",
-      "name": "janitor",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=janitor"
-    },
-    {
-      "@type": "SoftwareApplication",
       "identifier": "magrittr",
       "name": "magrittr",
       "provider": {
@@ -260,15 +263,15 @@
     },
     {
       "@type": "SoftwareApplication",
-      "identifier": "broom",
-      "name": "broom",
+      "identifier": "janitor",
+      "name": "janitor",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://CRAN.R-project.org/package=broom"
+      "sameAs": "https://CRAN.R-project.org/package=janitor"
     },
     {
       "@type": "SoftwareApplication",
@@ -305,11 +308,15 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=purrr"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "https://sysreqs.r-hub.io/get/libarchive"
     }
   ],
   "codeRepository": "https://pachamaltese.github.io/casen/",
   "readme": "https://github.com/pachamaltese/casen/blob/master/README.md",
-  "fileSize": "71.999KB",
+  "fileSize": "75.245KB",
   "contIntegration": [
     "https://travis-ci.org/pachamaltese/casen",
     "https://codecov.io/gh/pachamaltese/casen?branch=master"

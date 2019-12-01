@@ -1,7 +1,7 @@
 Package: casen
 Type: Package
 Title: Conjunto De Funciones Para Descargar, Leer y Trabajar Con La Encuesta CASEN
-Version: 0.1.0.9000
+Version: 0.1
 Authors@R: c(
       person(given = "Mauricio",
         family = "Vargas",
@@ -11,7 +11,7 @@ Authors@R: c(
       person(given = "Jim",
         family = "Hester",
         role = c("ctb"),
-        comment = c(ORCID = "0000-0002-2739-7082", "original libarchive integration")),
+        comment = c("original libarchive integration")),
       person(given = "Ricardo",
         family = "Aravena",
         role = c("ths")),

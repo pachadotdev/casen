@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">casen</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1</span>
       </span>
     </div>
 
@@ -75,7 +75,7 @@
       <h1>Uso básico del paquete casen</h1>
                         <h4 class="author">Mauricio Vargas</h4>
             
-            <h4 class="date">2019-11-30</h4>
+            <h4 class="date">2019-12-01</h4>
       
       
       <div class="hidden name"><code>basic-usage.Rmd</code></div>
@@ -91,13 +91,13 @@
 <p>Vamos a leer un subconjunto de los datos proporcionado por este paquete:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(casen)</a>
 <a class="sourceLine" id="cb1-2" data-line-number="2">r14 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/leer_casen.html">leer_casen</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="dt">package =</span> <span class="st">"casen"</span>, <span class="st">"extdata"</span>, <span class="st">"casen_2017_los_rios.zip"</span>))</a></code></pre></div>
-<pre><code>## Intentando leer el archivo /tmp/RtmpMqJAvD/temp_libpath5ca48a3ad38/casen/extdata/casen_2017_los_rios.zip...</code></pre>
-<pre><code>## Los metadatos de /tmp/RtmpMqJAvD/temp_libpath5ca48a3ad38/casen/extdata/casen_2017_los_rios.zip indican que el formato comprimido es adecuado, intentando leer...</code></pre>
+<pre><code>## Intentando leer el archivo /tmp/RtmpM57qrb/temp_libpath35b44ce3ec31/casen/extdata/casen_2017_los_rios.zip...</code></pre>
+<pre><code>## Los metadatos de /tmp/RtmpM57qrb/temp_libpath35b44ce3ec31/casen/extdata/casen_2017_los_rios.zip indican que el formato comprimido es adecuado, intentando leer...</code></pre>
 <pre><code>## Resizing buffer to 32768.
 ## Resizing buffer to 65536.
 ## Resizing buffer to 131072.
 ## Resizing buffer to 262144.</code></pre>
-<pre><code>## /tmp/RtmpMqJAvD/temp_libpath5ca48a3ad38/casen/extdata/casen_2017_los_rios.zip se pudo leer como tibble :-)</code></pre>
+<pre><code>## /tmp/RtmpM57qrb/temp_libpath35b44ce3ec31/casen/extdata/casen_2017_los_rios.zip se pudo leer como tibble :-)</code></pre>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">r14</a></code></pre></div>
 <pre><code>## # A tibble: 10,172 x 7
 ##     expc varstrat   varunit ytotcorh      sexo        comuna        pobreza
@@ -166,7 +166,7 @@
 <a href="#medidas-de-tendencia-central-con-dise%C3%B1o-complejo" class="anchor"></a>Medidas de tendencia central con diseño complejo</h1>
 <p>La función <code>estadistica_descriptiva()</code> toma en cuenta el diseño complejo y los grados de libertad. Puedo agrupar por una o más variables y la función entrega, además del promedio, el intervalo de confianza.</p>
 <p><em>Importante:</em> El conjunto de datos <code>r14</code> se incluye con este software para efectos de mostrar el uso de las funciones, la encuesta CASEN <em>no</em> asegura representatividad a nivel comunal.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="co"># Media, mediana y percentil 70</span></a>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="co"># media, mediana y percentil 70</span></a>
 <a class="sourceLine" id="cb13-2" data-line-number="2"><span class="kw"><a href="../reference/media_agrupada.html">media_agrupada</a></span>(cd)</a></code></pre></div>
 <pre><code>## Warning in check_nas(estimate): Con la agregacion proporcionada algunas observaciones tienen cero
 ##     grados de libertad, por lo que no se puede estimar la varianza, dando como
@@ -239,7 +239,7 @@
 <pre><code>## The following objects are masked from 'package:base':
 ## 
 ##     intersect, setdiff, setequal, union</code></pre>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1"><span class="co"># con mutate puedo convertir pobreza a una variable binaria</span></a>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1"><span class="co"># convierto pobreza a una variable binaria</span></a>
 <a class="sourceLine" id="cb26-2" data-line-number="2">r14 <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb26-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">pobreza =</span> <span class="kw"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span>(pobreza <span class="op">&lt;=</span><span class="st"> </span><span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb26-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="../reference/configuracion_disenio.html">configuracion_disenio</a></span>(<span class="st">"pobreza"</span>, <span class="st">"comuna"</span>, <span class="st">"expc"</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
@@ -326,13 +326,13 @@
 ## 2    -4940.    -1570.
 ## 3   -88279.   -11617.</code></pre>
 <p>Lo anterior se puede ordenar y presentar los betas junto con los intervalos de confianza.</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" data-line-number="1"><span class="co"># ordenamos la salida del modelo usando la funcion tidy (broom)</span></a>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" data-line-number="1"><span class="co"># ordenamos la salida del modelo</span></a>
 <a class="sourceLine" id="cb43-2" data-line-number="2">mod_betas &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/broom/man/reexports.html">tidy</a></span>(mod)</a>
 <a class="sourceLine" id="cb43-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb43-4" data-line-number="4"><span class="co"># pegamos las columnas con bind_cols (dplyr)</span></a>
+<a class="sourceLine" id="cb43-4" data-line-number="4"><span class="co"># pegamos las columnas</span></a>
 <a class="sourceLine" id="cb43-5" data-line-number="5">mod_betas &lt;-<span class="st"> </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/bind.html">bind_cols</a></span>(mod_betas, mod_conf)</a>
 <a class="sourceLine" id="cb43-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb43-7" data-line-number="7"><span class="co"># clean_names (janitor) ordena los nombres de las columnas</span></a>
+<a class="sourceLine" id="cb43-7" data-line-number="7"><span class="co"># ordenamos los nombres de las columnas</span></a>
 <a class="sourceLine" id="cb43-8" data-line-number="8">mod_betas &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/janitor/man/clean_names.html">clean_names</a></span>(mod_betas)</a>
 <a class="sourceLine" id="cb43-9" data-line-number="9"></a>
 <a class="sourceLine" id="cb43-10" data-line-number="10">mod_betas</a></code></pre></div>
@@ -342,6 +342,35 @@
 ## 1 (Intercept) 47040565. 11989528.      3.92 0.000213 23109367. 70971763.
 ## 2 comuna         -3255.      844.     -3.85 0.000268    -4940.    -1570.
 ## 3 sexo          -49948.    19204.     -2.60 0.0115     -88279.   -11617.</code></pre>
+</div>
+<div id="comparabilidad-entre-encuestas" class="section level1">
+<h1 class="hasAnchor">
+<a href="#comparabilidad-entre-encuestas" class="anchor"></a>Comparabilidad entre encuestas</h1>
+<p>El paquete casen provee un conjunto de datos (codigos_casen) con la correspondencia de los códigos de comunas.</p>
+<p>Dejando de lado la representatividad comunal, veamos como convertir los códigos de la encuesta CASEN 1990 a códigos SUBDERE 2017.</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" data-line-number="1">codigos_casen <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb45-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(valido_desde <span class="op">==</span><span class="st"> </span><span class="dv">1990</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 323 x 4
+## # Groups:   codigo_casen, codigo_subdere_2017 [323]
+##    valido_desde valido_hasta codigo_casen codigo_subdere_2017
+##           &lt;dbl&gt;        &lt;dbl&gt;        &lt;int&gt; &lt;chr&gt;              
+##  1         1990         2017        11201 11201              
+##  2         1990         2003         5605 05602              
+##  3         1990         2003        13504 13502              
+##  4         1990         2003         3304 03302              
+##  5         1990         2003         1307 01107              
+##  6         1990         2003        10402 10202              
+##  7         1990         2003         4104 04103              
+##  8         1990         2003         9101 09201              
+##  9         1990         2003         2301 02101              
+## 10         1990         2003         8204 08302              
+## # … with 313 more rows</code></pre>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" data-line-number="1">casen1990 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/leer_casen.html">leer_casen</a></span>(<span class="st">"../data-raw/1990_spss.zip"</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb47-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">comu =</span> <span class="kw"><a href="https://rdrr.io/r/base/integer.html">as.integer</a></span>(comu)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb47-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/join.html">left_join</a></span>(</a>
+<a class="sourceLine" id="cb47-4" data-line-number="4">    codigos_casen <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(valido_desde <span class="op">==</span><span class="st"> </span><span class="dv">1990</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(<span class="kw"><a href="https://dplyr.tidyverse.org/reference/reexports.html">starts_with</a></span>(<span class="st">"codigo"</span>)),</a>
+<a class="sourceLine" id="cb47-5" data-line-number="5">    <span class="dt">by =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"comu"</span> =<span class="st"> "codigo_casen"</span>)</a>
+<a class="sourceLine" id="cb47-6" data-line-number="6">  )</a></code></pre></div>
 </div>
   </div>
 
@@ -357,6 +386,7 @@
       <li><a href="#uso-de-las-funciones-de-casen-y-dplyr">Uso de las funciones de casen y dplyr</a></li>
       <li><a href="#inferencia-con-dise%C3%B1os-complejos">Inferencia con diseños complejos</a></li>
       <li><a href="#uso-de-las-funciones-de-casen-con-paquetes-tidy">Uso de las funciones de casen con paquetes “tidy”</a></li>
+      <li><a href="#comparabilidad-entre-encuestas">Comparabilidad entre encuestas</a></li>
       </ul>
 </div>
       </div>
