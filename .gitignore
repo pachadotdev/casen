@@ -9,4 +9,4 @@ src/Makevars
 data-raw/*.zip
 data-raw/*.rar
 data-raw/*.sav
-tests/testthat/here/*.zip
+tests/testthat/here

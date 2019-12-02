@@ -13,18 +13,12 @@ vignette: >
 knitr::opts_chunk$set(eval = TRUE)
 ```
 
-# Leer datos
-
-Con el paquete `casen` podemos leer la encuesta en formato rar o zip. También es posible leer directamente en formato sav (SPSS) o dta (Stata).
-
-Vamos a leer un subconjunto de los datos proporcionado por este paquete:
-```{r}
-library(casen)
-r14 <- leer_casen(system.file(package = "casen", "extdata", "casen_2017_los_rios.zip"))
-r14
-```
+# Descargar datos
 
 Para descargar la encuesta CASEN hay varias opciones:
+```{r}
+library(casen)
+```
 ```{r, eval=FALSE}
 # todos los anios disponibles
 descargar_casen()
@@ -37,6 +31,11 @@ descargar_casen("descargas")
 
 # solo anio 2017 en carpeta descargas
 descargar_casen(2017, "descargas")
+
+# leer encuesta CASEN en formato SAV (SPSS)
+# (se debe descomprimir con winRAR u otro)
+library(haven)
+read_sav("descargas/2017.sav")
 ```
 
 # Diseños complejos
@@ -50,9 +49,15 @@ En dominios de estimación pequeños la pérdida de grados de libertad se vuelve
 
 Al usar la función `svyby` del paquete survey, la función no calcula correctamente los grados de libertad de cada dominio, sino que considera un valor fijo para todos los dominios. Las funciones del paquete casen usan esta función pero incluyen una serie de pasos programados para usar los grados de libertad adecuados para cada dominio de estimación.
 
+Vamos a leer un subconjunto de la encuesta CASEN que corresponde a las comunas
+con representatividad comunal en la Región de los Ríos. Estos datos se incluyen,
+a modo de demostración, con el paquete casen.
+
 ```{r}
-# disenio complejo a partir de  los datos leidos
-cd <- configuracion_disenio(r14, "ytotcorh", c("comuna", "sexo"), "expc")
+casen_2017_los_rios
+
+# disenio complejo a partir de  los datos de ejemplo
+cd <- configuracion_disenio(casen_2017_los_rios, "ytotcorh", c("comuna", "sexo"), "expc")
 cd$disenio
 cd$grupos
 ```
@@ -60,9 +65,6 @@ cd$grupos
 # Medidas de tendencia central con diseño complejo
 
 La función `estadistica_descriptiva()` toma en cuenta el diseño complejo y los grados de libertad. Puedo agrupar por una o más variables y la función entrega, además del promedio, el intervalo de confianza.
-
-*Importante:* El conjunto de datos `r14` se incluye con este software para efectos de mostrar el uso de las funciones, 
-la encuesta CASEN *no* asegura representatividad a nivel comunal.
 
 ```{r}
 # media, mediana y percentil 70
@@ -75,21 +77,16 @@ percentiles_agrupados(cd)
 
 Las funciones de `casen` están pensadas para usarse en conjunto con las de `dplyr`. Un ejemplo simple de esto es el cálculo del porcentaje de hogares pobres.
 
-Veamos el caso puntual de las funciones `mutate` y `filter` de dplyr:
+Veamos el caso puntual de las funciones `mutate` y `filter` de dplyr.
+
 ```{r}
 library(dplyr)
 
 # convierto pobreza a una variable binaria
-r14 %>% 
+casen_2017_los_rios %>% 
   mutate(pobreza = ifelse(pobreza <= 2, 1, 0)) %>% 
   configuracion_disenio("pobreza", "comuna", "expc") %>% 
   media_agrupada()
-```
-
-```{r, eval=FALSE}
-# con filter puedo dejar las observaciones de la 10ma region u otra
-leer_casen("2017_spss.rar") %>% 
-  filter(region == 10)
 ```
 
 # Inferencia con diseños complejos
@@ -107,8 +104,7 @@ summary(mod)
 # Uso de las funciones de casen con paquetes "tidy"
 
 Además de dplyr, casen se integra perfectamente con los paquetes del 
-[Tidyverse](https://www.tidyverse.org/) y otros paquetes que van en la línea
-de expresar las salidas como tablas.
+[Tidyverse](https://www.tidyverse.org/) y otros paquetes afines.
 
 Por ejemplo, el paquete broom permite obtener una tabla con los intervalos
 de confianza para los betas estimados del modelo.
@@ -154,7 +150,7 @@ codigos_casen %>%
 ```
 
 ```{r, eval=FALSE}
-casen1990 <- leer_casen("../data-raw/1990_spss.zip") %>% 
+casen1990 <- read_sav("descargas/1990.sav") %>% 
   mutate(comu = as.integer(comu)) %>% 
   left_join(
     codigos_casen %>% filter(valido_desde == 1990) %>% select(starts_with("codigo")),

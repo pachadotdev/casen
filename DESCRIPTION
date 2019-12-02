@@ -1,6 +1,6 @@
 Package: casen
 Type: Package
-Title: Conjunto De Funciones Para Descargar, Leer y Trabajar Con La Encuesta CASEN
+Title: Funciones Para Trabajar Con La Encuesta CASEN
 Version: 0.1
 Authors@R: c(
       person(given = "Mauricio",
@@ -24,11 +24,12 @@ Authors@R: c(
     )
 URL: https://pachamaltese.github.io/casen/
 BugReports: https://github.com/pachamaltese/casen/issues
-Description: Permite leer la encuesta CASEN en formato zip/rar o sav/dta directamente en R
-    y sin la necesidad de que los usuarios de Windows deban instalar software adicional.
-    Utiliza una implementación en C++ de libarchive para cumplir con las políticas de TI del
-    Gobierno de Chile que no permite la instalacion de software necesario como 7-zip/WinRAR y
-    SPSS/Stata para leer la encuesta CASEN.
+Description: Proporciona un conjunto de funciones para realizar estadística 
+ descriptiva e inferencia con diseño complejo usando los factores de expansión, 
+ conglomerados y estratos de la encuesta CASEN. Adicionalmente provee datasets 
+ que permiten armonizar los códigos de comunas que cambian de acuerdo al año de 
+ realización de la encuesta y permite convertirlos a los códigos oficiales de 
+ SUBDERE.
 License: GPL-3
 Depends: R (>= 3.5.0)
 Imports: 
@@ -38,8 +39,8 @@ Imports:
     utils,
     fs,
     dplyr,
-    labelled,
     haven,
+    labelled,
     glue,
     magrittr,
     tidyr,
@@ -54,10 +55,7 @@ Suggests:
     covr,
     testthat,
     broom
-SystemRequirements: libarchive: libarchive-dev (deb), libarchive-devel (rpm), libarchive
-  (homebrew), libarchive_dev (csw)
 Encoding: UTF-8
-LinkingTo: Rcpp
 LazyData: true
 RoxygenNote: 6.1.1
 VignetteBuilder: knitr

@@ -2,29 +2,26 @@
 % Please edit documentation in R/inference.R
 \name{modelo_lineal_generalizado}
 \alias{modelo_lineal_generalizado}
-\title{Modelo lineal generalizado con disenio complejo}
+\title{Modelo lineal generalizado con diseño complejo}
 \usage{
 modelo_lineal_generalizado(disenio, modelo = "ytotcorh ~ sexo")
 }
 \arguments{
-\item{disenio}{la salida de `configuracion_disenio()` que provee ademas los
+\item{disenio}{la salida de `configuracion_disenio()` que provee además los
 grupos y las variables en forma de lista}
 
-\item{modelo}{una expresion sinmbolica escrita como cadena de texto, consulta
-[stats::formula()] para los detalles de modelos con componentes logaritmicas,
-cuadraticas, etc.}
+\item{modelo}{una expresion simbólica escrita como cadena de texto, consulta
+[stats::formula()] para los detalles de modelos con componentes logarítmicas,
+cuadráticas, etc.}
 }
 \value{
 una lista cuyas clases son svyglm, glm y lm
 }
 \description{
-\code{modelo_lineal_generalizado} define el disenio a partir de 
-los conglomerados, con base en esto obtiene ajusta un modelo lineal usando 
-minimos cuadrados generalizados.
+Modelo lineal generalizado con diseño complejo
 }
 \examples{
-r14 <- leer_casen(system.file(package = "casen", "extdata", "casen_2017_los_rios.zip"))
-cd <- configuracion_disenio(r14, "ytotcorh", c("comuna", "sexo"), "expc")
+cd <- configuracion_disenio(casen_2017_los_rios, "ytotcorh", c("comuna", "sexo"), "expc")
 modelo_lineal_generalizado(cd, "ytotcorh ~ comuna + sexo")
 
 }

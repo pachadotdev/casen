@@ -6,15 +6,13 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Disenio complejo para estimacion con pesos, conglomerados y estratos — configuracion_disenio • casen</title>
-
+<title>Diseño complejo para estimación con pesos, conglomerados y estratos — configuracion_disenio • casen</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
@@ -34,11 +32,10 @@
 
 
 
+<meta property="og:title" content="Diseño complejo para estimación con pesos, conglomerados y estratos — configuracion_disenio" />
 
-<meta property="og:title" content="Disenio complejo para estimacion con pesos, conglomerados y estratos — configuracion_disenio" />
-<meta property="og:description" content="Disenio complejo para estimacion con pesos, conglomerados y estratos" />
+<meta property="og:description" content="Diseño complejo para estimación con pesos, conglomerados y estratos" />
 <meta name="twitter:card" content="summary" />
-
 
 
 
@@ -97,6 +94,7 @@
   </ul>
 </li>
       </ul>
+      
       <ul class="nav navbar-nav navbar-right">
         
       </ul>
@@ -112,85 +110,95 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Disenio complejo para estimacion con pesos, conglomerados y estratos</h1>
+    <h1>Diseño complejo para estimación con pesos, conglomerados y estratos</h1>
     
     <div class="hidden name"><code>configuracion_disenio.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Disenio complejo para estimacion con pesos, conglomerados y estratos</p>
+    
+    <p>Diseño complejo para estimación con pesos, conglomerados y estratos</p>
+    
     </div>
 
     <pre class="usage"><span class='fu'>configuracion_disenio</span>(<span class='no'>datos</span>, <span class='kw'>variable</span> <span class='kw'>=</span> <span class='st'>"ytotcorh"</span>,
   <span class='kw'>agrupacion</span> <span class='kw'>=</span> <span class='st'>"region"</span>, <span class='kw'>peso</span> <span class='kw'>=</span> <span class='st'>"expr"</span>, <span class='kw'>conglomerado</span> <span class='kw'>=</span> <span class='st'>"varunit"</span>,
   <span class='kw'>estrato</span> <span class='kw'>=</span> <span class='st'>"varstrat"</span>)</pre>
-
+    
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>datos</th>
-      <td><p>un data.frame o tibble con la encuesta CASEN (o un subconjunto acotado a una region, etc)</p></td>
+      <td><p>un data.frame o tibble con la encuesta CASEN (o un subconjunto 
+acotado a una region, etc)</p></td>
     </tr>
     <tr>
       <th>variable</th>
-      <td><p>una columna de tipo numerico, por ejemplo ytotcorh que es la opcion por defecto</p></td>
+      <td><p>una columna de tipo numérico, por ejemplo ytotcorh que es la 
+opción por defecto</p></td>
     </tr>
     <tr>
       <th>agrupacion</th>
-      <td><p>una columna de tipo texto/factor, por ejemplo region que es la opcion por defecto</p></td>
+      <td><p>una columna de tipo texto/factor, por ejemplo region que 
+es la opción por defecto</p></td>
     </tr>
     <tr>
       <th>peso</th>
-      <td><p>una columna de tipo numerico, por defecto es expr que corresponde al factor de expansion regional de acuerdo al manual CASEN 2017</p></td>
+      <td><p>una columna de tipo numérico, por defecto es expr que corresponde
+al factor de expansion regional de acuerdo al manual CASEN 2017</p></td>
     </tr>
     <tr>
       <th>conglomerado</th>
-      <td><p>una columna de tipo numerico, por defecto es varunit de acuerdo al manual CASEN 2017</p></td>
+      <td><p>una columna de tipo numérico, por defecto es varunit de
+acuerdo al manual CASEN 2017</p></td>
     </tr>
     <tr>
       <th>estrato</th>
-      <td><p>una columna de tipo numerico, por defecto es varunit de acuerdo al manual CASEN 2017</p></td>
+      <td><p>una columna de tipo numérico, por defecto es varunit de 
+acuerdo al manual CASEN 2017</p></td>
     </tr>
     </table>
-
+    
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>una lista con el disenio y los grupos</p>
+    <p>una lista con el diseño y los grupos</p>
+    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>r14</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='leer_casen.html'>leer_casen</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"casen"</span>, <span class='st'>"extdata"</span>, <span class='st'>"casen_2017_los_rios.zip"</span>))</div><div class='output co'>#&gt; <span class='message'>Intentando leer el archivo /tmp/RtmpM57qrb/temp_libpath35b44ce3ec31/casen/extdata/casen_2017_los_rios.zip...</span></div><div class='output co'>#&gt; <span class='message'>Los metadatos de /tmp/RtmpM57qrb/temp_libpath35b44ce3ec31/casen/extdata/casen_2017_los_rios.zip indican que el formato comprimido es adecuado, intentando leer...</span></div><div class='output co'>#&gt; Resizing buffer to 32768.
-#&gt; Resizing buffer to 65536.
-#&gt; Resizing buffer to 131072.
-#&gt; Resizing buffer to 262144.</div><div class='output co'>#&gt; <span class='message'>/tmp/RtmpM57qrb/temp_libpath35b44ce3ec31/casen/extdata/casen_2017_los_rios.zip se pudo leer como tibble :-)</span></div><div class='input'><span class='no'>cd</span> <span class='kw'>&lt;-</span> <span class='fu'>configuracion_disenio</span>(<span class='no'>r14</span>, <span class='st'>"ytotcorh"</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"comuna"</span>, <span class='st'>"sexo"</span>), <span class='st'>"expc"</span>)
+    <pre class="examples"><div class='input'><span class='no'>cd</span> <span class='kw'>&lt;-</span> <span class='fu'>configuracion_disenio</span>(<span class='no'>casen_2017_los_rios</span>, <span class='st'>"ytotcorh"</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"comuna"</span>, <span class='st'>"sexo"</span>), <span class='st'>"expc"</span>)
 <span class='no'>cd</span>$<span class='no'>disenio</span></div><div class='output co'>#&gt; Stratified 1 - level Cluster Sampling design (with replacement)
-#&gt; With (83) clusters.
+#&gt; With (67) clusters.
 #&gt; Called via srvyr
 #&gt; Sampling variables:
 #&gt;  - ids: varunit
 #&gt;  - strata: varstrat
 #&gt;  - weights: expc
 #&gt; Data variables: ytotcorh (dbl), comuna (dbl+lbl), sexo (dbl+lbl), expc (dbl),
-#&gt;   varunit (dbl), varstrat (dbl)</div><div class='input'><span class='no'>cd</span>$<span class='no'>grupos</span></div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 24 x 2</span><span>
-#&gt;               comuna       sexo
-#&gt;            </span><span style='color: #555555;font-style: italic;'>&lt;dbl+lbl&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl+lbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'> 1</span><span> </span><span style='text-decoration: underline;'>14</span><span>101</span><span style='color: #555555;'> [Valdivia]</span><span>  2</span><span style='color: #555555;'> [Mujer]</span><span> 
-#&gt; </span><span style='color: #555555;'> 2</span><span> </span><span style='text-decoration: underline;'>14</span><span>101</span><span style='color: #555555;'> [Valdivia]</span><span>  1</span><span style='color: #555555;'> [Hombre]</span><span>
-#&gt; </span><span style='color: #555555;'> 3</span><span> </span><span style='text-decoration: underline;'>14</span><span>102</span><span style='color: #555555;'> [Corral]</span><span>    1</span><span style='color: #555555;'> [Hombre]</span><span>
-#&gt; </span><span style='color: #555555;'> 4</span><span> </span><span style='text-decoration: underline;'>14</span><span>102</span><span style='color: #555555;'> [Corral]</span><span>    2</span><span style='color: #555555;'> [Mujer]</span><span> 
-#&gt; </span><span style='color: #555555;'> 5</span><span> </span><span style='text-decoration: underline;'>14</span><span>103</span><span style='color: #555555;'> [Lanco]</span><span>     2</span><span style='color: #555555;'> [Mujer]</span><span> 
-#&gt; </span><span style='color: #555555;'> 6</span><span> </span><span style='text-decoration: underline;'>14</span><span>103</span><span style='color: #555555;'> [Lanco]</span><span>     1</span><span style='color: #555555;'> [Hombre]</span><span>
-#&gt; </span><span style='color: #555555;'> 7</span><span> </span><span style='text-decoration: underline;'>14</span><span>104</span><span style='color: #555555;'> [Los Lagos]</span><span> 1</span><span style='color: #555555;'> [Hombre]</span><span>
-#&gt; </span><span style='color: #555555;'> 8</span><span> </span><span style='text-decoration: underline;'>14</span><span>104</span><span style='color: #555555;'> [Los Lagos]</span><span> 2</span><span style='color: #555555;'> [Mujer]</span><span> 
-#&gt; </span><span style='color: #555555;'> 9</span><span> </span><span style='text-decoration: underline;'>14</span><span>105</span><span style='color: #555555;'> [Máfil]</span><span>     2</span><span style='color: #555555;'> [Mujer]</span><span> 
-#&gt; </span><span style='color: #555555;'>10</span><span> </span><span style='text-decoration: underline;'>14</span><span>105</span><span style='color: #555555;'> [Máfil]</span><span>     1</span><span style='color: #555555;'> [Hombre]</span><span>
-#&gt; </span><span style='color: #555555;'># … with 14 more rows</span><span></div></span></pre>
+#&gt;   varunit (dbl), varstrat (dbl)</div><div class='input'><span class='no'>cd</span>$<span class='no'>grupos</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 12 x 2</span><span>
+#&gt;                 comuna       sexo
+#&gt;              </span><span style='color: #949494;font-style: italic;'>&lt;dbl+lbl&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl+lbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> </span><span style='text-decoration: underline;'>14</span><span>101</span><span style='color: #949494;'> [Valdivia]</span><span>    2</span><span style='color: #949494;'> [Mujer]</span><span> 
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> </span><span style='text-decoration: underline;'>14</span><span>101</span><span style='color: #949494;'> [Valdivia]</span><span>    1</span><span style='color: #949494;'> [Hombre]</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> </span><span style='text-decoration: underline;'>14</span><span>104</span><span style='color: #949494;'> [Los Lagos]</span><span>   1</span><span style='color: #949494;'> [Hombre]</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> </span><span style='text-decoration: underline;'>14</span><span>104</span><span style='color: #949494;'> [Los Lagos]</span><span>   2</span><span style='color: #949494;'> [Mujer]</span><span> 
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> </span><span style='text-decoration: underline;'>14</span><span>107</span><span style='color: #949494;'> [Paillaco]</span><span>    1</span><span style='color: #949494;'> [Hombre]</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> </span><span style='text-decoration: underline;'>14</span><span>107</span><span style='color: #949494;'> [Paillaco]</span><span>    2</span><span style='color: #949494;'> [Mujer]</span><span> 
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> </span><span style='text-decoration: underline;'>14</span><span>108</span><span style='color: #949494;'> [Panguipulli]</span><span> 2</span><span style='color: #949494;'> [Mujer]</span><span> 
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> </span><span style='text-decoration: underline;'>14</span><span>108</span><span style='color: #949494;'> [Panguipulli]</span><span> 1</span><span style='color: #949494;'> [Hombre]</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> </span><span style='text-decoration: underline;'>14</span><span>201</span><span style='color: #949494;'> [La Unión]</span><span>    1</span><span style='color: #949494;'> [Hombre]</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> </span><span style='text-decoration: underline;'>14</span><span>201</span><span style='color: #949494;'> [La Unión]</span><span>    2</span><span style='color: #949494;'> [Mujer]</span><span> 
+#&gt; </span><span style='color: #BCBCBC;'>11</span><span> </span><span style='text-decoration: underline;'>14</span><span>204</span><span style='color: #949494;'> [Río Bueno]</span><span>   1</span><span style='color: #949494;'> [Hombre]</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>12</span><span> </span><span style='text-decoration: underline;'>14</span><span>204</span><span style='color: #949494;'> [Río Bueno]</span><span>   2</span><span style='color: #949494;'> [Mujer]</span><span> </div><div class='input'>
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
+      
       <li><a href="#value">Value</a></li>
+      
       <li><a href="#examples">Examples</a></li>
     </ul>
 

@@ -2,25 +2,25 @@
 % Please edit documentation in R/descriptive_statistics.R
 \name{percentiles_agrupados}
 \alias{percentiles_agrupados}
-\title{Percentiles agrupados usando disenio complejo}
+\title{Percentiles agrupados usando diseño complejo}
 \usage{
 percentiles_agrupados(disenio, percentiles = 0.7)
 }
 \arguments{
-\item{disenio}{la salida de `configuracion_disenio()` que provee ademas los
+\item{disenio}{la salida de `configuracion_disenio()` que provee además los
 grupos y las variables en forma de lista}
 
 \item{percentiles}{percentiles a calcular, si no se especifica calcula el
 percentil 70}
 }
 \value{
-una tabla con los percentiles y su error estandar
+una tabla con los percentiles y su error estándar
 }
 \description{
-Percentiles agrupados usando disenio complejo
+Percentiles agrupados usando diseño complejo
 }
 \examples{
-r14 <- leer_casen(system.file(package = "casen", "extdata", "casen_2017_los_rios.zip"))
-cd <- configuracion_disenio(r14, "ytotcorh", c("comuna", "sexo"), "expc")
+cd <- configuracion_disenio(casen_2017_los_rios, "ytotcorh", c("comuna", "sexo"), "expc")
 percentiles_agrupados(cd, 0.7)
+
 }

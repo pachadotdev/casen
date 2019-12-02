@@ -2,34 +2,40 @@
 % Please edit documentation in R/design.R
 \name{configuracion_disenio}
 \alias{configuracion_disenio}
-\title{Disenio complejo para estimacion con pesos, conglomerados y estratos}
+\title{Diseño complejo para estimación con pesos, conglomerados y estratos}
 \usage{
 configuracion_disenio(datos, variable = "ytotcorh",
   agrupacion = "region", peso = "expr", conglomerado = "varunit",
   estrato = "varstrat")
 }
 \arguments{
-\item{datos}{un data.frame o tibble con la encuesta CASEN (o un subconjunto acotado a una region, etc)}
+\item{datos}{un data.frame o tibble con la encuesta CASEN (o un subconjunto 
+acotado a una region, etc)}
 
-\item{variable}{una columna de tipo numerico, por ejemplo ytotcorh que es la opcion por defecto}
+\item{variable}{una columna de tipo numérico, por ejemplo ytotcorh que es la 
+opción por defecto}
 
-\item{agrupacion}{una columna de tipo texto/factor, por ejemplo region que es la opcion por defecto}
+\item{agrupacion}{una columna de tipo texto/factor, por ejemplo region que 
+es la opción por defecto}
 
-\item{peso}{una columna de tipo numerico, por defecto es expr que corresponde al factor de expansion regional de acuerdo al manual CASEN 2017}
+\item{peso}{una columna de tipo numérico, por defecto es expr que corresponde
+al factor de expansion regional de acuerdo al manual CASEN 2017}
 
-\item{conglomerado}{una columna de tipo numerico, por defecto es varunit de acuerdo al manual CASEN 2017}
+\item{conglomerado}{una columna de tipo numérico, por defecto es varunit de
+acuerdo al manual CASEN 2017}
 
-\item{estrato}{una columna de tipo numerico, por defecto es varunit de acuerdo al manual CASEN 2017}
+\item{estrato}{una columna de tipo numérico, por defecto es varunit de 
+acuerdo al manual CASEN 2017}
 }
 \value{
-una lista con el disenio y los grupos
+una lista con el diseño y los grupos
 }
 \description{
-Disenio complejo para estimacion con pesos, conglomerados y estratos
+Diseño complejo para estimación con pesos, conglomerados y estratos
 }
 \examples{
-r14 <- leer_casen(system.file(package = "casen", "extdata", "casen_2017_los_rios.zip"))
-cd <- configuracion_disenio(r14, "ytotcorh", c("comuna", "sexo"), "expc")
+cd <- configuracion_disenio(casen_2017_los_rios, "ytotcorh", c("comuna", "sexo"), "expc")
 cd$disenio
 cd$grupos
+
 }

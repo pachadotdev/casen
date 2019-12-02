@@ -3,8 +3,6 @@ knitr::opts_chunk$set(eval = TRUE)
 
 ## ------------------------------------------------------------------------
 library(casen)
-r14 <- leer_casen(system.file(package = "casen", "extdata", "casen_2017_los_rios.zip"))
-r14
 
 ## ---- eval=FALSE---------------------------------------------------------
 #  # todos los anios disponibles
@@ -18,10 +16,17 @@ r14
 #  
 #  # solo anio 2017 en carpeta descargas
 #  descargar_casen(2017, "descargas")
+#  
+#  # leer encuesta CASEN en formato SAV (SPSS)
+#  # (se debe descomprimir con winRAR u otro)
+#  library(haven)
+#  read_sav("descargas/2017.sav")
 
 ## ------------------------------------------------------------------------
-# disenio complejo a partir de  los datos leidos
-cd <- configuracion_disenio(r14, "ytotcorh", c("comuna", "sexo"), "expc")
+casen_2017_los_rios
+
+# disenio complejo a partir de  los datos de ejemplo
+cd <- configuracion_disenio(casen_2017_los_rios, "ytotcorh", c("comuna", "sexo"), "expc")
 cd$disenio
 cd$grupos
 
@@ -35,15 +40,10 @@ percentiles_agrupados(cd)
 library(dplyr)
 
 # convierto pobreza a una variable binaria
-r14 %>% 
+casen_2017_los_rios %>% 
   mutate(pobreza = ifelse(pobreza <= 2, 1, 0)) %>% 
   configuracion_disenio("pobreza", "comuna", "expc") %>% 
   media_agrupada()
-
-## ---- eval=FALSE---------------------------------------------------------
-#  # con filter puedo dejar las observaciones de la 10ma region u otra
-#  leer_casen("2017_spss.rar") %>%
-#    filter(region == 10)
 
 ## ------------------------------------------------------------------------
 # modelo: ytotcorh = b0 + b1 comuna + b2 sexo + e
@@ -77,7 +77,7 @@ codigos_casen %>%
   filter(valido_desde == 1990)
 
 ## ---- eval=FALSE---------------------------------------------------------
-#  casen1990 <- leer_casen("../data-raw/1990_spss.zip") %>%
+#  casen1990 <- read_sav("descargas/1990.sav") %>%
 #    mutate(comu = as.integer(comu)) %>%
 #    left_join(
 #      codigos_casen %>% filter(valido_desde == 1990) %>% select(starts_with("codigo")),

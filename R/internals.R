@@ -1,27 +1,4 @@
-#' Extract CASEN from zip/rar file
-#' @param mode how to open the connection as used in \code{base::connections()}
-#' @keywords internal
-#' @export
-extract <- function(archive, file = 1L, mode = "r", format = NULL, filter = NULL) {
-  archive <- as_archive(archive)
-  if (is_number(file)) {
-    file <- archive$path[[file]]
-  }
-
-  assert(
-    "`file` must be a length one character vector or numeric",
-    length(file) == 1 && (is.character(file) || is.numeric(file))
-  )
-
-  assert(
-    paste0("`file` {file} not found in `archive` {archive}"),
-    file %in% archive$path
-  )
-
-  read_connection(attr(archive, "path"), mode = mode, file, archive_formats()[format], archive_filters()[filter])
-}
-
-#' Check functions input
+#' Verifica la entrada del usuario
 #' @param datos un data.frame o tibble con la encuesta CASEN (o un subconjunto acotado a una region, etc)
 #' @param variable una columna de tipo numerico, por ejemplo ytotcorh que es la opcion por defecto
 #' @param agrupacion una columna de tipo texto/factor, por ejemplo region que es la opcion por defecto
@@ -39,7 +16,7 @@ check_input <- function(datos, variable, agrupacion, peso, conglomerado, estrato
   stopifnot(is.character(estrato), estrato %in% colnames(datos), length(estrato) == 1)
 }
 
-#' Remove NAs from grouping variables
+#' Elimina las observaciones con NA en variables de agrupación
 #' @param datos un data.frame o tibble con la encuesta CASEN (o un subconjunto acotado a una region, etc)
 #' @param variable una columna de tipo numerico, por ejemplo ytotcorh que es la opcion por defecto
 #' @param agrupacion una columna de tipo texto/factor, por ejemplo region que es la opcion por defecto
@@ -60,7 +37,7 @@ clean_data <- function(datos, variable, agrupacion, peso, conglomerado, estrato)
   return(d)
 }
 
-#' Create design from tibble/data.frame
+#' Crea un objeto de diseño complejo a partir de un data frame
 #' @param d un data.frame o tibble con la encuesta CASEN (o un subconjunto acotado a una region, etc)
 #' @param variable una columna de tipo numerico, por ejemplo ytotcorh que es la opcion por defecto
 #' @param agrupacion una columna de tipo texto/factor, por ejemplo region que es la opcion por defecto
@@ -81,6 +58,7 @@ create_design <- function(d, variable, agrupacion, peso, conglomerado, estrato) 
   return(d)
 }
 
+#' Obtiene los grupos únicos a partir de las variables de agrupación
 #' Extract unique groups from grouping variables combinations
 #' @param d un data.frame o tibble
 #' @param agrupacion columnas de tipo teto/factor en d
@@ -96,7 +74,7 @@ unique_groups <- function(d, agrupacion) {
   return(d)
 }
 
-#' Checks NAs in confidence intervals
+#' Verifica la presencia de NAs en los intervalos de confianza
 #' @param d un data.frame o tibble con un estadistico agrupado
 #' @importFrom magrittr %>%
 #' @importFrom srvyr summarise_if
@@ -114,7 +92,7 @@ check_nas <- function(d) {
   }
 }
 
-#' Wrapper for statistical functions with complex design
+#' Envolvente para estadistica descriptiva con diseños complejos
 #' @param d_groups un vector que sea la salida de unique_tuples()
 #' @param des disenio de encuesta a partir de un data.frame o tibble
 #' @param stat_fun la función a usar para la agregacion, por ejemplo srvyr::survey_mean()

@@ -1,11 +1,14 @@
-#' Media agrupada usando disenio complejo
-#' @param disenio la salida de `configuracion_disenio()` que provee ademas los
+#' Media agrupada usando diseño complejo
+#' 
+#' @param disenio la salida de `configuracion_disenio()` que provee además los
 #' grupos y las variables en forma de lista
+#' 
 #' @return una tabla con las medias agrupadas y su intervalo de confianza
+#' 
 #' @examples
-#' r14 <- leer_casen(system.file(package = "casen", "extdata", "casen_2017_los_rios.zip"))
-#' cd <- configuracion_disenio(r14, "ytotcorh", c("comuna", "sexo"), "expc")
+#' cd <- configuracion_disenio(casen_2017_los_rios, "ytotcorh", c("comuna", "sexo"), "expc")
 #' media_agrupada(cd)
+#' 
 #' @export
 media_agrupada <- function(disenio) {
   estimate <- mean_median(disenio$grupos, disenio$disenio, 
@@ -19,14 +22,17 @@ media_agrupada <- function(disenio) {
   return(estimate)
 }
 
-#' Mediana agrupada usando disenio complejo
-#' @param disenio la salida de `configuracion_disenio()` que provee ademas los
+#' Mediana agrupada usando diseño complejo
+#' 
+#' @param disenio la salida de `configuracion_disenio()` que provee además los
 #' grupos y las variables en forma de lista
+#' 
 #' @return una tabla con las medianas agrupadas y su intervalo de confianza
+#' 
 #' @examples
-#' r14 <- leer_casen(system.file(package = "casen", "extdata", "casen_2017_los_rios.zip"))
-#' cd <- configuracion_disenio(r14, "ytotcorh", c("comuna", "sexo"), "expc")
+#' cd <- configuracion_disenio(casen_2017_los_rios, "ytotcorh", c("comuna", "sexo"), "expc")
 #' mediana_agrupada(cd)
+#' 
 #' @export
 mediana_agrupada <- function(disenio) {
   estimate <- mean_median(disenio$grupos, disenio$disenio, 
@@ -40,11 +46,13 @@ mediana_agrupada <- function(disenio) {
   return(estimate)
 }
 
-#' Percentiles agrupados usando disenio complejo
-#' @param disenio la salida de `configuracion_disenio()` que provee ademas los
+#' Percentiles agrupados usando diseño complejo
+#' 
+#' @param disenio la salida de `configuracion_disenio()` que provee además los
 #' grupos y las variables en forma de lista
 #' @param percentiles percentiles a calcular, si no se especifica calcula el
 #' percentil 70
+#' 
 #' @importFrom rlang sym syms expr
 #' @importFrom magrittr %>%
 #' @importFrom dplyr filter group_by summarise select mutate select_if mutate_if bind_cols everything slice
@@ -53,11 +61,13 @@ mediana_agrupada <- function(disenio) {
 #' @importFrom labelled to_factor
 #' @importFrom srvyr survey_quantile
 #' @importFrom survey degf
-#' @return una tabla con los percentiles y su error estandar
+#' 
+#' @return una tabla con los percentiles y su error estándar
+#' 
 #' @examples
-#' r14 <- leer_casen(system.file(package = "casen", "extdata", "casen_2017_los_rios.zip"))
-#' cd <- configuracion_disenio(r14, "ytotcorh", c("comuna", "sexo"), "expc")
+#' cd <- configuracion_disenio(casen_2017_los_rios, "ytotcorh", c("comuna", "sexo"), "expc")
 #' percentiles_agrupados(cd, 0.7)
+#' 
 #' @export
 percentiles_agrupados <- function(disenio, percentiles = 0.7) {
   estimate <- suppressWarnings(

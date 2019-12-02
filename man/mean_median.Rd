@@ -2,7 +2,7 @@
 % Please edit documentation in R/internals.R
 \name{mean_median}
 \alias{mean_median}
-\title{Wrapper for statistical functions with complex design}
+\title{Envolvente para estadistica descriptiva con diseños complejos}
 \usage{
 mean_median(d_groups, des, stat_fun, agrupacion, conglomerado, estrato,
   peso, variable, col_prefix)
@@ -27,6 +27,6 @@ mean_median(d_groups, des, stat_fun, agrupacion, conglomerado, estrato,
 \item{col_prefix}{prefijo para agregar a las columnas resultantes}
 }
 \description{
-Wrapper for statistical functions with complex design
+Envolvente para estadistica descriptiva con diseños complejos
 }
 \keyword{internal}

@@ -2,7 +2,7 @@
 % Please edit documentation in R/download_casen.R
 \name{descargar_casen}
 \alias{descargar_casen}
-\title{Download CASEN from MDS website}
+\title{Descarga la encuesta CASEN del sitio web del MDS}
 \usage{
 descargar_casen(anios = NULL, carpeta = getwd())
 }
@@ -10,14 +10,14 @@ descargar_casen(anios = NULL, carpeta = getwd())
 \item{anios}{si no se indica un anio, descarga todos los anios disponibles}
 
 \item{carpeta}{si no se indica una carpeta, descarga en la carpeta de
-trabajo o la raiz del projecto}
+trabajo}
 }
 \value{
 los archivos comprimidos de la encuesta CASEN descargados desde el
 sitio web del MDS
 }
 \description{
-Download CASEN from MDS website
+Descarga la encuesta CASEN del sitio web del MDS
 }
 \examples{
 # descargar todas las encuestas disponibles
@@ -25,4 +25,5 @@ Download CASEN from MDS website
 
 # descargar CASEN 2017 en carpeta especifica
 # descargar_casen(2017, "data-raw")
+
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/internals.R
 \name{clean_data}
 \alias{clean_data}
-\title{Remove NAs from grouping variables}
+\title{Elimina las observaciones con NA en variables de agrupación}
 \usage{
 clean_data(datos, variable, agrupacion, peso, conglomerado, estrato)
 }
@@ -20,6 +20,6 @@ clean_data(datos, variable, agrupacion, peso, conglomerado, estrato)
 \item{estrato}{una columna de tipo numerico, por defecto es varunit de acuerdo al manual CASEN 2017}
 }
 \description{
-Remove NAs from grouping variables
+Elimina las observaciones con NA en variables de agrupación
 }
 \keyword{internal}

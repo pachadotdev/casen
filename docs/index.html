@@ -5,17 +5,18 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Conjunto De Funciones Para Descargar, Leer y Trabajar Con La Encuesta CASEN • casen</title>
+<title>Funciones Para Trabajar Con La Encuesta CASEN • casen</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script><meta property="og:title" content="Conjunto De Funciones Para Descargar, Leer y Trabajar Con La Encuesta CASEN">
-<meta property="og:description" content="Permite leer la encuesta CASEN en formato zip/rar o sav/dta directamente en R
-    y sin la necesidad de que los usuarios de Windows deban instalar software adicional.
-    Utiliza una implementación en C++ de libarchive para cumplir con las políticas de TI del
-    Gobierno de Chile que no permite la instalacion de software necesario como 7-zip/WinRAR y
-    SPSS/Stata para leer la encuesta CASEN.">
+<script src="pkgdown.js"></script><meta property="og:title" content="Funciones Para Trabajar Con La Encuesta CASEN">
+<meta property="og:description" content="Proporciona un conjunto de funciones para realizar estadística 
+ descriptiva e inferencia con diseño complejo usando los factores de expansión, 
+ conglomerados y estratos de la encuesta CASEN. Adicionalmente provee datasets 
+ que permiten armonizar los códigos de comunas que cambian de acuerdo al año de 
+ realización de la encuesta y permite convertirlos a los códigos oficiales de 
+ SUBDERE.">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -75,14 +76,14 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="gravity" class="section level1">
+<div id="casen" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#gravity" class="anchor"></a>gravity <img src="https://pachamaltese.github.io/casen/hexicon.svg" width="150" align="right" alt="sticker">
+<a href="#casen" class="anchor"></a>casen <img src="https://pachamaltese.github.io/casen/hexicon.svg" width="150" align="right" alt="sticker">
 </h1></div>
 <!-- badges: start -->
 
-<p>La idea de este paquete de R es proporcionar un conjunto de funciones que facilitan el análisis con la encuesta CASEN.</p>
-<p>La documentación (en desarrollo) está disponible en <a href="https://pacha.hk/casen" class="uri">https://pacha.hk/casen</a></p>
+<p>Proporciona un conjunto de funciones para realizar estadística descriptiva e inferencia con diseño complejo usando los factores de expansión, conglomerados y estratos de la encuesta CASEN. Adicionalmente provee datasets que permiten armonizar los códigos de comunas que cambian de acuerdo al año de realización de la encuesta y permite convertirlos a los códigos oficiales de SUBDERE.</p>
+<p>La documentación está disponible en <a href="https://pacha.hk/casen" class="uri">https://pacha.hk/casen</a></p>
 </div>
   </div>
 

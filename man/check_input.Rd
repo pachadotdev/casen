@@ -2,7 +2,7 @@
 % Please edit documentation in R/internals.R
 \name{check_input}
 \alias{check_input}
-\title{Check functions input}
+\title{Verifica la entrada del usuario}
 \usage{
 check_input(datos, variable, agrupacion, peso, conglomerado, estrato)
 }
@@ -20,6 +20,6 @@ check_input(datos, variable, agrupacion, peso, conglomerado, estrato)
 \item{estrato}{una columna de tipo numerico, por defecto es varunit de acuerdo al manual CASEN 2017}
 }
 \description{
-Check functions input
+Verifica la entrada del usuario
 }
 \keyword{internal}

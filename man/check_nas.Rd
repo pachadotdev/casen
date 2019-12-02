@@ -2,7 +2,7 @@
 % Please edit documentation in R/internals.R
 \name{check_nas}
 \alias{check_nas}
-\title{Checks NAs in confidence intervals}
+\title{Verifica la presencia de NAs en los intervalos de confianza}
 \usage{
 check_nas(d)
 }
@@ -10,6 +10,6 @@ check_nas(d)
 \item{d}{un data.frame o tibble con un estadistico agrupado}
 }
 \description{
-Checks NAs in confidence intervals
+Verifica la presencia de NAs en los intervalos de confianza
 }
 \keyword{internal}

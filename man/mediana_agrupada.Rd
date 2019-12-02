@@ -2,22 +2,22 @@
 % Please edit documentation in R/descriptive_statistics.R
 \name{mediana_agrupada}
 \alias{mediana_agrupada}
-\title{Mediana agrupada usando disenio complejo}
+\title{Mediana agrupada usando diseño complejo}
 \usage{
 mediana_agrupada(disenio)
 }
 \arguments{
-\item{disenio}{la salida de `configuracion_disenio()` que provee ademas los
+\item{disenio}{la salida de `configuracion_disenio()` que provee además los
 grupos y las variables en forma de lista}
 }
 \value{
 una tabla con las medianas agrupadas y su intervalo de confianza
 }
 \description{
-Mediana agrupada usando disenio complejo
+Mediana agrupada usando diseño complejo
 }
 \examples{
-r14 <- leer_casen(system.file(package = "casen", "extdata", "casen_2017_los_rios.zip"))
-cd <- configuracion_disenio(r14, "ytotcorh", c("comuna", "sexo"), "expc")
+cd <- configuracion_disenio(casen_2017_los_rios, "ytotcorh", c("comuna", "sexo"), "expc")
 mediana_agrupada(cd)
+
 }
