@@ -2,14 +2,14 @@
 \alias{casen_2017_los_rios}
 \docType{data}
 \title{
-Conjunto CASEN 2017
+Sub-conjunto CASEN 2017
 }
 \description{
 Datos de demostracion limitados a las comunas de la Region de Los Rios con
 representatividad comunal (Valdivia, Los Rios, Paillaco, Panguipulli,
-La Union y Río Bueno).
+La Union y Rio Bueno).
 }
-\usage{data("casen_2017_los_rios")}
+\usage{casen_2017_los_rios}
 \format{
   Un data frame con 8055 observaciones en las siguientes 7 variables.
   \describe{

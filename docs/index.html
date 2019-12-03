@@ -5,17 +5,17 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Funciones Para Trabajar Con La Encuesta CASEN • casen</title>
+<title>Metodos de Estimacion con Disenio Probabilistico y Estratificado en Encuesta CASEN • casen</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script><meta property="og:title" content="Funciones Para Trabajar Con La Encuesta CASEN">
-<meta property="og:description" content="Proporciona un conjunto de funciones para realizar estadística 
- descriptiva e inferencia con diseño complejo usando los factores de expansión, 
+<script src="pkgdown.js"></script><meta property="og:title" content="Metodos de Estimacion con Disenio Probabilistico y Estratificado en Encuesta CASEN">
+<meta property="og:description" content="Proporciona un conjunto de funciones para realizar estadistica 
+ descriptiva e inferencia con disenio complejo usando los factores de expansion, 
  conglomerados y estratos de la encuesta CASEN. Adicionalmente provee datasets 
- que permiten armonizar los códigos de comunas que cambian de acuerdo al año de 
- realización de la encuesta y permite convertirlos a los códigos oficiales de 
+ que permiten armonizar los codigos de comunas que cambian de acuerdo al anio de 
+ realizacion de la encuesta y permite convertir a los codigos oficiales de 
  SUBDERE.">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -59,7 +59,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="articles/basic-usage.html">Uso básico del paquete casen</a>
+      <a href="articles/basic-usage.html">Uso basico del paquete casen</a>
     </li>
   </ul>
 </li>
@@ -76,15 +76,56 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
+
 <div id="casen" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#casen" class="anchor"></a>casen <img src="https://pachamaltese.github.io/casen/hexicon.svg" width="150" align="right" alt="sticker">
 </h1></div>
 <!-- badges: start -->
 
-<p>Proporciona un conjunto de funciones para realizar estadística descriptiva e inferencia con diseño complejo usando los factores de expansión, conglomerados y estratos de la encuesta CASEN. Adicionalmente provee datasets que permiten armonizar los códigos de comunas que cambian de acuerdo al año de realización de la encuesta y permite convertirlos a los códigos oficiales de SUBDERE.</p>
-<p>La documentación está disponible en <a href="https://pacha.hk/casen" class="uri">https://pacha.hk/casen</a></p>
 </div>
+<div id="acerca-de" class="section level1">
+<h1 class="hasAnchor">
+<a href="#acerca-de" class="anchor"></a>Acerca de</h1>
+<p>Proporciona un conjunto de funciones para realizar estadistica descriptiva e inferencia con disenio complejo usando los factores de expansion, conglomerados y estratos de la encuesta CASEN. Adicionalmente provee datasets que permiten armonizar los codigos de comunas que cambian de acuerdo al anio de realizacion de la encuesta y permite convertirlos a los codigos oficiales de SUBDERE.</p>
+</div>
+<div id="documentacion" class="section level1">
+<h1 class="hasAnchor">
+<a href="#documentacion" class="anchor"></a>Documentacion</h1>
+<p>La documentacion esta disponible en <a href="https://pacha.hk/casen" class="uri">https://pacha.hk/casen</a>. Se incluyen ejemplos de uso de las funciones del paquete casen y como se integra con otros paquetes de R.</p>
+</div>
+<div id="instalacion" class="section level1">
+<h1 class="hasAnchor">
+<a href="#instalacion" class="anchor"></a>Instalacion</h1>
+<pre><code><a href="https://rdrr.io/r/utils/install.packages.html"># desde CRAN
+install.packages("casen")
+
+# desde GitHub
+if (!require("remotes")) { install.packages("remotes") }
+remotes::install_github("pachamaltese/chilemaps")</a></code></pre>
+</div>
+<div id="encuesta-casen-en-formato-r" class="section level1">
+<h1 class="hasAnchor">
+<a href="#encuesta-casen-en-formato-r" class="anchor"></a>Encuesta CASEN en formato R</h1>
+<p>Adicionalmente al paquete casen, estan disponibles las encuestas CASEN en formato rds. El unico cambio realizado sobre estas fue llevar los nombres de columnas a formato tidy (todo en minusculas reemplazando puntos y espacios por guion bajo).</p>
+<p>Links de descarga:</p>
+<ul>
+<li><a href="https://pacha.hk/casen/data-rds/1990.rds" class="uri">https://pacha.hk/casen/data-rds/1990.rds</a></li>
+<li><a href="https://pacha.hk/casen/data-rds/1992.rds" class="uri">https://pacha.hk/casen/data-rds/1992.rds</a></li>
+<li><a href="https://pacha.hk/casen/data-rds/1994.rds" class="uri">https://pacha.hk/casen/data-rds/1994.rds</a></li>
+<li><a href="https://pacha.hk/casen/data-rds/1996.rds" class="uri">https://pacha.hk/casen/data-rds/1996.rds</a></li>
+<li><a href="https://pacha.hk/casen/data-rds/1998.rds" class="uri">https://pacha.hk/casen/data-rds/1998.rds</a></li>
+<li><a href="https://pacha.hk/casen/data-rds/2000.rds" class="uri">https://pacha.hk/casen/data-rds/2000.rds</a></li>
+<li><a href="https://pacha.hk/casen/data-rds/2003.rds" class="uri">https://pacha.hk/casen/data-rds/2003.rds</a></li>
+<li><a href="https://pacha.hk/casen/data-rds/2006.rds" class="uri">https://pacha.hk/casen/data-rds/2006.rds</a></li>
+<li><a href="https://pacha.hk/casen/data-rds/2009.rds" class="uri">https://pacha.hk/casen/data-rds/2009.rds</a></li>
+<li><a href="https://pacha.hk/casen/data-rds/2011.rds" class="uri">https://pacha.hk/casen/data-rds/2011.rds</a></li>
+<li><a href="https://pacha.hk/casen/data-rds/2013.rds" class="uri">https://pacha.hk/casen/data-rds/2013.rds</a></li>
+<li><a href="https://pacha.hk/casen/data-rds/2015.rds" class="uri">https://pacha.hk/casen/data-rds/2015.rds</a></li>
+<li><a href="https://pacha.hk/casen/data-rds/2017.rds" class="uri">https://pacha.hk/casen/data-rds/2017.rds</a></li>
+</ul>
+</div>
+
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

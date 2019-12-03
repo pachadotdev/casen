@@ -1,6 +1,6 @@
 Package: casen
 Type: Package
-Title: Funciones Para Trabajar Con La Encuesta CASEN
+Title: Metodos de Estimacion con Disenio Probabilistico y Estratificado en Encuesta CASEN
 Version: 0.1
 Authors@R: c(
       person(given = "Mauricio",
@@ -8,10 +8,6 @@ Authors@R: c(
         role = c("aut","cre"),
         email = "mvargas@dcc.uchile.cl",
         comment = c(ORCID = "0000-0003-1017-7574")),
-      person(given = "Jim",
-        family = "Hester",
-        role = c("ctb"),
-        comment = c("original libarchive integration")),
       person(given = "Ricardo",
         family = "Aravena",
         role = c("ths")),
@@ -22,13 +18,13 @@ Authors@R: c(
       person(family = "Subsecretaria de Desarrollo Regional (SUBDERE)",
         role = "dtc")
     )
-URL: https://pachamaltese.github.io/casen/
+URL: https://pacha.hk/casen/
 BugReports: https://github.com/pachamaltese/casen/issues
-Description: Proporciona un conjunto de funciones para realizar estadística 
- descriptiva e inferencia con diseño complejo usando los factores de expansión, 
+Description: Proporciona un conjunto de funciones para realizar estadistica 
+ descriptiva e inferencia con disenio complejo usando los factores de expansion, 
  conglomerados y estratos de la encuesta CASEN. Adicionalmente provee datasets 
- que permiten armonizar los códigos de comunas que cambian de acuerdo al año de 
- realización de la encuesta y permite convertirlos a los códigos oficiales de 
+ que permiten armonizar los codigos de comunas que cambian de acuerdo al anio de 
+ realizacion de la encuesta y permite convertir a los codigos oficiales de 
  SUBDERE.
 License: GPL-3
 Depends: R (>= 3.5.0)

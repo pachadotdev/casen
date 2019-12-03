@@ -5,8 +5,8 @@
   ],
   "@type": "SoftwareSourceCode",
   "identifier": "casen",
-  "description": "Permite leer la encuesta CASEN en formato zip/rar o sav/dta directamente en R\n    y sin la necesidad de que los usuarios de Windows deban instalar software adicional.\n    Utiliza una implementación en C++ de libarchive para cumplir con las políticas de TI del\n    Gobierno de Chile que no permite la instalacion de software necesario como 7-zip/WinRAR y\n    SPSS/Stata para leer la encuesta CASEN.",
-  "name": "casen: Conjunto De Funciones Para Descargar, Leer y Trabajar Con La Encuesta CASEN",
+  "description": "Proporciona un conjunto de funciones para realizar estadística \n descriptiva e inferencia con diseño complejo usando los factores de expansión, \n conglomerados y estratos de la encuesta CASEN. Adicionalmente provee datasets \n que permiten armonizar los códigos de comunas que cambian de acuerdo al año de \n realización de la encuesta y permite convertirlos a los códigos oficiales de \n SUBDERE.",
+  "name": "casen: Funciones Para Trabajar Con La Encuesta CASEN",
   "license": "https://spdx.org/licenses/GPL-3.0",
   "version": "0.1",
   "programmingLanguage": {
@@ -191,18 +191,6 @@
     },
     {
       "@type": "SoftwareApplication",
-      "identifier": "labelled",
-      "name": "labelled",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=labelled"
-    },
-    {
-      "@type": "SoftwareApplication",
       "identifier": "haven",
       "name": "haven",
       "provider": {
@@ -212,6 +200,18 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=haven"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "labelled",
+      "name": "labelled",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=labelled"
     },
     {
       "@type": "SoftwareApplication",
@@ -308,15 +308,11 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=purrr"
-    },
-    {
-      "@type": "SoftwareApplication",
-      "identifier": "https://sysreqs.r-hub.io/get/libarchive"
     }
   ],
   "codeRepository": "https://pachamaltese.github.io/casen/",
   "readme": "https://github.com/pachamaltese/casen/blob/master/README.md",
-  "fileSize": "75.245KB",
+  "fileSize": "43.486KB",
   "contIntegration": [
     "https://travis-ci.org/pachamaltese/casen",
     "https://codecov.io/gh/pachamaltese/casen?branch=master"

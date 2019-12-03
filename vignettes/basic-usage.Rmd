@@ -1,10 +1,10 @@
 ---
-title: "Uso básico del paquete casen"
+title: "Uso basico del paquete casen"
 author: "Mauricio Vargas"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Uso básico del paquete casen}
+  %\VignetteIndexEntry{Uso basico del paquete casen}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -13,12 +13,21 @@ vignette: >
 knitr::opts_chunk$set(eval = TRUE)
 ```
 
-# Descargar datos
+# Datos de ejemplo
 
-Para descargar la encuesta CASEN hay varias opciones:
+El uso de este paquete se mostrara a partir de los datos de ejemplo.
+
 ```{r}
 library(casen)
+casen_2017_los_rios
 ```
+
+# Descargar datos
+
+Para descargar la encuesta CASEN hay varias opciones. No se daran ejemplos
+con la encuesta casen ya que CRAN limita el tiempo en segundos que puede
+tomar un ejemplo.
+
 ```{r, eval=FALSE}
 # todos los anios disponibles
 descargar_casen()
@@ -38,20 +47,19 @@ library(haven)
 read_sav("descargas/2017.sav")
 ```
 
-# Diseños complejos
+# Disenios complejos
 
-El valor agregado del paquete CASEN es que entrega una forma fácil de hacer cálculos tomando en cuenta, además del
-diseño complejo, los grados de libertad.
+El valor agregado del paquete CASEN es que entrega una forma facil de hacer calculos tomando en cuenta, ademas del disenio complejo, los grados de libertad.
 
-En el contexto de muestreo bietápico, el cálculo de los grados de libertad es un tema no resuelto, pero el paquete casen utiliza la siguiente definición del INE: "Los grados de libertad corresponden a la diferencia entre el número de conglomerados no vacíos (con presencia de la variable de interés) y el número de estratos no vacíos".
+En el contexto de muestreo bietapico, el calculo de los grados de libertad es un tema no resuelto, pero el paquete casen utiliza la siguiente definicion del INE: "Los grados de libertad corresponden a la diferencia entre el numero de conglomerados no vacios (con presencia de la variable de interes) y el numero de estratos no vacios".
 
-En dominios de estimación pequeños la pérdida de grados de libertad se vuelve bastante relevante. Esto es muy importante cuando se hacen cálculos agrupando por región, sexo, región y sexo, entre otras.
+En dominios de estimacion pequenios la perdida de grados de libertad se vuelve bastante relevante. Esto es muy importante cuando se hacen calculos agrupando por region, sexo, region y sexo, entre otras.
 
-Al usar la función `svyby` del paquete survey, la función no calcula correctamente los grados de libertad de cada dominio, sino que considera un valor fijo para todos los dominios. Las funciones del paquete casen usan esta función pero incluyen una serie de pasos programados para usar los grados de libertad adecuados para cada dominio de estimación.
+Al usar la funcion `svyby` del paquete survey, la funcion no calcula correctamente los grados de libertad de cada dominio, sino que considera un valor fijo para todos los dominios. Las funciones del paquete casen usan esta funcion pero incluyen una serie de pasos programados para usar los grados de libertad adecuados para cada dominio de estimacion.
 
 Vamos a leer un subconjunto de la encuesta CASEN que corresponde a las comunas
-con representatividad comunal en la Región de los Ríos. Estos datos se incluyen,
-a modo de demostración, con el paquete casen.
+con representatividad comunal en la Region de los Rios. Estos datos se incluyen,
+a modo de demostracion, con el paquete casen.
 
 ```{r}
 casen_2017_los_rios
@@ -62,9 +70,9 @@ cd$disenio
 cd$grupos
 ```
 
-# Medidas de tendencia central con diseño complejo
+# Medidas de tendencia central con disenio complejo
 
-La función `estadistica_descriptiva()` toma en cuenta el diseño complejo y los grados de libertad. Puedo agrupar por una o más variables y la función entrega, además del promedio, el intervalo de confianza.
+La funcion `estadistica_descriptiva()` toma en cuenta el disenio complejo y los grados de libertad. Puedo agrupar por una o mas variables y la funcion entrega, ademas del promedio, el intervalo de confianza.
 
 ```{r}
 # media, mediana y percentil 70
@@ -75,7 +83,7 @@ percentiles_agrupados(cd)
 
 # Uso de las funciones de casen y dplyr
 
-Las funciones de `casen` están pensadas para usarse en conjunto con las de `dplyr`. Un ejemplo simple de esto es el cálculo del porcentaje de hogares pobres.
+Las funciones de `casen` estan pensadas para usarse en conjunto con las de `dplyr`. Un ejemplo simple de esto es el calculo del porcentaje de hogares pobres.
 
 Veamos el caso puntual de las funciones `mutate` y `filter` de dplyr.
 
@@ -89,12 +97,13 @@ casen_2017_los_rios %>%
   media_agrupada()
 ```
 
-# Inferencia con diseños complejos
+# Inferencia con disenios complejos
 
-El paquete casen provee dos funciones para sacar el máximo partido
-a las funciones de R tomando en cuenta el diseño complejo y los grados de libertad.
+El paquete casen provee dos funciones para sacar el maximo partido
+a las funciones de R tomando en cuenta el disenio complejo y los grados de libertad.
 
 Ajuste del modelo:
+
 ```{r}
 # modelo: ytotcorh = b0 + b1 comuna + b2 sexo + e
 mod <- modelo_lineal_generalizado(cd, "ytotcorh ~ comuna + sexo")
@@ -103,7 +112,7 @@ summary(mod)
 
 # Uso de las funciones de casen con paquetes "tidy"
 
-Además de dplyr, casen se integra perfectamente con los paquetes del 
+Ademas de dplyr, casen se integra perfectamente con los paquetes del 
 [Tidyverse](https://www.tidyverse.org/) y otros paquetes afines.
 
 Por ejemplo, el paquete broom permite obtener una tabla con los intervalos
@@ -138,11 +147,10 @@ mod_betas
 
 # Comparabilidad entre encuestas
 
-El paquete casen provee un conjunto de datos (codigos_casen) con la correspondencia de los
-códigos de comunas.
+El paquete casen provee un conjunto de datos con la correspondencia de los
+codigos de comunas.
 
-Dejando de lado la representatividad comunal, veamos como convertir los códigos
-de la encuesta CASEN 1990 a códigos SUBDERE 2017.
+Veamos como convertir los codigos de la encuesta CASEN 1990 a codigos SUBDERE 2017.
 
 ```{r}
 codigos_casen %>% 

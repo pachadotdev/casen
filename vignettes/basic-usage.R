@@ -3,6 +3,7 @@ knitr::opts_chunk$set(eval = TRUE)
 
 ## ------------------------------------------------------------------------
 library(casen)
+casen_2017_los_rios
 
 ## ---- eval=FALSE---------------------------------------------------------
 #  # todos los anios disponibles

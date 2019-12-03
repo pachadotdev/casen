@@ -13,3 +13,4 @@ windows
 ^\.travis\.yml$
 ^codecov\.yml$
 ^codemeta\.json$
+README.md
