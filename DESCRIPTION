@@ -21,11 +21,10 @@ Authors@R: c(
 URL: https://pacha.hk/casen/
 BugReports: https://github.com/pachamaltese/casen/issues
 Description: Proporciona un conjunto de funciones para realizar estadistica 
- descriptiva e inferencia con disenio complejo usando los factores de expansion, 
- conglomerados y estratos de la encuesta CASEN. Adicionalmente provee datasets 
- que permiten armonizar los codigos de comunas que cambian de acuerdo al anio de 
- realizacion de la encuesta y permite convertir a los codigos oficiales de 
- SUBDERE.
+ descriptiva e inferencia con el disenio complejo de la encuesta CASEN.
+ Adicionalmente provee datasets que permiten armonizar los codigos de comunas
+ que cambian de acuerdo al anio de realizacion de la encuesta y permite convertir
+ a los codigos oficiales de SUBDERE.
 License: GPL-3
 Depends: R (>= 3.5.0)
 Imports: 

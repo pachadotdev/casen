@@ -18,10 +18,11 @@ cuadráticas, etc.}
 una lista cuyas clases son svyglm, glm y lm
 }
 \description{
-Modelo lineal generalizado con diseño complejo
+Usa los factores de expansion, conglomerados y estratos para
+ajustar un modelo lineal generalizado con las variables definidas por el
+usuario.
 }
 \examples{
 cd <- configuracion_disenio(casen_2017_los_rios, "ytotcorh", c("comuna", "sexo"), "expc")
 modelo_lineal_generalizado(cd, "ytotcorh ~ comuna + sexo")
-
 }

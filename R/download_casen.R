@@ -1,21 +1,20 @@
 #' Descarga la encuesta CASEN del sitio web del MDS
-#' 
+#' @description Obtiene los archivos zip o rar dependiendo del anio de 
+#' realizacion de la encuesta. No descomprime ni modifica los datasets 
+#' originales.
 #' @param anios si no se indica un anio, descarga todos los anios disponibles
 #' @param carpeta si no se indica una carpeta, descarga en la carpeta de
 #' trabajo
 #' @importFrom utils download.file
 #' @importFrom glue glue
-#' 
 #' @return los archivos comprimidos de la encuesta CASEN descargados desde el
 #' sitio web del MDS
-#' 
 #' @examples
 #' # descargar todas las encuestas disponibles
 #' # descargar_casen()
 #'
 #' # descargar CASEN 2017 en carpeta especifica
 #' # descargar_casen(2017, "data-raw")
-#' 
 #' @export
 descargar_casen <- function(anios = NULL, carpeta = getwd()) {
   # checks ----

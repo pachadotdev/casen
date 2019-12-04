@@ -17,10 +17,10 @@ percentil 70}
 una tabla con los percentiles y su error estándar
 }
 \description{
-Percentiles agrupados usando diseño complejo
+Usa los factores de expansion, conglomerados y estratos para
+calcular correctamente los percentiles comunales o regionales.
 }
 \examples{
 cd <- configuracion_disenio(casen_2017_los_rios, "ytotcorh", c("comuna", "sexo"), "expc")
 percentiles_agrupados(cd, 0.7)
-
 }

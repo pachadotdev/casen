@@ -6,7 +6,7 @@ Codigos de comunas encuesta CASEN
 }
 \description{
 Proporciona todos los codigos de comunas usados en la encuesta CASEN y registra
-sus cambios en el tiempo
+sus cambios en el tiempo.
 }
 \usage{codigos_casen}
 \format{
@@ -19,7 +19,7 @@ sus cambios en el tiempo
   }
 }
 \source{
-Ministerio de Desarrollo Social (MDS)
+Elaboracion propia con base en datos de Ministerio de Desarrollo Social (MDS).
 }
 \examples{
 codigos_casen

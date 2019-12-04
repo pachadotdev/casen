@@ -1,5 +1,6 @@
-#' Diseño complejo para estimación con pesos, conglomerados y estratos
-#' 
+#' Diseño complejo para estadistica descriptiva e inferencia
+#' @description Usa los factores de expansion, conglomerados y estratos para
+#' definir un objeto de disenio complejo.
 #' @param datos un data.frame o tibble con la encuesta CASEN (o un subconjunto 
 #' acotado a una region, etc)
 #' @param variable una columna de tipo numérico, por ejemplo ytotcorh que es la 
@@ -12,14 +13,11 @@
 #' acuerdo al manual CASEN 2017
 #' @param estrato una columna de tipo numérico, por defecto es varunit de 
 #' acuerdo al manual CASEN 2017
-#' 
 #' @return una lista con el diseño y los grupos
-#' 
 #' @examples 
 #' cd <- configuracion_disenio(casen_2017_los_rios, "ytotcorh", c("comuna", "sexo"), "expc")
 #' cd$disenio
 #' cd$grupos
-#' 
 #' @export
 configuracion_disenio <- function(datos, variable = "ytotcorh", agrupacion = "region", peso = "expr", conglomerado = "varunit", estrato = "varstrat") {
   # checks ----

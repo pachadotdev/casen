@@ -9,8 +9,9 @@
 # Acerca de
 
 Proporciona un conjunto de funciones para realizar estadistica descriptiva e inferencia
-con disenio complejo usando los factores de expansion, conglomerados y estratos de la
-encuesta CASEN. Adicionalmente provee datasets que permiten armonizar los codigos de comunas
+con el disenio complejo de la encuesta CASEN.
+
+Adicionalmente provee datasets que permiten armonizar los codigos de comunas
 que cambian de acuerdo al anio de realizacion de la encuesta y permite convertirlos a
 los codigos oficiales de SUBDERE.
 

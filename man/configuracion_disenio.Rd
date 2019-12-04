@@ -2,7 +2,7 @@
 % Please edit documentation in R/design.R
 \name{configuracion_disenio}
 \alias{configuracion_disenio}
-\title{Diseño complejo para estimación con pesos, conglomerados y estratos}
+\title{Diseño complejo para estadistica descriptiva e inferencia}
 \usage{
 configuracion_disenio(datos, variable = "ytotcorh",
   agrupacion = "region", peso = "expr", conglomerado = "varunit",
@@ -31,11 +31,11 @@ acuerdo al manual CASEN 2017}
 una lista con el diseño y los grupos
 }
 \description{
-Diseño complejo para estimación con pesos, conglomerados y estratos
+Usa los factores de expansion, conglomerados y estratos para
+definir un objeto de disenio complejo.
 }
 \examples{
 cd <- configuracion_disenio(casen_2017_los_rios, "ytotcorh", c("comuna", "sexo"), "expc")
 cd$disenio
 cd$grupos
-
 }

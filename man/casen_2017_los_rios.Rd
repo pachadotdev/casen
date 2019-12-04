@@ -23,7 +23,7 @@ La Union y Rio Bueno).
   }
 }
 \source{
-Ministerio de Desarrollo Social (MDS)
+Elaboracion propia con base en datos de Ministerio de Desarrollo Social (MDS).
 }
 \examples{
 casen_2017_los_rios

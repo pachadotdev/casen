@@ -14,10 +14,10 @@ grupos y las variables en forma de lista}
 una tabla con las medias agrupadas y su intervalo de confianza
 }
 \description{
-Media agrupada usando diseño complejo
+Usa los factores de expansion, conglomerados y estratos para
+calcular correctamente las medias comunales o regionales.
 }
 \examples{
 cd <- configuracion_disenio(casen_2017_los_rios, "ytotcorh", c("comuna", "sexo"), "expc")
 media_agrupada(cd)
-
 }

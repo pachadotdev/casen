@@ -1,14 +1,12 @@
 #' Media agrupada usando diseño complejo
-#' 
+#' @description Usa los factores de expansion, conglomerados y estratos para
+#' calcular correctamente las medias comunales o regionales.
 #' @param disenio la salida de `configuracion_disenio()` que provee además los
 #' grupos y las variables en forma de lista
-#' 
 #' @return una tabla con las medias agrupadas y su intervalo de confianza
-#' 
 #' @examples
 #' cd <- configuracion_disenio(casen_2017_los_rios, "ytotcorh", c("comuna", "sexo"), "expc")
 #' media_agrupada(cd)
-#' 
 #' @export
 media_agrupada <- function(disenio) {
   estimate <- mean_median(disenio$grupos, disenio$disenio, 
@@ -23,16 +21,14 @@ media_agrupada <- function(disenio) {
 }
 
 #' Mediana agrupada usando diseño complejo
-#' 
+#' @description Usa los factores de expansion, conglomerados y estratos para
+#' calcular correctamente las medianas comunales o regionales.
 #' @param disenio la salida de `configuracion_disenio()` que provee además los
 #' grupos y las variables en forma de lista
-#' 
 #' @return una tabla con las medianas agrupadas y su intervalo de confianza
-#' 
 #' @examples
 #' cd <- configuracion_disenio(casen_2017_los_rios, "ytotcorh", c("comuna", "sexo"), "expc")
 #' mediana_agrupada(cd)
-#' 
 #' @export
 mediana_agrupada <- function(disenio) {
   estimate <- mean_median(disenio$grupos, disenio$disenio, 
@@ -47,12 +43,12 @@ mediana_agrupada <- function(disenio) {
 }
 
 #' Percentiles agrupados usando diseño complejo
-#' 
+#' @description Usa los factores de expansion, conglomerados y estratos para
+#' calcular correctamente los percentiles comunales o regionales.
 #' @param disenio la salida de `configuracion_disenio()` que provee además los
 #' grupos y las variables en forma de lista
 #' @param percentiles percentiles a calcular, si no se especifica calcula el
 #' percentil 70
-#' 
 #' @importFrom rlang sym syms expr
 #' @importFrom magrittr %>%
 #' @importFrom dplyr filter group_by summarise select mutate select_if mutate_if bind_cols everything slice
@@ -61,13 +57,10 @@ mediana_agrupada <- function(disenio) {
 #' @importFrom labelled to_factor
 #' @importFrom srvyr survey_quantile
 #' @importFrom survey degf
-#' 
 #' @return una tabla con los percentiles y su error estándar
-#' 
 #' @examples
 #' cd <- configuracion_disenio(casen_2017_los_rios, "ytotcorh", c("comuna", "sexo"), "expc")
 #' percentiles_agrupados(cd, 0.7)
-#' 
 #' @export
 percentiles_agrupados <- function(disenio, percentiles = 0.7) {
   estimate <- suppressWarnings(

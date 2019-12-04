@@ -17,7 +17,9 @@ los archivos comprimidos de la encuesta CASEN descargados desde el
 sitio web del MDS
 }
 \description{
-Descarga la encuesta CASEN del sitio web del MDS
+Obtiene los archivos zip o rar dependiendo del anio de 
+realizacion de la encuesta. No descomprime ni modifica los datasets 
+originales.
 }
 \examples{
 # descargar todas las encuestas disponibles
@@ -25,5 +27,4 @@ Descarga la encuesta CASEN del sitio web del MDS
 
 # descargar CASEN 2017 en carpeta especifica
 # descargar_casen(2017, "data-raw")
-
 }
