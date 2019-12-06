@@ -1,7 +1,6 @@
 #' Descarga la encuesta CASEN del sitio web del MDS
-#' @description Obtiene los archivos zip o rar dependiendo del anio de 
-#' realizacion de la encuesta. No descomprime ni modifica los datasets 
-#' originales.
+#' @description Obtiene los archivos de la encuesta en formato RAR o ZIP segun
+#' el anio de la encuesta. No descomprime ni modifica los datasets originales.
 #' @param anios si no se indica un anio, descarga todos los anios disponibles
 #' @param carpeta si no se indica una carpeta, descarga en la carpeta de
 #' trabajo
@@ -11,12 +10,12 @@
 #' sitio web del MDS
 #' @examples
 #' # descargar todas las encuestas disponibles
-#' # descargar_casen()
+#' # descargar_casen_mds()
 #'
 #' # descargar CASEN 2017 en carpeta especifica
-#' # descargar_casen(2017, "data-raw")
+#' # descargar_casen_mds(2017, "data-raw")
 #' @export
-descargar_casen <- function(anios = NULL, carpeta = getwd()) {
+descargar_casen_mds <- function(anios = NULL, carpeta = getwd()) {
   # checks ----
   stopifnot(is.numeric(anios) | is.null(anios))
   stopifnot(is.character(carpeta), length(carpeta) == 1)
@@ -64,6 +63,64 @@ descargar_casen <- function(anios = NULL, carpeta = getwd()) {
 
   links <- links[links$year %in% anios, ]
 
+  for (j in 1:nrow(links)) {
+    u <- links$url[[j]]
+    f <- links$file[[j]]
+    y <- links$year[[j]]
+    
+    if (!file.exists(f)) {
+      message(glue::glue("Intentando descargar CASEN {y}..."))
+      try(utils::download.file(u, f, mode = "wb"))
+    } else {
+      message(glue::glue("CASEN {y} ya existe, se omite la descarga"))
+    }
+  }
+}
+
+#' Descarga la encuesta CASEN de GitHub
+#' @description Obtiene los archivos de la encuesta en formato R.
+#' @param anios si no se indica un anio, descarga todos los anios disponibles
+#' @param carpeta si no se indica una carpeta, descarga en la carpeta de
+#' trabajo
+#' @importFrom utils download.file
+#' @importFrom glue glue
+#' @return los archivos rds de la encuesta CASEN descargados desde GitHub
+#' @examples
+#' # descargar todas las encuestas disponibles
+#' # descargar_casen_github()
+#'
+#' # descargar CASEN 2017 en carpeta especifica
+#' # descargar_casen_github(2017, "data-raw")
+#' @export
+descargar_casen_github <- function(anios = NULL, carpeta = getwd()) {
+  # checks ----
+  stopifnot(is.numeric(anios) | is.null(anios))
+  stopifnot(is.character(carpeta), length(carpeta) == 1)
+  
+  # download ----
+  try(dir.create(carpeta))
+  
+  all_years <- c(seq(1990, 2000, 2), seq(2003, 2009, 3), seq(2011, 2017, 2))
+  
+  if (!is.null(anios) & any(anios %in% all_years) == FALSE) {
+    stop("La encuesta CASEN esta disponible entre los anios 1990 y 2017")
+  }
+  
+  if (is.null(anios)) {
+    anios <- c(seq(1990, 2000, 2), seq(2003, 2009, 3), seq(2011, 2017, 2))
+  }
+  
+  urls <- glue::glue("https://pacha.hk/casen/data-rds/{all_years}.rds")
+  
+  links <- data.frame(
+    year = all_years,
+    url = urls,
+    file = paste0(carpeta, "/", all_years, gsub(".*\\.", "\\.", urls)),
+    stringsAsFactors = FALSE
+  )
+  
+  links <- links[links$year %in% anios, ]
+  
   for (j in 1:nrow(links)) {
     u <- links$url[[j]]
     f <- links$file[[j]]

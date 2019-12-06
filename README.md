@@ -8,12 +8,12 @@
 
 # Acerca de
 
-Proporciona un conjunto de funciones para realizar estadistica descriptiva e inferencia
-con el disenio complejo de la encuesta CASEN.
-
+Proporciona un conjunto de funciones para realizar estadistica 
+descriptiva e inferencia con el disenio complejo de la encuesta CASEN.
 Adicionalmente provee datasets que permiten armonizar los codigos de comunas
-que cambian de acuerdo al anio de realizacion de la encuesta y permite convertirlos a
-los codigos oficiales de SUBDERE.
+que cambian de acuerdo al anio de realizacion de la encuesta y permite convertir
+a los codigos oficiales de SUBDERE. Esta paquete esta documentado intencionalmente
+en castellano asciificado para que funcione sin problema en diferentes plataformas.
 
 # Documentacion
 

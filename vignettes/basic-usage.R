@@ -7,25 +7,30 @@ casen_2017_los_rios
 
 ## ---- eval=FALSE---------------------------------------------------------
 #  # todos los anios disponibles
-#  descargar_casen()
+#  descargar_casen_mds()
 #  
 #  # solo anio 2017
-#  descargar_casen(2017)
+#  descargar_casen_mds(2017)
 #  
-#  # todos los anios disponibles en carpeta descargas
-#  descargar_casen("descargas")
+#  # todos los anios disponibles en carpeta casen-formato-spss
+#  descargar_casen_mds("casen-formato-spss")
 #  
-#  # solo anio 2017 en carpeta descargas
-#  descargar_casen(2017, "descargas")
+#  # solo anio 2017 en carpeta casen-formato-spss
+#  descargar_casen_mds(2017, "casen-formato-spss")
 #  
 #  # leer encuesta CASEN en formato SAV (SPSS)
 #  # (se debe descomprimir con winRAR u otro)
 #  library(haven)
-#  read_sav("descargas/2017.sav")
+#  read_sav("casen-formato-spss/2017.sav")
+
+## ---- eval=FALSE---------------------------------------------------------
+#  # todos los anios disponibles
+#  descargar_casen_github("casen-formato-r")
+#  
+#  # leer encuesta CASEN en formato RDS (R)
+#  readRDS("casen-formato-r/2017.rds")
 
 ## ------------------------------------------------------------------------
-casen_2017_los_rios
-
 # disenio complejo a partir de  los datos de ejemplo
 cd <- configuracion_disenio(casen_2017_los_rios, "ytotcorh", c("comuna", "sexo"), "expc")
 cd$disenio

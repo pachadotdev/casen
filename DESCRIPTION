@@ -1,7 +1,7 @@
 Package: casen
 Type: Package
 Title: Metodos de Estimacion con Disenio Probabilistico y Estratificado en Encuesta CASEN
-Version: 0.1
+Version: 0.1.1
 Authors@R: c(
       person(given = "Mauricio",
         family = "Vargas",
@@ -24,7 +24,8 @@ Description: Proporciona un conjunto de funciones para realizar estadistica
  descriptiva e inferencia con el disenio complejo de la encuesta CASEN.
  Adicionalmente provee datasets que permiten armonizar los codigos de comunas
  que cambian de acuerdo al anio de realizacion de la encuesta y permite convertir
- a los codigos oficiales de SUBDERE.
+ a los codigos oficiales de SUBDERE. Esta paquete esta documentado intencionalmente
+ en castellano asciificado para que funcione sin problema en diferentes plataformas.
 License: GPL-3
 Depends: R (>= 3.5.0)
 Imports: 

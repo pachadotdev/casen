@@ -9,7 +9,7 @@ data-rds
 dev
 docs
 windows
-.github
+^\.github
 ^\.travis\.yml$
 ^codecov\.yml$
 ^codemeta\.json$

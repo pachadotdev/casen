@@ -15,36 +15,53 @@ knitr::opts_chunk$set(eval = TRUE)
 
 # Datos de ejemplo
 
-El uso de este paquete se mostrara a partir de los datos de ejemplo.
+El uso de este paquete se mostrara a partir de los datos de ejemplo. Vamos a leer un subconjunto de la encuesta CASEN que corresponde a las comunas con representatividad comunal en la Region de los Rios. Estos datos se incluyen,
+a modo de demostracion, con el paquete casen, no asi las encuestas completas que deben ser descargadas y se provee una
+funcion para hacerlo.
 
 ```{r}
 library(casen)
 casen_2017_los_rios
 ```
 
-# Descargar datos
+# Descargar datos desde sitio web MDS
 
-Para descargar la encuesta CASEN hay varias opciones. No se daran ejemplos
-con la encuesta casen ya que CRAN limita el tiempo en segundos que puede
-tomar un ejemplo.
+Para descargar la encuesta CASEN es posible hacerlo desde el sitio web del
+Ministerio de Desarrollo Social (oficial) o desde GitHub (no oficial).
+
+No se daran ejemplos con la encuesta casen completa ya que CRAN limita el tiempo
+en segundos que puede tomar un ejemplo.
 
 ```{r, eval=FALSE}
 # todos los anios disponibles
-descargar_casen()
+descargar_casen_mds()
 
 # solo anio 2017
-descargar_casen(2017)
+descargar_casen_mds(2017)
 
-# todos los anios disponibles en carpeta descargas
-descargar_casen("descargas")
+# todos los anios disponibles en carpeta casen-formato-spss
+descargar_casen_mds("casen-formato-spss")
 
-# solo anio 2017 en carpeta descargas
-descargar_casen(2017, "descargas")
+# solo anio 2017 en carpeta casen-formato-spss
+descargar_casen_mds(2017, "casen-formato-spss")
 
 # leer encuesta CASEN en formato SAV (SPSS)
 # (se debe descomprimir con winRAR u otro)
 library(haven)
-read_sav("descargas/2017.sav")
+read_sav("casen-formato-spss/2017.sav")
+```
+
+# Descargar datos desde GitHub
+
+En la misma linea de la seccion anterior, es posible descargar la encuesta CASEN
+en formato R.
+
+```{r, eval=FALSE}
+# todos los anios disponibles
+descargar_casen_github("casen-formato-r")
+
+# leer encuesta CASEN en formato RDS (R)
+readRDS("casen-formato-r/2017.rds")
 ```
 
 # Disenios complejos
@@ -57,13 +74,7 @@ En dominios de estimacion pequenios la perdida de grados de libertad se vuelve b
 
 Al usar la funcion `svyby` del paquete survey, la funcion no calcula correctamente los grados de libertad de cada dominio, sino que considera un valor fijo para todos los dominios. Las funciones del paquete casen usan esta funcion pero incluyen una serie de pasos programados para usar los grados de libertad adecuados para cada dominio de estimacion.
 
-Vamos a leer un subconjunto de la encuesta CASEN que corresponde a las comunas
-con representatividad comunal en la Region de los Rios. Estos datos se incluyen,
-a modo de demostracion, con el paquete casen.
-
 ```{r}
-casen_2017_los_rios
-
 # disenio complejo a partir de  los datos de ejemplo
 cd <- configuracion_disenio(casen_2017_los_rios, "ytotcorh", c("comuna", "sexo"), "expc")
 cd$disenio
