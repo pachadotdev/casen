@@ -22,13 +22,9 @@ de uso de las funciones del paquete casen y como se integra con otros paquetes d
 
 # Instalacion
 
+Ejecuta el siguiente codigo en RStudio.
 ```
-# desde CRAN
-install.packages("casen")
-
-# desde GitHub
-if (!require("remotes")) { install.packages("remotes") }
-remotes::install_github("pachamaltese/chilemaps")
+source("https://install-github.me/pachamaltese/casen")
 ```
 
 # Encuesta CASEN en formato R
