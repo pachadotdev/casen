@@ -123,7 +123,7 @@ el anio de la encuesta. No descomprime ni modifica los datasets originales." />
 el anio de la encuesta. No descomprime ni modifica los datasets originales.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>descargar_casen_mds</span>(<span class='kw'>anios</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>carpeta</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>getwd</a></span>())</pre>
+    <pre class="usage"><span class='fu'>descargar_casen_mds</span>(<span class='kw'>anios</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>carpeta</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -134,8 +134,7 @@ el anio de la encuesta. No descomprime ni modifica los datasets originales.</p>
     </tr>
     <tr>
       <th>carpeta</th>
-      <td><p>si no se indica una carpeta, descarga en la carpeta de
-trabajo</p></td>
+      <td><p>se debe especificar una carpeta de descarga</p></td>
     </tr>
     </table>
 
@@ -145,12 +144,8 @@ trabajo</p></td>
 sitio web del MDS</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'># descargar todas las encuestas disponibles
-# descargar_casen_mds()
-
-# descargar CASEN 2017 en carpeta especifica
-# descargar_casen_mds(2017, "data-raw")
-</div></pre>
+    <pre class="examples"><div class='input'><span class='co'># descargar CASEN 1990 en carpeta temporal</span>
+<span class='fu'>descargar_casen_mds</span>(<span class='fl'>1990</span>, <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempdir</a></span>())</div><div class='output co'>#&gt; <span class='warning'>Warning: '/tmp/Rtmp2XKG8N' already exists</span></div><div class='output co'>#&gt; <span class='message'>Intentando descargar CASEN 1990...</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

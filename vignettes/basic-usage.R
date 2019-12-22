@@ -6,12 +6,6 @@ library(casen)
 casen_2017_los_rios
 
 ## ---- eval=FALSE---------------------------------------------------------
-#  # todos los anios disponibles
-#  descargar_casen_mds()
-#  
-#  # solo anio 2017
-#  descargar_casen_mds(2017)
-#  
 #  # todos los anios disponibles en carpeta casen-formato-spss
 #  descargar_casen_mds("casen-formato-spss")
 #  
@@ -83,7 +77,7 @@ codigos_casen %>%
   filter(valido_desde == 1990)
 
 ## ---- eval=FALSE---------------------------------------------------------
-#  casen1990 <- read_sav("descargas/1990.sav") %>%
+#  casen1990 <- read_sav("casen-formato-spss/1990.sav") %>%
 #    mutate(comu = as.integer(comu)) %>%
 #    left_join(
 #      codigos_casen %>% filter(valido_desde == 1990) %>% select(starts_with("codigo")),

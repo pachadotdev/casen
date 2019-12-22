@@ -2,23 +2,19 @@
 #' @description Obtiene los archivos de la encuesta en formato RAR o ZIP segun
 #' el anio de la encuesta. No descomprime ni modifica los datasets originales.
 #' @param anios si no se indica un anio, descarga todos los anios disponibles
-#' @param carpeta si no se indica una carpeta, descarga en la carpeta de
-#' trabajo
+#' @param carpeta se debe especificar una carpeta de descarga
 #' @importFrom utils download.file
 #' @importFrom glue glue
 #' @return los archivos comprimidos de la encuesta CASEN descargados desde el
 #' sitio web del MDS
 #' @examples
-#' # descargar todas las encuestas disponibles
-#' # descargar_casen_mds()
-#'
-#' # descargar CASEN 2017 en carpeta especifica
-#' # descargar_casen_mds(2017, "data-raw")
+#' # descargar CASEN 1990 en carpeta temporal
+#' descargar_casen_mds(1990, tempdir())
 #' @export
-descargar_casen_mds <- function(anios = NULL, carpeta = getwd()) {
+descargar_casen_mds <- function(anios = NULL, carpeta = NULL) {
   # checks ----
   stopifnot(is.numeric(anios) | is.null(anios))
-  stopifnot(is.character(carpeta), length(carpeta) == 1)
+  stopifnot(is.character(carpeta), !is.null(carpeta), length(carpeta) == 1)
 
   # download ----
   try(dir.create(carpeta))
@@ -80,22 +76,18 @@ descargar_casen_mds <- function(anios = NULL, carpeta = getwd()) {
 #' Descarga la encuesta CASEN de GitHub
 #' @description Obtiene los archivos de la encuesta en formato R.
 #' @param anios si no se indica un anio, descarga todos los anios disponibles
-#' @param carpeta si no se indica una carpeta, descarga en la carpeta de
-#' trabajo
+#' @param carpeta se debe especificar una carpeta de descarga
 #' @importFrom utils download.file
 #' @importFrom glue glue
 #' @return los archivos rds de la encuesta CASEN descargados desde GitHub
 #' @examples
-#' # descargar todas las encuestas disponibles
-#' # descargar_casen_github()
-#'
-#' # descargar CASEN 2017 en carpeta especifica
-#' # descargar_casen_github(2017, "data-raw")
+#' # descargar CASEN 1990 en carpeta temporal
+#' descargar_casen_github(1990, tempdir())
 #' @export
-descargar_casen_github <- function(anios = NULL, carpeta = getwd()) {
+descargar_casen_github <- function(anios = NULL, carpeta = NULL) {
   # checks ----
   stopifnot(is.numeric(anios) | is.null(anios))
-  stopifnot(is.character(carpeta), length(carpeta) == 1)
+  stopifnot(is.character(carpeta), !is.null(carpeta), length(carpeta) == 1)
   
   # download ----
   try(dir.create(carpeta))

@@ -4,13 +4,12 @@
 \alias{descargar_casen_mds}
 \title{Descarga la encuesta CASEN del sitio web del MDS}
 \usage{
-descargar_casen_mds(anios = NULL, carpeta = getwd())
+descargar_casen_mds(anios = NULL, carpeta = NULL)
 }
 \arguments{
 \item{anios}{si no se indica un anio, descarga todos los anios disponibles}
 
-\item{carpeta}{si no se indica una carpeta, descarga en la carpeta de
-trabajo}
+\item{carpeta}{se debe especificar una carpeta de descarga}
 }
 \value{
 los archivos comprimidos de la encuesta CASEN descargados desde el
@@ -21,9 +20,6 @@ Obtiene los archivos de la encuesta en formato RAR o ZIP segun
 el anio de la encuesta. No descomprime ni modifica los datasets originales.
 }
 \examples{
-# descargar todas las encuestas disponibles
-# descargar_casen_mds()
-
-# descargar CASEN 2017 en carpeta especifica
-# descargar_casen_mds(2017, "data-raw")
+# descargar CASEN 1990 en carpeta temporal
+descargar_casen_mds(1990, tempdir())
 }

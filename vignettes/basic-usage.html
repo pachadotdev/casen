@@ -13,7 +13,7 @@
 
 <meta name="author" content="Mauricio Vargas" />
 
-<meta name="date" content="2019-12-06" />
+<meta name="date" content="2019-12-22" />
 
 <title>Uso basico del paquete casen</title>
 
@@ -21,9 +21,9 @@
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css" data-origin="pandoc">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
@@ -33,16 +33,14 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
+    border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -51,9 +49,9 @@ pre.numberSource code > span > a:first-child::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {   }
+  {  }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+a.sourceLine::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -306,59 +304,53 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 
 <h1 class="title toc-ignore">Uso basico del paquete casen</h1>
 <h4 class="author">Mauricio Vargas</h4>
-<h4 class="date">2019-12-06</h4>
+<h4 class="date">2019-12-22</h4>
 
 
 
 <div id="datos-de-ejemplo" class="section level1">
 <h1>Datos de ejemplo</h1>
 <p>El uso de este paquete se mostrara a partir de los datos de ejemplo. Vamos a leer un subconjunto de la encuesta CASEN que corresponde a las comunas con representatividad comunal en la Region de los Rios. Estos datos se incluyen, a modo de demostracion, con el paquete casen, no asi las encuestas completas que deben ser descargadas y se provee una funcion para hacerlo.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">library</span>(casen)</span>
-<span id="cb1-2"><a href="#cb1-2"></a>casen_<span class="dv">2017</span>_los_rios</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">library</span>(casen)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2">casen_<span class="dv">2017</span>_los_rios</a></code></pre></div>
 <pre><code>## # A tibble: 8,055 x 7
 ##     expc varstrat   varunit ytotcorh      sexo        comuna        pobreza
 ##    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl+lbl&gt;     &lt;dbl+lbl&gt;      &lt;dbl+lbl&gt;
-##  1    53   141283   1.41e10   959765 2 [Mujer] 14101 [Valdi~ 3 [No pobres] 
-##  2    53   141283   1.41e10   959765 2 [Mujer] 14101 [Valdi~ 3 [No pobres] 
-##  3    53   141283   1.41e10   959765 2 [Mujer] 14101 [Valdi~ 3 [No pobres] 
-##  4   105   141283   1.41e10   283273 2 [Mujer] 14101 [Valdi~ 2 [Pobres no ~
-##  5   105   141283   1.41e10   283273 1 [Hombr~ 14101 [Valdi~ 2 [Pobres no ~
-##  6   105   141283   1.41e10   283273 2 [Mujer] 14101 [Valdi~ 2 [Pobres no ~
-##  7   105   141283   1.41e10   353083 2 [Mujer] 14101 [Valdi~ 3 [No pobres] 
-##  8   105   141283   1.41e10   260000 2 [Mujer] 14101 [Valdi~ 2 [Pobres no ~
-##  9   105   141283   1.41e10   260000 2 [Mujer] 14101 [Valdi~ 2 [Pobres no ~
-## 10   105   141283   1.41e10   260000 1 [Hombr~ 14101 [Valdi~ 2 [Pobres no ~
-## # ... with 8,045 more rows</code></pre>
+##  1    53   141283   1.41e10   959765 2 [Mujer] 14101 [Valdi… 3 [No pobres] 
+##  2    53   141283   1.41e10   959765 2 [Mujer] 14101 [Valdi… 3 [No pobres] 
+##  3    53   141283   1.41e10   959765 2 [Mujer] 14101 [Valdi… 3 [No pobres] 
+##  4   105   141283   1.41e10   283273 2 [Mujer] 14101 [Valdi… 2 [Pobres no …
+##  5   105   141283   1.41e10   283273 1 [Hombr… 14101 [Valdi… 2 [Pobres no …
+##  6   105   141283   1.41e10   283273 2 [Mujer] 14101 [Valdi… 2 [Pobres no …
+##  7   105   141283   1.41e10   353083 2 [Mujer] 14101 [Valdi… 3 [No pobres] 
+##  8   105   141283   1.41e10   260000 2 [Mujer] 14101 [Valdi… 2 [Pobres no …
+##  9   105   141283   1.41e10   260000 2 [Mujer] 14101 [Valdi… 2 [Pobres no …
+## 10   105   141283   1.41e10   260000 1 [Hombr… 14101 [Valdi… 2 [Pobres no …
+## # … with 8,045 more rows</code></pre>
 </div>
 <div id="descargar-datos-desde-sitio-web-mds" class="section level1">
 <h1>Descargar datos desde sitio web MDS</h1>
 <p>Para descargar la encuesta CASEN es posible hacerlo desde el sitio web del Ministerio de Desarrollo Social (oficial) o desde GitHub (no oficial).</p>
 <p>No se daran ejemplos con la encuesta casen completa ya que CRAN limita el tiempo en segundos que puede tomar un ejemplo.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># todos los anios disponibles</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="kw">descargar_casen_mds</span>()</span>
-<span id="cb3-3"><a href="#cb3-3"></a></span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="co"># solo anio 2017</span></span>
-<span id="cb3-5"><a href="#cb3-5"></a><span class="kw">descargar_casen_mds</span>(<span class="dv">2017</span>)</span>
-<span id="cb3-6"><a href="#cb3-6"></a></span>
-<span id="cb3-7"><a href="#cb3-7"></a><span class="co"># todos los anios disponibles en carpeta casen-formato-spss</span></span>
-<span id="cb3-8"><a href="#cb3-8"></a><span class="kw">descargar_casen_mds</span>(<span class="st">&quot;casen-formato-spss&quot;</span>)</span>
-<span id="cb3-9"><a href="#cb3-9"></a></span>
-<span id="cb3-10"><a href="#cb3-10"></a><span class="co"># solo anio 2017 en carpeta casen-formato-spss</span></span>
-<span id="cb3-11"><a href="#cb3-11"></a><span class="kw">descargar_casen_mds</span>(<span class="dv">2017</span>, <span class="st">&quot;casen-formato-spss&quot;</span>)</span>
-<span id="cb3-12"><a href="#cb3-12"></a></span>
-<span id="cb3-13"><a href="#cb3-13"></a><span class="co"># leer encuesta CASEN en formato SAV (SPSS)</span></span>
-<span id="cb3-14"><a href="#cb3-14"></a><span class="co"># (se debe descomprimir con winRAR u otro)</span></span>
-<span id="cb3-15"><a href="#cb3-15"></a><span class="kw">library</span>(haven)</span>
-<span id="cb3-16"><a href="#cb3-16"></a><span class="kw">read_sav</span>(<span class="st">&quot;casen-formato-spss/2017.sav&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co"># todos los anios disponibles en carpeta casen-formato-spss</span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw">descargar_casen_mds</span>(<span class="st">&quot;casen-formato-spss&quot;</span>)</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co"># solo anio 2017 en carpeta casen-formato-spss</span></a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="kw">descargar_casen_mds</span>(<span class="dv">2017</span>, <span class="st">&quot;casen-formato-spss&quot;</span>)</a>
+<a class="sourceLine" id="cb3-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co"># leer encuesta CASEN en formato SAV (SPSS)</span></a>
+<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co"># (se debe descomprimir con winRAR u otro)</span></a>
+<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="kw">library</span>(haven)</a>
+<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="kw">read_sav</span>(<span class="st">&quot;casen-formato-spss/2017.sav&quot;</span>)</a></code></pre></div>
 </div>
 <div id="descargar-datos-desde-github" class="section level1">
 <h1>Descargar datos desde GitHub</h1>
 <p>En la misma linea de la seccion anterior, es posible descargar la encuesta CASEN en formato R.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># todos los anios disponibles</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a><span class="kw">descargar_casen_github</span>(<span class="st">&quot;casen-formato-r&quot;</span>)</span>
-<span id="cb4-3"><a href="#cb4-3"></a></span>
-<span id="cb4-4"><a href="#cb4-4"></a><span class="co"># leer encuesta CASEN en formato RDS (R)</span></span>
-<span id="cb4-5"><a href="#cb4-5"></a><span class="kw">readRDS</span>(<span class="st">&quot;casen-formato-r/2017.rds&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="co"># todos los anios disponibles</span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw">descargar_casen_github</span>(<span class="st">&quot;casen-formato-r&quot;</span>)</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co"># leer encuesta CASEN en formato RDS (R)</span></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="kw">readRDS</span>(<span class="st">&quot;casen-formato-r/2017.rds&quot;</span>)</a></code></pre></div>
 </div>
 <div id="disenios-complejos" class="section level1">
 <h1>Disenios complejos</h1>
@@ -366,9 +358,9 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <p>En el contexto de muestreo bietapico, el calculo de los grados de libertad es un tema no resuelto, pero el paquete casen utiliza la siguiente definicion del INE: “Los grados de libertad corresponden a la diferencia entre el numero de conglomerados no vacios (con presencia de la variable de interes) y el numero de estratos no vacios”.</p>
 <p>En dominios de estimacion pequenios la perdida de grados de libertad se vuelve bastante relevante. Esto es muy importante cuando se hacen calculos agrupando por region, sexo, region y sexo, entre otras.</p>
 <p>Al usar la funcion <code>svyby</code> del paquete survey, la funcion no calcula correctamente los grados de libertad de cada dominio, sino que considera un valor fijo para todos los dominios. Las funciones del paquete casen usan esta funcion pero incluyen una serie de pasos programados para usar los grados de libertad adecuados para cada dominio de estimacion.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># disenio complejo a partir de  los datos de ejemplo</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a>cd &lt;-<span class="st"> </span><span class="kw">configuracion_disenio</span>(casen_<span class="dv">2017</span>_los_rios, <span class="st">&quot;ytotcorh&quot;</span>, <span class="kw">c</span>(<span class="st">&quot;comuna&quot;</span>, <span class="st">&quot;sexo&quot;</span>), <span class="st">&quot;expc&quot;</span>)</span>
-<span id="cb5-3"><a href="#cb5-3"></a>cd<span class="op">$</span>disenio</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="co"># disenio complejo a partir de  los datos de ejemplo</span></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2">cd &lt;-<span class="st"> </span><span class="kw">configuracion_disenio</span>(casen_<span class="dv">2017</span>_los_rios, <span class="st">&quot;ytotcorh&quot;</span>, <span class="kw">c</span>(<span class="st">&quot;comuna&quot;</span>, <span class="st">&quot;sexo&quot;</span>), <span class="st">&quot;expc&quot;</span>)</a>
+<a class="sourceLine" id="cb5-3" data-line-number="3">cd<span class="op">$</span>disenio</a></code></pre></div>
 <pre><code>## Stratified 1 - level Cluster Sampling design (with replacement)
 ## With (67) clusters.
 ## Called via srvyr
@@ -378,7 +370,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 ##  - weights: expc
 ## Data variables: ytotcorh (dbl), comuna (dbl+lbl), sexo (dbl+lbl), expc
 ##   (dbl), varunit (dbl), varstrat (dbl)</code></pre>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>cd<span class="op">$</span>grupos</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">cd<span class="op">$</span>grupos</a></code></pre></div>
 <pre><code>## # A tibble: 12 x 2
 ##                 comuna       sexo
 ##              &lt;dbl+lbl&gt;  &lt;dbl+lbl&gt;
@@ -398,8 +390,8 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <div id="medidas-de-tendencia-central-con-disenio-complejo" class="section level1">
 <h1>Medidas de tendencia central con disenio complejo</h1>
 <p>La funcion <code>estadistica_descriptiva()</code> toma en cuenta el disenio complejo y los grados de libertad. Puedo agrupar por una o mas variables y la funcion entrega, ademas del promedio, el intervalo de confianza.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># media, mediana y percentil 70</span></span>
-<span id="cb9-2"><a href="#cb9-2"></a><span class="kw">media_agrupada</span>(cd)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="co"># media, mediana y percentil 70</span></a>
+<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="kw">media_agrupada</span>(cd)</a></code></pre></div>
 <pre><code>## # A tibble: 12 x 7
 ##    comuna_etiqueta sexo_etiqueta comuna_codigo sexo_codigo media_ytotcorh
 ##    &lt;chr&gt;           &lt;chr&gt;         &lt;chr&gt;         &lt;chr&gt;                &lt;dbl&gt;
@@ -415,9 +407,9 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 ## 10 La Unión        Mujer         14201         2                  751564.
 ## 11 Río Bueno       Hombre        14204         1                  772788.
 ## 12 Río Bueno       Mujer         14204         2                  713756.
-## # ... with 2 more variables: media_ytotcorh_inf &lt;dbl&gt;,
+## # … with 2 more variables: media_ytotcorh_inf &lt;dbl&gt;,
 ## #   media_ytotcorh_sup &lt;dbl&gt;</code></pre>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="kw">mediana_agrupada</span>(cd)</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw">mediana_agrupada</span>(cd)</a></code></pre></div>
 <pre><code>## # A tibble: 12 x 7
 ##    comuna_etiqueta sexo_etiqueta comuna_codigo sexo_codigo mediana_ytotcorh
 ##    &lt;chr&gt;           &lt;chr&gt;         &lt;chr&gt;         &lt;chr&gt;                  &lt;dbl&gt;
@@ -433,9 +425,9 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 ## 10 La Unión        Mujer         14201         2                    567739.
 ## 11 Río Bueno       Hombre        14204         1                    696373.
 ## 12 Río Bueno       Mujer         14204         2                    631806 
-## # ... with 2 more variables: mediana_ytotcorh_inf &lt;dbl&gt;,
+## # … with 2 more variables: mediana_ytotcorh_inf &lt;dbl&gt;,
 ## #   mediana_ytotcorh_sup &lt;dbl&gt;</code></pre>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="kw">percentiles_agrupados</span>(cd)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw">percentiles_agrupados</span>(cd)</a></code></pre></div>
 <pre><code>## # A tibble: 12 x 7
 ##    percentil comuna_etiqueta sexo_etiqueta comuna_codigo sexo_codigo
 ##        &lt;dbl&gt; &lt;chr&gt;           &lt;chr&gt;         &lt;chr&gt;         &lt;chr&gt;      
@@ -451,29 +443,29 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 ## 10       0.7 La Unión        Mujer         14201         2          
 ## 11       0.7 Río Bueno       Hombre        14204         1          
 ## 12       0.7 Río Bueno       Mujer         14204         2          
-## # ... with 2 more variables: mediana_ytotcorh &lt;dbl&gt;,
+## # … with 2 more variables: mediana_ytotcorh &lt;dbl&gt;,
 ## #   mediana_ytotcorh_err_est &lt;dbl&gt;</code></pre>
 </div>
 <div id="uso-de-las-funciones-de-casen-y-dplyr" class="section level1">
 <h1>Uso de las funciones de casen y dplyr</h1>
 <p>Las funciones de <code>casen</code> estan pensadas para usarse en conjunto con las de <code>dplyr</code>. Un ejemplo simple de esto es el calculo del porcentaje de hogares pobres.</p>
 <p>Veamos el caso puntual de las funciones <code>mutate</code> y <code>filter</code> de dplyr.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="kw">library</span>(dplyr)</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="kw">library</span>(dplyr)</a></code></pre></div>
 <pre><code>## 
-## Attaching package: &#39;dplyr&#39;</code></pre>
-<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## Attaching package: 'dplyr'</code></pre>
+<pre><code>## The following objects are masked from 'package:stats':
 ## 
 ##     filter, lag</code></pre>
-<pre><code>## The following objects are masked from &#39;package:base&#39;:
+<pre><code>## The following objects are masked from 'package:base':
 ## 
 ##     intersect, setdiff, setequal, union</code></pre>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="co"># convierto pobreza a una variable binaria</span></span>
-<span id="cb19-2"><a href="#cb19-2"></a>casen_<span class="dv">2017</span>_los_rios <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb19-3"><a href="#cb19-3"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">pobreza =</span> <span class="kw">ifelse</span>(pobreza <span class="op">&lt;=</span><span class="st"> </span><span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb19-4"><a href="#cb19-4"></a><span class="st">  </span><span class="kw">configuracion_disenio</span>(<span class="st">&quot;pobreza&quot;</span>, <span class="st">&quot;comuna&quot;</span>, <span class="st">&quot;expc&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb19-5"><a href="#cb19-5"></a><span class="st">  </span><span class="kw">media_agrupada</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1"><span class="co"># convierto pobreza a una variable binaria</span></a>
+<a class="sourceLine" id="cb19-2" data-line-number="2">casen_<span class="dv">2017</span>_los_rios <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb19-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">pobreza =</span> <span class="kw">ifelse</span>(pobreza <span class="op">&lt;=</span><span class="st"> </span><span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb19-4" data-line-number="4"><span class="st">  </span><span class="kw">configuracion_disenio</span>(<span class="st">&quot;pobreza&quot;</span>, <span class="st">&quot;comuna&quot;</span>, <span class="st">&quot;expc&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb19-5" data-line-number="5"><span class="st">  </span><span class="kw">media_agrupada</span>()</a></code></pre></div>
 <pre><code>## # A tibble: 6 x 5
-##   comuna_etiqueta comuna_codigo media_pobreza media_pobreza_i~
+##   comuna_etiqueta comuna_codigo media_pobreza media_pobreza_i…
 ##   &lt;chr&gt;           &lt;chr&gt;                 &lt;dbl&gt;            &lt;dbl&gt;
 ## 1 Valdivia        14101                0.0753           0.0513
 ## 2 Los Lagos       14104                0.156            0.104 
@@ -481,15 +473,15 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 ## 4 Panguipulli     14108                0.133            0.0928
 ## 5 La Unión        14201                0.132            0.0656
 ## 6 Río Bueno       14204                0.170            0.0736
-## # ... with 1 more variable: media_pobreza_sup &lt;dbl&gt;</code></pre>
+## # … with 1 more variable: media_pobreza_sup &lt;dbl&gt;</code></pre>
 </div>
 <div id="inferencia-con-disenios-complejos" class="section level1">
 <h1>Inferencia con disenios complejos</h1>
 <p>El paquete casen provee dos funciones para sacar el maximo partido a las funciones de R tomando en cuenta el disenio complejo y los grados de libertad.</p>
 <p>Ajuste del modelo:</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="co"># modelo: ytotcorh = b0 + b1 comuna + b2 sexo + e</span></span>
-<span id="cb21-2"><a href="#cb21-2"></a>mod &lt;-<span class="st"> </span><span class="kw">modelo_lineal_generalizado</span>(cd, <span class="st">&quot;ytotcorh ~ comuna + sexo&quot;</span>)</span>
-<span id="cb21-3"><a href="#cb21-3"></a><span class="kw">summary</span>(mod)</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1"><span class="co"># modelo: ytotcorh = b0 + b1 comuna + b2 sexo + e</span></a>
+<a class="sourceLine" id="cb21-2" data-line-number="2">mod &lt;-<span class="st"> </span><span class="kw">modelo_lineal_generalizado</span>(cd, <span class="st">&quot;ytotcorh ~ comuna + sexo&quot;</span>)</a>
+<a class="sourceLine" id="cb21-3" data-line-number="3"><span class="kw">summary</span>(mod)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## svyglm(formula = stats::as.formula(modelo), design = disenio$disenio)
@@ -503,7 +495,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 ## comuna         -3860.7      977.4  -3.950 0.000232 ***
 ## sexo          -58713.5    23514.9  -2.497 0.015672 *  
 ## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
 ## (Dispersion parameter for gaussian family taken to be 1.491064e+12)
 ## 
@@ -513,26 +505,26 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <h1>Uso de las funciones de casen con paquetes “tidy”</h1>
 <p>Ademas de dplyr, casen se integra perfectamente con los paquetes del <a href="https://www.tidyverse.org/">Tidyverse</a> y otros paquetes afines.</p>
 <p>Por ejemplo, el paquete broom permite obtener una tabla con los intervalos de confianza para los betas estimados del modelo.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="kw">library</span>(broom)</span>
-<span id="cb23-2"><a href="#cb23-2"></a><span class="kw">library</span>(survey)</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1"><span class="kw">library</span>(broom)</a>
+<a class="sourceLine" id="cb23-2" data-line-number="2"><span class="kw">library</span>(survey)</a></code></pre></div>
 <pre><code>## Loading required package: grid</code></pre>
 <pre><code>## Loading required package: Matrix</code></pre>
 <pre><code>## Loading required package: survival</code></pre>
 <pre><code>## 
-## Attaching package: &#39;survey&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:graphics&#39;:
+## Attaching package: 'survey'</code></pre>
+<pre><code>## The following object is masked from 'package:graphics':
 ## 
 ##     dotchart</code></pre>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="kw">library</span>(janitor)</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1"><span class="kw">library</span>(janitor)</a></code></pre></div>
 <pre><code>## 
-## Attaching package: &#39;janitor&#39;</code></pre>
-<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## Attaching package: 'janitor'</code></pre>
+<pre><code>## The following objects are masked from 'package:stats':
 ## 
 ##     chisq.test, fisher.test</code></pre>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="co"># usamos ddf y degf del paquete survey para hacer el mismo calculo</span></span>
-<span id="cb32-2"><a href="#cb32-2"></a><span class="co"># que realiza Stata</span></span>
-<span id="cb32-3"><a href="#cb32-3"></a>mod_conf &lt;-<span class="st"> </span><span class="kw">confint_tidy</span>(mod, <span class="dt">ddf =</span> <span class="kw">degf</span>(cd<span class="op">$</span>disenio))</span>
-<span id="cb32-4"><a href="#cb32-4"></a>mod_conf</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1"><span class="co"># usamos ddf y degf del paquete survey para hacer el mismo calculo</span></a>
+<a class="sourceLine" id="cb32-2" data-line-number="2"><span class="co"># que realiza Stata</span></a>
+<a class="sourceLine" id="cb32-3" data-line-number="3">mod_conf &lt;-<span class="st"> </span><span class="kw">confint_tidy</span>(mod, <span class="dt">ddf =</span> <span class="kw">degf</span>(cd<span class="op">$</span>disenio))</a>
+<a class="sourceLine" id="cb32-4" data-line-number="4">mod_conf</a></code></pre></div>
 <pre><code>## # A tibble: 3 x 2
 ##    conf.low conf.high
 ##       &lt;dbl&gt;     &lt;dbl&gt;
@@ -540,16 +532,16 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 ## 2    -5820.    -1902.
 ## 3  -105838.   -11589.</code></pre>
 <p>Lo anterior se puede ordenar y presentar los betas junto con los intervalos de confianza.</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a><span class="co"># ordenamos la salida del modelo</span></span>
-<span id="cb34-2"><a href="#cb34-2"></a>mod_betas &lt;-<span class="st"> </span><span class="kw">tidy</span>(mod)</span>
-<span id="cb34-3"><a href="#cb34-3"></a></span>
-<span id="cb34-4"><a href="#cb34-4"></a><span class="co"># pegamos las columnas</span></span>
-<span id="cb34-5"><a href="#cb34-5"></a>mod_betas &lt;-<span class="st"> </span><span class="kw">bind_cols</span>(mod_betas, mod_conf)</span>
-<span id="cb34-6"><a href="#cb34-6"></a></span>
-<span id="cb34-7"><a href="#cb34-7"></a><span class="co"># ordenamos los nombres de las columnas</span></span>
-<span id="cb34-8"><a href="#cb34-8"></a>mod_betas &lt;-<span class="st"> </span><span class="kw">clean_names</span>(mod_betas)</span>
-<span id="cb34-9"><a href="#cb34-9"></a></span>
-<span id="cb34-10"><a href="#cb34-10"></a>mod_betas</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1"><span class="co"># ordenamos la salida del modelo</span></a>
+<a class="sourceLine" id="cb34-2" data-line-number="2">mod_betas &lt;-<span class="st"> </span><span class="kw">tidy</span>(mod)</a>
+<a class="sourceLine" id="cb34-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb34-4" data-line-number="4"><span class="co"># pegamos las columnas</span></a>
+<a class="sourceLine" id="cb34-5" data-line-number="5">mod_betas &lt;-<span class="st"> </span><span class="kw">bind_cols</span>(mod_betas, mod_conf)</a>
+<a class="sourceLine" id="cb34-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb34-7" data-line-number="7"><span class="co"># ordenamos los nombres de las columnas</span></a>
+<a class="sourceLine" id="cb34-8" data-line-number="8">mod_betas &lt;-<span class="st"> </span><span class="kw">clean_names</span>(mod_betas)</a>
+<a class="sourceLine" id="cb34-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb34-10" data-line-number="10">mod_betas</a></code></pre></div>
 <pre><code>## # A tibble: 3 x 7
 ##   term         estimate std_error statistic  p_value  conf_low conf_high
 ##   &lt;chr&gt;           &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
@@ -561,8 +553,8 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <h1>Comparabilidad entre encuestas</h1>
 <p>El paquete casen provee un conjunto de datos con la correspondencia de los codigos de comunas.</p>
 <p>Veamos como convertir los codigos de la encuesta CASEN 1990 a codigos SUBDERE 2017.</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a>codigos_casen <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb36-2"><a href="#cb36-2"></a><span class="st">  </span><span class="kw">filter</span>(valido_desde <span class="op">==</span><span class="st"> </span><span class="dv">1990</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1">codigos_casen <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb36-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(valido_desde <span class="op">==</span><span class="st"> </span><span class="dv">1990</span>)</a></code></pre></div>
 <pre><code>## # A tibble: 323 x 4
 ## # Groups:   codigo_casen, codigo_subdere_2017 [323]
 ##    valido_desde valido_hasta codigo_casen codigo_subdere_2017
@@ -577,13 +569,13 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 ##  8         1990         2003         9101 09201              
 ##  9         1990         2003         2301 02101              
 ## 10         1990         2003         8204 08302              
-## # ... with 313 more rows</code></pre>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a>casen1990 &lt;-<span class="st"> </span><span class="kw">read_sav</span>(<span class="st">&quot;descargas/1990.sav&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb38-2"><a href="#cb38-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">comu =</span> <span class="kw">as.integer</span>(comu)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb38-3"><a href="#cb38-3"></a><span class="st">  </span><span class="kw">left_join</span>(</span>
-<span id="cb38-4"><a href="#cb38-4"></a>    codigos_casen <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(valido_desde <span class="op">==</span><span class="st"> </span><span class="dv">1990</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(<span class="kw">starts_with</span>(<span class="st">&quot;codigo&quot;</span>)),</span>
-<span id="cb38-5"><a href="#cb38-5"></a>    <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;comu&quot;</span> =<span class="st"> &quot;codigo_casen&quot;</span>)</span>
-<span id="cb38-6"><a href="#cb38-6"></a>  )</span></code></pre></div>
+## # … with 313 more rows</code></pre>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1">casen1990 &lt;-<span class="st"> </span><span class="kw">read_sav</span>(<span class="st">&quot;casen-formato-spss/1990.sav&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb38-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">comu =</span> <span class="kw">as.integer</span>(comu)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb38-3" data-line-number="3"><span class="st">  </span><span class="kw">left_join</span>(</a>
+<a class="sourceLine" id="cb38-4" data-line-number="4">    codigos_casen <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(valido_desde <span class="op">==</span><span class="st"> </span><span class="dv">1990</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(<span class="kw">starts_with</span>(<span class="st">&quot;codigo&quot;</span>)),</a>
+<a class="sourceLine" id="cb38-5" data-line-number="5">    <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;comu&quot;</span> =<span class="st"> &quot;codigo_casen&quot;</span>)</a>
+<a class="sourceLine" id="cb38-6" data-line-number="6">  )</a></code></pre></div>
 </div>
 
 
