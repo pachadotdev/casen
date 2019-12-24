@@ -35,16 +35,16 @@ a formato tidy (todo en minusculas reemplazando puntos y espacios por guion bajo
 
 Links de descarga:
 
-* https://pacha.hk/casen/data-rds/1990.rds
-* https://pacha.hk/casen/data-rds/1992.rds
-* https://pacha.hk/casen/data-rds/1994.rds
-* https://pacha.hk/casen/data-rds/1996.rds
-* https://pacha.hk/casen/data-rds/1998.rds
-* https://pacha.hk/casen/data-rds/2000.rds
-* https://pacha.hk/casen/data-rds/2003.rds
-* https://pacha.hk/casen/data-rds/2006.rds
-* https://pacha.hk/casen/data-rds/2009.rds
-* https://pacha.hk/casen/data-rds/2011.rds
-* https://pacha.hk/casen/data-rds/2013.rds
-* https://pacha.hk/casen/data-rds/2015.rds
-* https://pacha.hk/casen/data-rds/2017.rds
+* https://pachamaltese.github.io/casen/data-rds/1990.rds
+* https://pachamaltese.github.io/casen/data-rds/1992.rds
+* https://pachamaltese.github.io/casen/data-rds/1994.rds
+* https://pachamaltese.github.io/casen/data-rds/1996.rds
+* https://pachamaltese.github.io/casen/data-rds/1998.rds
+* https://pachamaltese.github.io/casen/data-rds/2000.rds
+* https://pachamaltese.github.io/casen/data-rds/2003.rds
+* https://pachamaltese.github.io/casen/data-rds/2006.rds
+* https://pachamaltese.github.io/casen/data-rds/2009.rds
+* https://pachamaltese.github.io/casen/data-rds/2011.rds
+* https://pachamaltese.github.io/casen/data-rds/2013.rds
+* https://pachamaltese.github.io/casen/data-rds/2015.rds
+* https://pachamaltese.github.io/casen/data-rds/2017.rds
