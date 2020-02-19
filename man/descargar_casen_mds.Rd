@@ -2,7 +2,7 @@
 % Please edit documentation in R/download_casen.R
 \name{descargar_casen_mds}
 \alias{descargar_casen_mds}
-\title{Descarga la encuesta CASEN del sitio web del MDS}
+\title{Descarga la encuesta CASEN del sitio web del Ministerio de Desarrollo Social}
 \usage{
 descargar_casen_mds(anios = NULL, carpeta = NULL)
 }

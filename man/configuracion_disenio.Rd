@@ -4,9 +4,14 @@
 \alias{configuracion_disenio}
 \title{Diseño complejo para estadistica descriptiva e inferencia}
 \usage{
-configuracion_disenio(datos, variable = "ytotcorh",
-  agrupacion = "region", peso = "expr", conglomerado = "varunit",
-  estrato = "varstrat")
+configuracion_disenio(
+  datos,
+  variable = "ytotcorh",
+  agrupacion = "region",
+  peso = "expr",
+  conglomerado = "varunit",
+  estrato = "varstrat"
+)
 }
 \arguments{
 \item{datos}{un data.frame o tibble con la encuesta CASEN (o un subconjunto 

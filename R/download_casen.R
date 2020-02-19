@@ -1,4 +1,4 @@
-#' Descarga la encuesta CASEN del sitio web del MDS
+#' Descarga la encuesta CASEN del sitio web del Ministerio de Desarrollo Social
 #' @description Obtiene los archivos de la encuesta en formato RAR o ZIP segun
 #' el anio de la encuesta. No descomprime ni modifica los datasets originales.
 #' @param anios si no se indica un anio, descarga todos los anios disponibles
@@ -102,7 +102,7 @@ descargar_casen_github <- function(anios = NULL, carpeta = NULL) {
     anios <- c(seq(1990, 2000, 2), seq(2003, 2009, 3), seq(2011, 2017, 2))
   }
   
-  urls <- glue::glue("https://pacha.hk/casen/data-rds/{all_years}.rds")
+  urls <- glue::glue("https://pachamaltese.github.io/casen/data-rds/{all_years}.rds")
   
   links <- data.frame(
     year = all_years,

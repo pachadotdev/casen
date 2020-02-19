@@ -1,8 +1,9 @@
 Package: casen
 Type: Package
-Title: Metodos de Estimacion con Disenio Probabilistico y Estratificado en Encuesta CASEN
- (Estimation Methods With Probabilistic Stratified Sampling in CASEN Survey)
-Version: 0.1.1
+Title: Metodos De Estimacion Con Disenio Probabilistico y Estratificado en 
+  Encuesta CASEN (Estimation Methods with Probabilistic Stratified Sampling in 
+  CASEN Survey)
+Version: 0.1.2
 Authors@R: c(
       person(given = "Mauricio",
         family = "Vargas",
@@ -12,6 +13,9 @@ Authors@R: c(
       person(given = "Ricardo",
         family = "Aravena",
         role = c("ths")),
+      person(given = "Klaus",
+        family = "Lehmann",
+        role = c("ctb")),
       person(family = "Pontificia Universidad Catolica de Chile",
         role = "cph"),
       person(family = "Ministerio de Desarrollo Social (MDS)",
@@ -19,15 +23,17 @@ Authors@R: c(
       person(family = "Subsecretaria de Desarrollo Regional (SUBDERE)",
         role = "dtc")
     )
-URL: https://pacha.hk/casen/
+URL: https://pachamaltese.github.io/casen/
 BugReports: https://github.com/pachamaltese/casen/issues
 Description: Funciones para realizar estadistica descriptiva e inferencia con el
- disenio complejo de la encuesta CASEN. Incluye datasets que permiten armonizar
- los codigos de comunas que cambian entre anios y permite convertir a los
- codigos oficiales de SUBDERE.
- Functions to compute descriptive and inferential statistics with CASEN
- survey complex design. This includes datasets to harmonize commune codes
- that change across years and allow to convert to official SUBDERE codes.
+ disenio complejo de la Encuesta CASEN (Encuesta de Caracterizacion 
+ Socio-Economica). Incluye datasets que permiten armonizar los codigos de 
+ comunas que cambian entre anios y permite convertir a los codigos oficiales de 
+ SUBDERE.
+ (Functions to compute descriptive and inferential statistics with CASEN
+ Survey [Socio-Economic Characterization Survey] complex design. Includes 
+ datasets to harmonize commune codes that change across years and allows to 
+ convert to official SUBDERE codes.)
 License: GPL-3
 Depends: R (>= 3.5.0)
 Imports: 
@@ -55,5 +61,5 @@ Suggests:
     broom
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.2
 VignetteBuilder: knitr

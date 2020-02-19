@@ -17,12 +17,17 @@ en castellano asciificado para que funcione sin problema en diferentes plataform
 
 # Documentacion
 
-La documentacion esta disponible en https://pacha.hk/casen. Se incluyen ejemplos
+La documentacion esta disponible en https://pacha.dev/casen. Se incluyen ejemplos
 de uso de las funciones del paquete casen y como se integra con otros paquetes de R.
 
 # Instalacion
 
-Ejecuta el siguiente codigo en RStudio.
+Version estable
+```
+install.packages("chilemapas")
+```
+
+Version de desarrollo
 ```
 source("https://install-github.me/pachamaltese/casen")
 ```

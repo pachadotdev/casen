@@ -5,10 +5,10 @@
   ],
   "@type": "SoftwareSourceCode",
   "identifier": "casen",
-  "description": "Funciones para realizar estadistica descriptiva e inferencia con el\n disenio complejo de la encuesta CASEN. Incluye datasets que permiten armonizar\n los codigos de comunas que cambian entre anios y permite convertir a los\n codigos oficiales de SUBDERE.\n Functions to compute descriptive and inferential statistics with CASEN\n survey complex design. This includes datasets to harmonize commune codes\n that change across years and allow to convert to official SUBDERE codes.",
+  "description": "Funciones para realizar estadistica descriptiva e inferencia con el\n disenio complejo de la encuesta CASEN. Incluye datasets que permiten armonizar\n los codigos de comunas que cambian entre anios y permite convertir a los\n codigos oficiales de SUBDERE.\n (Functions to compute descriptive and inferential statistics with CASEN\n survey complex design. Includes datasets to harmonize commune codes\n that change across years and allows to convert to official SUBDERE codes.)",
   "name": "casen: Metodos de Estimacion con Disenio Probabilistico y Estratificado en Encuesta CASEN\n (Estimation Methods With Probabilistic Stratified Sampling in CASEN Survey)",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -307,7 +307,7 @@
   ],
   "codeRepository": "https://pacha.hk/casen/",
   "readme": "https://github.com/pachamaltese/casen/blob/master/README.md",
-  "fileSize": "44.519KB",
+  "fileSize": "44.489KB",
   "contIntegration": [
     "https://travis-ci.org/pachamaltese/casen",
     "https://codecov.io/gh/pachamaltese/casen?branch=master"

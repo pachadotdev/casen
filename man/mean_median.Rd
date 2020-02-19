@@ -4,8 +4,17 @@
 \alias{mean_median}
 \title{Envolvente para estadistica descriptiva con diseños complejos}
 \usage{
-mean_median(d_groups, des, stat_fun, agrupacion, conglomerado, estrato,
-  peso, variable, col_prefix)
+mean_median(
+  d_groups,
+  des,
+  stat_fun,
+  agrupacion,
+  conglomerado,
+  estrato,
+  peso,
+  variable,
+  col_prefix
+)
 }
 \arguments{
 \item{d_groups}{un vector que sea la salida de unique_tuples()}
