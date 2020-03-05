@@ -9,7 +9,7 @@
 #' sitio web del MDS
 #' @examples
 #' # descargar CASEN 1990 en carpeta temporal
-#' descargar_casen_mds(1990, tempdir())
+#' \donttest{descargar_casen_mds(1990, tempdir())}
 #' @export
 descargar_casen_mds <- function(anios = NULL, carpeta = NULL) {
   # checks ----

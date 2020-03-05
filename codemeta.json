@@ -5,17 +5,17 @@
   ],
   "@type": "SoftwareSourceCode",
   "identifier": "casen",
-  "description": "Funciones para realizar estadistica descriptiva e inferencia con el\n disenio complejo de la encuesta CASEN. Incluye datasets que permiten armonizar\n los codigos de comunas que cambian entre anios y permite convertir a los\n codigos oficiales de SUBDERE.\n (Functions to compute descriptive and inferential statistics with CASEN\n survey complex design. Includes datasets to harmonize commune codes\n that change across years and allows to convert to official SUBDERE codes.)",
-  "name": "casen: Metodos de Estimacion con Disenio Probabilistico y Estratificado en Encuesta CASEN\n (Estimation Methods With Probabilistic Stratified Sampling in CASEN Survey)",
+  "description": "Funciones para realizar estadistica descriptiva e inferencia con el\n disenio complejo de la Encuesta CASEN (Encuesta de Caracterizacion \n Socio-Economica). Incluye datasets que permiten armonizar los codigos de \n comunas que cambian entre anios y permite convertir a los codigos oficiales de \n SUBDERE.\n (Functions to compute descriptive and inferential statistics with CASEN\n Survey [Socio-Economic Characterization Survey] complex design. Includes \n datasets to harmonize commune codes that change across years and allows to \n convert to official SUBDERE codes.)",
+  "name": "casen: Metodos De Estimacion Con Disenio Probabilistico y Estratificado en \n  Encuesta CASEN (Estimation Methods with Probabilistic Stratified Sampling in \n  CASEN Survey)",
   "license": "https://spdx.org/licenses/GPL-3.0",
   "version": "0.1.2",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
-    "version": "3.6.1",
+    "version": "3.6.2",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 3.6.1 (2019-07-05)",
+  "runtimePlatform": "R version 3.6.2 (2019-12-12)",
   "author": [
     {
       "@type": "Person",
@@ -26,6 +26,11 @@
     }
   ],
   "contributor": [
+    {
+      "@type": "Person",
+      "givenName": "Klaus",
+      "familyName": "Lehmann"
+    },
     {
       "@type": "Organization",
       "name": "Ministerio de Desarrollo Social (MDS)"
@@ -305,9 +310,9 @@
       "sameAs": "https://CRAN.R-project.org/package=purrr"
     }
   ],
-  "codeRepository": "https://pacha.hk/casen/",
+  "codeRepository": "https://pachamaltese.github.io/casen/",
   "readme": "https://github.com/pachamaltese/casen/blob/master/README.md",
-  "fileSize": "44.489KB",
+  "fileSize": "44.409KB",
   "contIntegration": [
     "https://travis-ci.org/pachamaltese/casen",
     "https://codecov.io/gh/pachamaltese/casen?branch=master"

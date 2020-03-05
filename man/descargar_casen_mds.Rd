@@ -21,5 +21,5 @@ el anio de la encuesta. No descomprime ni modifica los datasets originales.
 }
 \examples{
 # descargar CASEN 1990 en carpeta temporal
-descargar_casen_mds(1990, tempdir())
+\donttest{descargar_casen_mds(1990, tempdir())}
 }
