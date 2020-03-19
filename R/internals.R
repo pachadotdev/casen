@@ -16,7 +16,7 @@ check_input <- function(datos, variable, agrupacion, peso, conglomerado, estrato
   stopifnot(is.character(estrato), estrato %in% colnames(datos), length(estrato) == 1)
 }
 
-#' Elimina las observaciones con NA en variables de agrupación
+#' Elimina las observaciones con NA en variables de agrupacion
 #' @param datos un data.frame o tibble con la encuesta CASEN (o un subconjunto acotado a una region, etc)
 #' @param variable una columna de tipo numerico, por ejemplo ytotcorh que es la opcion por defecto
 #' @param agrupacion una columna de tipo texto/factor, por ejemplo region que es la opcion por defecto
@@ -50,15 +50,15 @@ clean_data <- function(datos, variable, agrupacion, peso, conglomerado, estrato)
 #' @keywords internal
 #' @export
 create_design <- function(d, variable, agrupacion, peso, conglomerado, estrato) {
-  d <- d %>% 
+  d <- d %>%
     srvyr::as_survey_design(
       ids = !!sym(conglomerado), strata = !!sym(estrato), weights = !!sym(peso)
     )
-  
+
   return(d)
 }
 
-#' Obtiene los grupos únicos a partir de las variables de agrupación
+#' Obtiene los grupos unicos a partir de las variables de agrupacion
 #' Extract unique groups from grouping variables combinations
 #' @param d un data.frame o tibble
 #' @param agrupacion columnas de tipo teto/factor en d
@@ -95,7 +95,7 @@ check_nas <- function(d) {
 #' Envolvente para estadistica descriptiva con diseños complejos
 #' @param d_groups un vector que sea la salida de unique_tuples()
 #' @param des disenio de encuesta a partir de un data.frame o tibble
-#' @param stat_fun la función a usar para la agregacion, por ejemplo srvyr::survey_mean()
+#' @param stat_fun la funcion a usar para la agregacion, por ejemplo srvyr::survey_mean()
 #' @param agrupacion una columna de tipo texto/factor, por ejemplo region que es la opcion por defecto
 #' @param conglomerado una columna de tipo numerico, por defecto es varunit de acuerdo al manual CASEN 2017
 #' @param estrato una columna de tipo numerico, por defecto es varunit de acuerdo al manual CASEN 2017
@@ -118,36 +118,36 @@ mean_median <- function(d_groups, des, stat_fun, agrupacion, conglomerado, estra
     function(j) {
       filter_values <- d_groups %>% dplyr::slice(j)
       filter_syms <- purrr::map2(names(filter_values), filter_values, ~rlang::expr(!!sym(.x) == !!.y))
-      
+
       des2 <- des %>%
         dplyr::filter(!!!filter_syms)
-      
-      des2 <- des2 %>% 
-        dplyr::group_by(!!!syms(c(agrupacion))) %>% 
+
+      des2 <- des2 %>%
+        dplyr::group_by(!!!syms(c(agrupacion))) %>%
         dplyr::summarise(
           !!sym(paste0(col_prefix, variable)) := stat_fun(!!sym(variable), vartype = "ci", df = survey::degf(des2))
         )
-      
-      des2_1 <- des2 %>% 
-        dplyr::select_if(haven::is.labelled) %>% 
+
+      des2_1 <- des2 %>%
+        dplyr::select_if(haven::is.labelled) %>%
         dplyr::mutate_if(haven::is.labelled, labelled::to_factor) %>%
         dplyr::mutate_if(is.factor, as.character)
-      
+
       names(des2_1) <- paste0(names(des2_1), "_etiqueta")
-      
-      des2_2 <- des2 %>% 
-        dplyr::select_if(haven::is.labelled) %>% 
+
+      des2_2 <- des2 %>%
+        dplyr::select_if(haven::is.labelled) %>%
         dplyr::mutate_if(haven::is.labelled, as.character)
-      
+
       names(des2_2) <- paste0(names(des2_2), "_codigo")
-      
-      des2_3 <- des2 %>% 
+
+      des2_3 <- des2 %>%
         dplyr::select_if(purrr::negate(haven::is.labelled))
-      
-      des2 <- des2_1 %>% 
-        dplyr::bind_cols(des2_2) %>% 
+
+      des2 <- des2_1 %>%
+        dplyr::bind_cols(des2_2) %>%
         dplyr::bind_cols(des2_3)
-      
+
       return(des2)
     }
   ))

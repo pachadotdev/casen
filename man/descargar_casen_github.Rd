@@ -12,7 +12,7 @@ descargar_casen_github(anios = NULL, carpeta = NULL)
 \item{carpeta}{se debe especificar una carpeta de descarga}
 }
 \value{
-los archivos rds de la encuesta CASEN descargados desde GitHub
+Los archivos rds de la encuesta CASEN descargados desde GitHub.
 }
 \description{
 Obtiene los archivos de la encuesta en formato R.

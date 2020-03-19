@@ -5,8 +5,8 @@
 #' @param carpeta se debe especificar una carpeta de descarga
 #' @importFrom utils download.file
 #' @importFrom glue glue
-#' @return los archivos comprimidos de la encuesta CASEN descargados desde el
-#' sitio web del MDS
+#' @return Los archivos comprimidos de la encuesta CASEN descargados desde el
+#' sitio web del Ministerio de Desarrollo Social.
 #' @examples
 #' # descargar CASEN 1990 en carpeta temporal
 #' \donttest{descargar_casen_mds(1990, tempdir())}
@@ -79,7 +79,7 @@ descargar_casen_mds <- function(anios = NULL, carpeta = NULL) {
 #' @param carpeta se debe especificar una carpeta de descarga
 #' @importFrom utils download.file
 #' @importFrom glue glue
-#' @return los archivos rds de la encuesta CASEN descargados desde GitHub
+#' @return Los archivos rds de la encuesta CASEN descargados desde GitHub.
 #' @examples
 #' # descargar CASEN 1990 en carpeta temporal
 #' descargar_casen_github(1990, tempdir())

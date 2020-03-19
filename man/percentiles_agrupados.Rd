@@ -7,14 +7,14 @@
 percentiles_agrupados(disenio, percentiles = 0.7)
 }
 \arguments{
-\item{disenio}{la salida de `configuracion_disenio()` que provee además los
+\item{disenio}{la salida de `configuracion_disenio()` que provee ademas los
 grupos y las variables en forma de lista}
 
 \item{percentiles}{percentiles a calcular, si no se especifica calcula el
 percentil 70}
 }
 \value{
-una tabla con los percentiles y su error estándar
+Una tabla con los percentiles y su error estandar.
 }
 \description{
 Usa los factores de expansion, conglomerados y estratos para

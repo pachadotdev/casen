@@ -7,15 +7,15 @@
 modelo_lineal_generalizado(disenio, modelo = "ytotcorh ~ sexo")
 }
 \arguments{
-\item{disenio}{la salida de `configuracion_disenio()` que provee además los
+\item{disenio}{la salida de `configuracion_disenio()` que provee ademas los
 grupos y las variables en forma de lista}
 
-\item{modelo}{una expresion simbólica escrita como cadena de texto, consulta
-[stats::formula()] para los detalles de modelos con componentes logarítmicas,
-cuadráticas, etc.}
+\item{modelo}{una expresion simbolica escrita como cadena de texto, consulta
+[stats::formula()] para los detalles de modelos con componentes logaritmicas,
+cuadraticas, etc.}
 }
 \value{
-una lista cuyas clases son svyglm, glm y lm
+Una lista cuyas clases son svyglm, glm y lm.
 }
 \description{
 Usa los factores de expansion, conglomerados y estratos para

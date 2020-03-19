@@ -21,7 +21,7 @@ mean_median(
 
 \item{des}{disenio de encuesta a partir de un data.frame o tibble}
 
-\item{stat_fun}{la función a usar para la agregacion, por ejemplo srvyr::survey_mean()}
+\item{stat_fun}{la funcion a usar para la agregacion, por ejemplo srvyr::survey_mean()}
 
 \item{agrupacion}{una columna de tipo texto/factor, por ejemplo region que es la opcion por defecto}
 

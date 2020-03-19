@@ -14,26 +14,26 @@ configuracion_disenio(
 )
 }
 \arguments{
-\item{datos}{un data.frame o tibble con la encuesta CASEN (o un subconjunto 
+\item{datos}{un data.frame o tibble con la encuesta CASEN (o un subconjunto
 acotado a una region, etc)}
 
-\item{variable}{una columna de tipo numérico, por ejemplo ytotcorh que es la 
-opción por defecto}
+\item{variable}{una columna de tipo numerico, por ejemplo ytotcorh que es la
+opcion por defecto}
 
-\item{agrupacion}{una columna de tipo texto/factor, por ejemplo region que 
-es la opción por defecto}
+\item{agrupacion}{una columna de tipo texto/factor, por ejemplo region que
+es la opcion por defecto}
 
-\item{peso}{una columna de tipo numérico, por defecto es expr que corresponde
+\item{peso}{una columna de tipo numerico, por defecto es expr que corresponde
 al factor de expansion regional de acuerdo al manual CASEN 2017}
 
-\item{conglomerado}{una columna de tipo numérico, por defecto es varunit de
+\item{conglomerado}{una columna de tipo numerico, por defecto es varunit de
 acuerdo al manual CASEN 2017}
 
-\item{estrato}{una columna de tipo numérico, por defecto es varunit de 
+\item{estrato}{una columna de tipo numerico, por defecto es varunit de
 acuerdo al manual CASEN 2017}
 }
 \value{
-una lista con el diseño y los grupos
+Una lista con el diseño y los grupos.
 }
 \description{
 Usa los factores de expansion, conglomerados y estratos para

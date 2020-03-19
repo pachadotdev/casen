@@ -2,7 +2,7 @@
 % Please edit documentation in R/internals.R
 \name{unique_groups}
 \alias{unique_groups}
-\title{Obtiene los grupos únicos a partir de las variables de agrupación
+\title{Obtiene los grupos unicos a partir de las variables de agrupacion
 Extract unique groups from grouping variables combinations}
 \usage{
 unique_groups(d, agrupacion)
@@ -13,7 +13,7 @@ unique_groups(d, agrupacion)
 \item{agrupacion}{columnas de tipo teto/factor en d}
 }
 \description{
-Obtiene los grupos únicos a partir de las variables de agrupación
+Obtiene los grupos unicos a partir de las variables de agrupacion
 Extract unique groups from grouping variables combinations
 }
 \keyword{internal}

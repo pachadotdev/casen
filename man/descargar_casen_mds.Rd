@@ -12,8 +12,8 @@ descargar_casen_mds(anios = NULL, carpeta = NULL)
 \item{carpeta}{se debe especificar una carpeta de descarga}
 }
 \value{
-los archivos comprimidos de la encuesta CASEN descargados desde el
-sitio web del MDS
+Los archivos comprimidos de la encuesta CASEN descargados desde el
+sitio web del Ministerio de Desarrollo Social.
 }
 \description{
 Obtiene los archivos de la encuesta en formato RAR o ZIP segun

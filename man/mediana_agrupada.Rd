@@ -7,11 +7,11 @@
 mediana_agrupada(disenio)
 }
 \arguments{
-\item{disenio}{la salida de `configuracion_disenio()` que provee además los
+\item{disenio}{la salida de `configuracion_disenio()` que provee ademas los
 grupos y las variables en forma de lista}
 }
 \value{
-una tabla con las medianas agrupadas y su intervalo de confianza
+Una tabla con las medianas agrupadas y su intervalo de confianza.
 }
 \description{
 Usa los factores de expansion, conglomerados y estratos para
