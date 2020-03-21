@@ -312,11 +312,18 @@
   ],
   "codeRepository": "https://pachamaltese.github.io/casen/",
   "readme": "https://github.com/pachamaltese/casen/blob/master/README.md",
-  "fileSize": "44.302KB",
+  "fileSize": "44.305KB",
   "contIntegration": [
     "https://travis-ci.org/pachamaltese/casen",
     "https://codecov.io/gh/pachamaltese/casen?branch=master"
   ],
   "issueTracker": "https://github.com/pachamaltese/casen/issues",
-  "developmentStatus": "https://www.repostatus.org/#active"
+  "developmentStatus": "https://www.repostatus.org/#active",
+  "provider": {
+    "@id": "https://cran.r-project.org",
+    "@type": "Organization",
+    "name": "Comprehensive R Archive Network (CRAN)",
+    "url": "https://cran.r-project.org"
+  },
+  "relatedLink": "https://CRAN.R-project.org/package=casen"
 }

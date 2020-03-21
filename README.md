@@ -3,6 +3,8 @@
 <!-- badges: start -->
 [![R build status](https://github.com/pachamaltese/casen/workflows/R-CMD-check/badge.svg)](https://github.com/pachamaltese/casen/actions?workflow=R-CMD-check)
 [![Codecov test coverage](https://codecov.io/gh/pachamaltese/casen/branch/master/graph/badge.svg)](https://codecov.io/gh/pachamaltese/casen?branch=master)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/gravity)](https://cran.r-project.org/package=gravity)
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 <!-- badges: end -->
 

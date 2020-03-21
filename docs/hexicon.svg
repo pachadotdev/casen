@@ -40,8 +40,8 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="1600"
-     inkscape:window-height="832"
+     inkscape:window-width="1920"
+     inkscape:window-height="1012"
      id="namedview15"
      showgrid="false"
      fit-margin-top="0"
@@ -861,96 +861,87 @@
                inkscape:connector-curvature="0"
                id="path5516"
                d="m -3374.9456,3177.9678 1.3738,-69.2444 h -241.9851 l 0.9225,69.2444 119.8444,69.3369 z"
-               style="fill:#ffd700;fill-opacity:1;stroke:none;stroke-width:1.47986412px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+               style="fill:#c83737;fill-opacity:1;stroke:none;stroke-width:1.47986412px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
             <path
                style="fill:#0035ad;fill-opacity:1;stroke:none;stroke-width:1.48027325px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
                d="m -3614.1831,3039.5173 -1.3738,69.2827 h 241.9851 l -0.9225,-69.2827 -119.8444,-69.3752 z"
                id="path5387"
                inkscape:connector-curvature="0" />
-            <g
-               id="g5537"
-               transform="translate(1.9954574,-8.565773)">
-              <polygon
-                 id="triangle"
-                 style="fill:#ffffff;fill-opacity:1"
-                 transform="matrix(63.979697,-3.2903331,3.2903331,63.979697,-3514.0916,3058.1937)"
-                 points="0,0 0,1 0.5,1 " />
-              <polygon
-                 points="0.5,1 0,0 0,1 "
-                 transform="matrix(22.900098,59.831542,-59.831542,22.900098,-3441.3649,3077.7571)"
-                 style="fill:#ffffff;fill-opacity:1"
-                 id="polygon5482" />
-              <polygon
-                 points="0.5,1 0,0 0,1 "
-                 transform="matrix(16.641512,-61.865079,61.865079,16.641512,-3555.1713,3121.3157)"
-                 style="fill:#ffffff;fill-opacity:1"
-                 id="polygon5488" />
-              <polygon
-                 points="0.5,1 0,0 0,1 "
-                 transform="matrix(-49.82666,40.268249,-40.268249,-49.82666,-3437.497,3152.9698)"
-                 style="fill:#ffffff;fill-opacity:1"
-                 id="polygon5494" />
-              <polygon
-                 points="0.5,1 0,0 0,1 "
-                 transform="matrix(-53.694677,-34.944378,34.944378,-53.694677,-3507.8332,3179.8903)"
-                 style="fill:#ffffff;fill-opacity:1"
-                 id="polygon5500" />
-              <g
-                 transform="translate(-234.11913,136.62385)"
-                 style="fill:#ffffff"
-                 id="g5523">
-                <use
-                   transform="matrix(-0.74445171,0.66767678,0.66767678,0.74445171,-7937.9278,2991.169)"
-                   style="fill:#ffffff;fill-opacity:1"
-                   id="use12"
-                   x="0"
-                   y="0"
-                   width="1500"
-                   height="1000"
-                   xlink:href="#triangle" />
-                <use
-                   xlink:href="#triangle"
-                   height="1000"
-                   width="1500"
-                   y="0"
-                   x="0"
-                   id="use5484"
-                   style="fill:#ffffff;fill-opacity:1"
-                   transform="matrix(-0.86504652,-0.5016923,-0.5016923,0.86504652,-4712.8253,-1467.3383)" />
-                <use
-                   xlink:href="#triangle"
-                   height="1000"
-                   width="1500"
-                   y="0"
-                   x="0"
-                   id="use5490"
-                   style="fill:#ffffff;fill-opacity:1"
-                   transform="matrix(0.40495025,0.91433907,0.91433907,-0.40495025,-4694.246,7436.178)" />
-                <use
-                   xlink:href="#triangle"
-                   height="1000"
-                   width="1500"
-                   y="0"
-                   x="0"
-                   id="use5496"
-                   style="fill:#ffffff;fill-opacity:1"
-                   transform="matrix(0.2098237,-0.97773956,-0.97773956,-0.2098237,524.07813,222.16223)" />
-                <use
-                   xlink:href="#triangle"
-                   height="1000"
-                   width="1500"
-                   y="0"
-                   x="0"
-                   id="use5502"
-                   style="fill:#ffffff;fill-opacity:1"
-                   transform="matrix(0.99472463,-0.1025843,-0.1025843,-0.99472463,535.56074,5724.8362)" />
-              </g>
-              <path
-                 id="path2000"
-                 style="fill:none;fill-opacity:1;stroke:#333333;stroke-width:0.91321099;stroke-linecap:round;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:1"
-                 d="m -3501.4752,3138.9905 9.6533,-21.6247 8.4558,22.0925 m -30.1109,-31.8251 21.6248,9.6534 -8.4558,-22.0926 m 18.1243,0.5074 -9.6137,21.6096 22.1321,-8.4709 m -0.547,18.1394 -21.5851,-9.6685 -22.1718,8.4861"
-                 inkscape:connector-curvature="0" />
-            </g>
+            <polygon
+               points="0.5,1 0,0 0,1 "
+               transform="matrix(63.979697,-3.2903331,3.2903331,63.979697,-3512.0961,3049.6279)"
+               style="fill:#ffffff;fill-opacity:1"
+               id="triangle" />
+            <polygon
+               id="polygon5482"
+               style="fill:#ffffff;fill-opacity:1"
+               transform="matrix(22.900098,59.831542,-59.831542,22.900098,-3439.3694,3069.1913)"
+               points="0,1 0.5,1 0,0 " />
+            <polygon
+               id="polygon5488"
+               style="fill:#ffffff;fill-opacity:1"
+               transform="matrix(16.641512,-61.865079,61.865079,16.641512,-3553.1758,3112.7499)"
+               points="0,1 0.5,1 0,0 " />
+            <polygon
+               id="polygon5494"
+               style="fill:#ffffff;fill-opacity:1"
+               transform="matrix(-49.82666,40.268249,-40.268249,-49.82666,-3435.5015,3144.404)"
+               points="0,1 0.5,1 0,0 " />
+            <polygon
+               id="polygon5500"
+               style="fill:#ffffff;fill-opacity:1"
+               transform="matrix(-53.694677,-34.944378,34.944378,-53.694677,-3505.8377,3171.3245)"
+               points="0,1 0.5,1 0,0 " />
+            <use
+               transform="matrix(-0.74445171,0.66767678,0.66767678,0.74445171,-8162.8468,3124.2716)"
+               style="fill:#ffffff;fill-opacity:1"
+               id="use12"
+               x="0"
+               y="0"
+               width="1500"
+               height="1000"
+               xlink:href="#triangle" />
+            <use
+               xlink:href="#triangle"
+               height="1000"
+               width="1500"
+               y="0"
+               x="0"
+               id="use5484"
+               style="fill:#ffffff;fill-opacity:1"
+               transform="matrix(-0.86504652,-0.5016923,-0.5016923,0.86504652,-4947.5202,-1330.8693)" />
+            <use
+               xlink:href="#triangle"
+               height="1000"
+               width="1500"
+               y="0"
+               x="0"
+               id="use5490"
+               style="fill:#ffffff;fill-opacity:1"
+               transform="matrix(0.40495025,0.91433907,0.91433907,-0.40495025,-4919.3457,7558.9429)" />
+            <use
+               xlink:href="#triangle"
+               height="1000"
+               width="1500"
+               y="0"
+               x="0"
+               id="use5496"
+               style="fill:#ffffff;fill-opacity:1"
+               transform="matrix(0.2098237,-0.97773956,-0.97773956,-0.2098237,283.16067,350.37405)" />
+            <use
+               xlink:href="#triangle"
+               height="1000"
+               width="1500"
+               y="0"
+               x="0"
+               id="use5502"
+               style="fill:#ffffff;fill-opacity:1"
+               transform="matrix(0.99472463,-0.1025843,-0.1025843,-0.99472463,300.57343,5844.5784)" />
+            <path
+               inkscape:connector-curvature="0"
+               d="m -3499.4797,3130.4247 9.6533,-21.6247 8.4558,22.0925 m -30.1109,-31.8251 21.6248,9.6534 -8.4558,-22.0926 m 18.1243,0.5074 -9.6137,21.6096 22.1321,-8.4709 m -0.547,18.1394 -21.5851,-9.6685 -22.1718,8.4861"
+               style="fill:none;fill-opacity:1;stroke:#333333;stroke-width:0.91321099;stroke-linecap:round;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:1"
+               id="path2000" />
             <g
                id="g5545"
                transform="translate(-261.6055,-86.611608)"
