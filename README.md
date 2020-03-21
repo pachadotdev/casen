@@ -26,7 +26,7 @@ de uso de las funciones del paquete casen y como se integra con otros paquetes d
 
 Version estable
 ```
-install.packages("chilemapas")
+install.packages("casen")
 ```
 
 Version de desarrollo
