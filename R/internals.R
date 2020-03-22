@@ -4,7 +4,7 @@
 #' @param agrupacion una columna de tipo texto/factor, por ejemplo region que es la opcion por defecto
 #' @param peso una columna de tipo numerico, por defecto es expr que corresponde al factor de expansion regional de acuerdo al manual CASEN 2017
 #' @param conglomerado una columna de tipo numerico, por defecto es varunit de acuerdo al manual CASEN 2017
-#' @param estrato una columna de tipo numerico, por defecto es varunit de acuerdo al manual CASEN 2017
+#' @param estrato una columna de tipo numerico, por defecto es varstrat de acuerdo al manual CASEN 2017
 #' @keywords internal
 #' @export
 check_input <- function(datos, variable, agrupacion, peso, conglomerado, estrato) {
@@ -27,6 +27,7 @@ check_input <- function(datos, variable, agrupacion, peso, conglomerado, estrato
 #' @importFrom rlang syms
 #' @importFrom dplyr select
 #' @importFrom tidyr drop_na
+#' @return Un objeto data.frame a partir del objeto data.frame de entrada.
 #' @keywords internal
 #' @export
 clean_data <- function(datos, variable, agrupacion, peso, conglomerado, estrato) {
@@ -47,6 +48,7 @@ clean_data <- function(datos, variable, agrupacion, peso, conglomerado, estrato)
 #' @importFrom magrittr %>%
 #' @importFrom rlang sym
 #' @importFrom srvyr as_survey_design
+#' @return Un objeto de disenio a partir del objeto data.frame de entrada.
 #' @keywords internal
 #' @export
 create_design <- function(d, variable, agrupacion, peso, conglomerado, estrato) {
@@ -64,6 +66,7 @@ create_design <- function(d, variable, agrupacion, peso, conglomerado, estrato) 
 #' @param agrupacion columnas de tipo teto/factor en d
 #' @importFrom magrittr %>%
 #' @importFrom dplyr select_at distinct
+#' @return Una tabla con todas las combinaciones de grupos.
 #' @keywords internal
 #' @export
 unique_groups <- function(d, agrupacion) {
@@ -78,6 +81,7 @@ unique_groups <- function(d, agrupacion) {
 #' @param d un data.frame o tibble con un estadistico agrupado
 #' @importFrom magrittr %>%
 #' @importFrom srvyr summarise_if
+#' @return No tiene salida.
 #' @keywords internal
 #' @export
 check_nas <- function(d) {
@@ -110,6 +114,7 @@ check_nas <- function(d) {
 #' @importFrom labelled to_factor
 #' @importFrom srvyr survey_mean survey_median
 #' @importFrom survey degf
+#' @return Una tabla con las medias o medianas agrupadas y su intervalo de confianza.
 #' @keywords internal
 #' @export
 mean_median <- function(d_groups, des, stat_fun, agrupacion, conglomerado, estrato, peso, variable, col_prefix) {
