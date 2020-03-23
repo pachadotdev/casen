@@ -14,3 +14,5 @@ windows
 ^codecov\.yml$
 ^codemeta\.json$
 README.md
+^CODE_OF_CONDUCT\.md$
+^\.github$
