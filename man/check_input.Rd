@@ -17,7 +17,7 @@ check_input(datos, variable, agrupacion, peso, conglomerado, estrato)
 
 \item{conglomerado}{una columna de tipo numerico, por defecto es varunit de acuerdo al manual CASEN 2017}
 
-\item{estrato}{una columna de tipo numerico, por defecto es varunit de acuerdo al manual CASEN 2017}
+\item{estrato}{una columna de tipo numerico, por defecto es varstrat de acuerdo al manual CASEN 2017}
 }
 \description{
 Verifica la entrada del usuario

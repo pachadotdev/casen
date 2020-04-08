@@ -9,6 +9,9 @@ check_nas(d)
 \arguments{
 \item{d}{un data.frame o tibble con un estadistico agrupado}
 }
+\value{
+No tiene salida.
+}
 \description{
 Verifica la presencia de NAs en los intervalos de confianza
 }

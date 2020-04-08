@@ -12,6 +12,9 @@ unique_groups(d, agrupacion)
 
 \item{agrupacion}{columnas de tipo teto/factor en d}
 }
+\value{
+Una tabla con todas las combinaciones de grupos.
+}
 \description{
 Obtiene los grupos unicos a partir de las variables de agrupacion
 Extract unique groups from grouping variables combinations
