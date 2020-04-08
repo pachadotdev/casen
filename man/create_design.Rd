@@ -19,6 +19,9 @@ create_design(d, variable, agrupacion, peso, conglomerado, estrato)
 
 \item{estrato}{una columna de tipo numerico, por defecto es varunit de acuerdo al manual CASEN 2017}
 }
+\value{
+Un objeto de disenio a partir del objeto data.frame de entrada.
+}
 \description{
 Crea un objeto de diseño complejo a partir de un data frame
 }

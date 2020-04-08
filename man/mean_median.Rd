@@ -35,6 +35,9 @@ mean_median(
 
 \item{col_prefix}{prefijo para agregar a las columnas resultantes}
 }
+\value{
+Una tabla con las medias o medianas agrupadas y su intervalo de confianza.
+}
 \description{
 Envolvente para estadistica descriptiva con diseños complejos
 }

@@ -19,6 +19,9 @@ clean_data(datos, variable, agrupacion, peso, conglomerado, estrato)
 
 \item{estrato}{una columna de tipo numerico, por defecto es varunit de acuerdo al manual CASEN 2017}
 }
+\value{
+Un objeto data.frame a partir del objeto data.frame de entrada.
+}
 \description{
 Elimina las observaciones con NA en variables de agrupacion
 }
