@@ -1,11 +1,11 @@
 context("testthat.R")
 
 verify_output("agrupada.txt", {
-  "# media_argrupada()"
+  "# media_agrupada()"
   cd <- configuracion_disenio(casen_2017_los_rios, "ytotcorh", c("comuna", "sexo"), "expc")
   media_agrupada(cd)
 
-  "# mediana_argrupada()"
+  "# mediana_agrupada()"
   cd <- configuracion_disenio(casen_2017_los_rios, "ytotcorh", c("comuna", "sexo"), "expc")
   mediana_agrupada(cd)
 

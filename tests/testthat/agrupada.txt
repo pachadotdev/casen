@@ -1,51 +1,270 @@
 
-media_argrupada()
-=================
+media_agrupada()
+================
 
 > cd <- configuracion_disenio(casen_2017_los_rios, "ytotcorh", c("comuna", "sexo"),
 + "expc")
 > media_agrupada(cd)
-# A tibble: 12 x 7
-   comuna_etiqueta sexo_etiqueta comuna_codigo sexo_codigo media_ytotcorh
-   <chr>           <chr>         <chr>         <chr>                <dbl>
- 1 Valdivia        Mujer         14101         2                 1262564.
- 2 Valdivia        Hombre        14101         1                 1347409.
- 3 Los Lagos       Hombre        14104         1                  718525.
- 4 Los Lagos       Mujer         14104         2                  730578.
- 5 Paillaco        Hombre        14107         1                  707612.
- 6 Paillaco        Mujer         14107         2                  689113.
- 7 Panguipulli     Mujer         14108         2                  631138.
- 8 Panguipulli     Hombre        14108         1                  684710.
- 9 La Unión        Hombre        14201         1                  804543.
-10 La Unión        Mujer         14201         2                  751564.
-11 Río Bueno       Hombre        14204         1                  772788.
-12 Río Bueno       Mujer         14204         2                  713756.
-# ... with 2 more variables: media_ytotcorh_inf <dbl>, media_ytotcorh_sup <dbl>
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+# A tibble: 12 x 8
+# Groups:   comuna_etiqueta [6]
+   comuna_etiqueta sexo_etiqueta comuna_codigo sexo_codigo      comuna
+         <dbl+lbl> <chr>             <dbl+lbl> <chr>         <dbl+lbl>
+ 1 14101 [Valdivi~ Mujer         14101 [Valdi~ 2           14101 [Val~
+ 2 14101 [Valdivi~ Hombre        14101 [Valdi~ 1           14101 [Val~
+ 3 14104 [Los Lag~ Hombre        14104 [Los L~ 1           14104 [Los~
+ 4 14104 [Los Lag~ Mujer         14104 [Los L~ 2           14104 [Los~
+ 5 14107 [Paillac~ Hombre        14107 [Paill~ 1           14107 [Pai~
+ 6 14107 [Paillac~ Mujer         14107 [Paill~ 2           14107 [Pai~
+ 7 14108 [Panguip~ Mujer         14108 [Pangu~ 2           14108 [Pan~
+ 8 14108 [Panguip~ Hombre        14108 [Pangu~ 1           14108 [Pan~
+ 9 14201 [La Unió~ Hombre        14201 [La Un~ 1           14201 [La ~
+10 14201 [La Unió~ Mujer         14201 [La Un~ 2           14201 [La ~
+11 14204 [Río Bue~ Hombre        14204 [Río B~ 1           14204 [Río~
+12 14204 [Río Bue~ Mujer         14204 [Río B~ 2           14204 [Río~
+# ... with 3 more variables: media_ytotcorh <dbl>, media_ytotcorh_inf <dbl>,
+#   media_ytotcorh_sup <dbl>
 
 
-mediana_argrupada()
-===================
+mediana_agrupada()
+==================
 
 > cd <- configuracion_disenio(casen_2017_los_rios, "ytotcorh", c("comuna", "sexo"),
 + "expc")
 > mediana_agrupada(cd)
-# A tibble: 12 x 7
-   comuna_etiqueta sexo_etiqueta comuna_codigo sexo_codigo mediana_ytotcorh
-   <chr>           <chr>         <chr>         <chr>                  <dbl>
- 1 Valdivia        Mujer         14101         2                    900000 
- 2 Valdivia        Hombre        14101         1                    914376.
- 3 Los Lagos       Hombre        14104         1                    612354.
- 4 Los Lagos       Mujer         14104         2                    635936 
- 5 Paillaco        Hombre        14107         1                    553684 
- 6 Paillaco        Mujer         14107         2                    532639.
- 7 Panguipulli     Mujer         14108         2                    532261.
- 8 Panguipulli     Hombre        14108         1                    559715.
- 9 La Unión        Hombre        14201         1                    622461 
-10 La Unión        Mujer         14201         2                    567739.
-11 Río Bueno       Hombre        14204         1                    696373.
-12 Río Bueno       Mujer         14204         2                    631806 
-# ... with 2 more variables: mediana_ytotcorh_inf <dbl>,
-#   mediana_ytotcorh_sup <dbl>
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+# A tibble: 12 x 8
+# Groups:   comuna_etiqueta [6]
+   comuna_etiqueta sexo_etiqueta comuna_codigo sexo_codigo      comuna
+         <dbl+lbl> <chr>             <dbl+lbl> <chr>         <dbl+lbl>
+ 1 14101 [Valdivi~ Mujer         14101 [Valdi~ 2           14101 [Val~
+ 2 14101 [Valdivi~ Hombre        14101 [Valdi~ 1           14101 [Val~
+ 3 14104 [Los Lag~ Hombre        14104 [Los L~ 1           14104 [Los~
+ 4 14104 [Los Lag~ Mujer         14104 [Los L~ 2           14104 [Los~
+ 5 14107 [Paillac~ Hombre        14107 [Paill~ 1           14107 [Pai~
+ 6 14107 [Paillac~ Mujer         14107 [Paill~ 2           14107 [Pai~
+ 7 14108 [Panguip~ Mujer         14108 [Pangu~ 2           14108 [Pan~
+ 8 14108 [Panguip~ Hombre        14108 [Pangu~ 1           14108 [Pan~
+ 9 14201 [La Unió~ Hombre        14201 [La Un~ 1           14201 [La ~
+10 14201 [La Unió~ Mujer         14201 [La Un~ 2           14201 [La ~
+11 14204 [Río Bue~ Hombre        14204 [Río B~ 1           14204 [Río~
+12 14204 [Río Bue~ Mujer         14204 [Río B~ 2           14204 [Río~
+# ... with 3 more variables: mediana_ytotcorh <dbl>,
+#   mediana_ytotcorh_inf <dbl>, mediana_ytotcorh_sup <dbl>
 
 
 percentiles_agrupados()
@@ -54,21 +273,130 @@ percentiles_agrupados()
 > cd <- configuracion_disenio(casen_2017_los_rios, "ytotcorh", c("comuna", "sexo"),
 + "expc")
 > percentiles_agrupados(cd, 0.7)
-# A tibble: 12 x 7
-   percentil comuna_etiqueta sexo_etiqueta comuna_codigo sexo_codigo
-       <dbl> <chr>           <chr>         <chr>         <chr>      
- 1       0.7 Valdivia        Mujer         14101         2          
- 2       0.7 Valdivia        Hombre        14101         1          
- 3       0.7 Los Lagos       Hombre        14104         1          
- 4       0.7 Los Lagos       Mujer         14104         2          
- 5       0.7 Paillaco        Hombre        14107         1          
- 6       0.7 Paillaco        Mujer         14107         2          
- 7       0.7 Panguipulli     Mujer         14108         2          
- 8       0.7 Panguipulli     Hombre        14108         1          
- 9       0.7 La Unión        Hombre        14201         1          
-10       0.7 La Unión        Mujer         14201         2          
-11       0.7 Río Bueno       Hombre        14204         1          
-12       0.7 Río Bueno       Mujer         14204         2          
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+Message: `mutate_if()` ignored the following grouping variables:
+Column `comuna`
+
+# A tibble: 12 x 8
+# Groups:   comuna_etiqueta [6]
+   percentil comuna_etiqueta sexo_etiqueta comuna_codigo sexo_codigo      comuna
+       <dbl>       <dbl+lbl> <chr>             <dbl+lbl> <chr>         <dbl+lbl>
+ 1       0.7 14101 [Valdivi~ Mujer         14101 [Valdi~ 2           14101 [Val~
+ 2       0.7 14101 [Valdivi~ Hombre        14101 [Valdi~ 1           14101 [Val~
+ 3       0.7 14104 [Los Lag~ Hombre        14104 [Los L~ 1           14104 [Los~
+ 4       0.7 14104 [Los Lag~ Mujer         14104 [Los L~ 2           14104 [Los~
+ 5       0.7 14107 [Paillac~ Hombre        14107 [Paill~ 1           14107 [Pai~
+ 6       0.7 14107 [Paillac~ Mujer         14107 [Paill~ 2           14107 [Pai~
+ 7       0.7 14108 [Panguip~ Mujer         14108 [Pangu~ 2           14108 [Pan~
+ 8       0.7 14108 [Panguip~ Hombre        14108 [Pangu~ 1           14108 [Pan~
+ 9       0.7 14201 [La Unió~ Hombre        14201 [La Un~ 1           14201 [La ~
+10       0.7 14201 [La Unió~ Mujer         14201 [La Un~ 2           14201 [La ~
+11       0.7 14204 [Río Bue~ Hombre        14204 [Río B~ 1           14204 [Río~
+12       0.7 14204 [Río Bue~ Mujer         14204 [Río B~ 2           14204 [Río~
 # ... with 2 more variables: mediana_ytotcorh <dbl>,
 #   mediana_ytotcorh_err_est <dbl>
 
