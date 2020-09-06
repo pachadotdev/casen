@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • casen</title>
+<title>Armoniza los codigos de oficio — armonizar_oficio • casen</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,14 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Armoniza los codigos de oficio — armonizar_oficio" />
+<meta property="og:description" content="Convierte las etiquetas de los oficios para usar de manera 
+uniforme los nombres de CASEN 2017, debiendo fusionar algunas categorias
+que se intersectan (ejemplo: &quot;Directivos de la Adm. Publica y Empresas&quot; con
+&quot;Miembros del Poder Ejecuivo, Legislativo y Directivos de la Adm. Publica&quot;).
+El procedimiento consiste en buscar la columna oficio (antes del anio 
+2011) u oficio1 (desde el anio 2011) y aplicar expresiones regulares 
+de acuerdo a la codificacion respectiva." />
 
 
 
@@ -58,7 +65,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -117,114 +124,44 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Armoniza los codigos de oficio</h1>
+    <small class="dont-index">Source: <a href='https://github.com/pachamaltese/casen/blob/master/R/harmonize_factors.R'><code>R/harmonize_factors.R</code></a></small>
+    <div class="hidden name"><code>armonizar_oficio.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p>Convierte las etiquetas de los oficios para usar de manera 
+uniforme los nombres de CASEN 2017, debiendo fusionar algunas categorias
+que se intersectan (ejemplo: "Directivos de la Adm. Publica y Empresas" con
+"Miembros del Poder Ejecuivo, Legislativo y Directivos de la Adm. Publica").
+El procedimiento consiste en buscar la columna <code>oficio</code> (antes del anio 
+2011) u <code>oficio1</code> (desde el anio 2011) y aplicar expresiones regulares 
+de acuerdo a la codificacion respectiva.</p>
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='fu'>armonizar_oficio</span>(<span class='no'>d</span>)</pre>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="armonizar_oficio.html">armonizar_oficio()</a></code> </p>
-        </td>
-        <td><p>Armoniza los codigos de oficio</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="armonizar_rama.html">armonizar_rama()</a></code> </p>
-        </td>
-        <td><p>Armoniza los codigos de rama ocupacional</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="armonizar_region.html">armonizar_region()</a></code> </p>
-        </td>
-        <td><p>Armoniza los codigos de regiones</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="casen_2017_los_rios.html">casen_2017_los_rios</a></code> </p>
-        </td>
-        <td><p>Sub-conjunto CASEN 2017</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="codigos_casen.html">codigos_casen</a></code> </p>
-        </td>
-        <td><p>Codigos de comunas encuesta CASEN</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="codigos_subdere.html">codigos_subdere</a></code> </p>
-        </td>
-        <td><p>Codigos Unicos Territoriales (CUT)</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="configuracion_disenio.html">configuracion_disenio()</a></code> </p>
-        </td>
-        <td><p>Diseño complejo para estadistica descriptiva e inferencia</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="descargar_casen_github.html">descargar_casen_github()</a></code> </p>
-        </td>
-        <td><p>Descarga la encuesta CASEN de GitHub</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="descargar_casen_mds.html">descargar_casen_mds()</a></code> </p>
-        </td>
-        <td><p>Descarga la encuesta CASEN del sitio web del Ministerio de Desarrollo Social</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="media_agrupada.html">media_agrupada()</a></code> </p>
-        </td>
-        <td><p>Media agrupada usando diseño complejo</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="mediana_agrupada.html">mediana_agrupada()</a></code> </p>
-        </td>
-        <td><p>Mediana agrupada usando diseño complejo</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="modelo_lineal_generalizado.html">modelo_lineal_generalizado()</a></code> </p>
-        </td>
-        <td><p>Modelo lineal generalizado con diseño complejo</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="percentiles_agrupados.html">percentiles_agrupados()</a></code> </p>
-        </td>
-        <td><p>Percentiles agrupados usando diseño complejo</p></td>
-      </tr>
-    </tbody>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>d</th>
+      <td><p>una encuesta CASEN en formato tibble o data.frame</p></td>
+    </tr>
     </table>
-  </div>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>un tibble con la columna de oficio transformada</p>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='no'>casen1990</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/readRDS.html'>readRDS</a></span>(<span class='st'>"casen1990.rds"</span>)
+<span class='fu'>armonizar_oficio</span>(<span class='no'>casen1990</span>)
+}</div></pre>
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>

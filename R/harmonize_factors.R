@@ -12,10 +12,10 @@
 #' @examples 
 #' \dontrun{
 #' casen1990 <- readRDS("casen1990.rds")
-#' armonizar_regiones(casen1990)
+#' armonizar_region(casen1990)
 #' }
 #' @export
-armonizar_regiones <- function(d) {
+armonizar_region <- function(d) {
   if (any("r" %in% colnames(d))) {
     d <- d %>% 
       dplyr::mutate(
@@ -67,13 +67,13 @@ armonizar_regiones <- function(d) {
   return(d)
 }
 
-#' Armoniza los codigos de oficios
+#' Armoniza los codigos de oficio
 #' @description Convierte las etiquetas de los oficios para usar de manera 
 #' uniforme los nombres de CASEN 2017, debiendo fusionar algunas categorias
 #' que se intersectan (ejemplo: "Directivos de la Adm. Publica y Empresas" con
-#' "Miembros del Poder Ejecuivo, Legislativo y Directivos de la Adm. Publica).
+#' "Miembros del Poder Ejecuivo, Legislativo y Directivos de la Adm. Publica").
 #' El procedimiento consiste en buscar la columna \code{oficio} (antes del anio 
-#' 2011) o \code{oficio1} (desde el anio 2011) y aplicar expresiones regulares 
+#' 2011) u \code{oficio1} (desde el anio 2011) y aplicar expresiones regulares 
 #' de acuerdo a la codificacion respectiva.
 #' @param d una encuesta CASEN en formato tibble o data.frame
 #' @importFrom magrittr %>%
@@ -87,7 +87,7 @@ armonizar_regiones <- function(d) {
 #' armonizar_oficio(casen1990)
 #' }
 #' @export
-armonizar_oficios <- function(d) {
+armonizar_oficio <- function(d) {
   marca_oficio <- any("oficio" %in% colnames(d))
   
   if (marca_oficio) {
@@ -126,7 +126,7 @@ armonizar_oficios <- function(d) {
   
   d <- d %>% 
     dplyr::mutate(
-      !!sym("oficio1") := gsub("^s/r/*|^Sin Resp.*|^Ocupacion No.*", NA, !!sym("oficio1"))
+      !!sym("oficio1") := gsub("^s/r/*|^Sin Resp.*|^Ocupacion No.*|^Sin Dato.*", NA, !!sym("oficio1"))
     )
   
   d <- d %>% 
@@ -139,3 +139,79 @@ armonizar_oficios <- function(d) {
   
   return(d)
 }
+
+#' Armoniza los codigos de rama ocupacional
+#' @description Convierte las etiquetas de la rama ocupacional para usar de 
+#' manera uniforme los nombres de CASEN 2017, debiendo fusionar algunas
+#' categorias que se intersectan (ejemplo: "Establecimientos Financieros" y
+#' "Servicios de Gobierno y Financieros").
+#' El procedimiento consiste en buscar la columna \code{rama} (antes del anio 
+#' 2011) o \code{rama1} (desde el anio 2011) y aplicar expresiones regulares 
+#' de acuerdo a la codificacion respectiva.
+#' @param d una encuesta CASEN en formato tibble o data.frame
+#' @importFrom magrittr %>%
+#' @importFrom rlang sym
+#' @importFrom dplyr mutate select everything case_when rename
+#' @importFrom labelled to_factor
+#' @return un tibble con la columna de rama transformada
+#' @examples 
+#' \dontrun{
+#' casen1990 <- readRDS("casen1990.rds")
+#' armonizar_rama(casen1990)
+#' }
+#' @export
+armonizar_rama <- function(d) {
+  marca_rama <- any("rama" %in% colnames(d))
+  
+  if (marca_rama) {
+    d <- d %>% 
+      dplyr::rename(!!sym("rama1") := !!sym("rama"))
+  }
+  
+  d <- d %>% 
+    dplyr::mutate(
+      !!sym("rama1") := as.character(labelled::to_factor(!!sym("rama1")))
+    ) %>% 
+    dplyr::mutate(
+      !!sym("rama1") := tolower(!!sym("rama1")),
+      !!sym("rama1") := gsub("^[a-z]\\. |^[a-z]\\.|^[a-z] ", "", !!sym("rama1")),
+      !!sym("rama1") := gsub("^\\s", "", !!sym("rama1")),
+      !!sym("rama1") := gsub("\\b([[:lower:]])([[:lower:]]+)", "\\U\\1\\L\\2", !!sym("rama1"), perl = TRUE)
+    ) %>% 
+    dplyr::mutate(
+      !!sym("rama1") := gsub("\\s+", " ", !!sym("rama1")),
+      !!sym("rama1") := gsub(" De ", " de ", !!sym("rama1")),
+      !!sym("rama1") := gsub(" Del ", " del ", !!sym("rama1")),
+      !!sym("rama1") := gsub(" Y ", " y ", !!sym("rama1")),
+      !!sym("rama1") := gsub(" y y ", " y ", !!sym("rama1"))
+    ) %>% 
+    dplyr::mutate(
+      !!sym("rama1") := gsub("^Act\\. No.*|^Actividades No.*", NA, !!sym("rama1")),
+      !!sym("rama1") := gsub("^Agri.*|^Pesca.*", "Agricultura, Caza, Silvicultura y Pesca", !!sym("rama1")),
+      !!sym("rama1") := gsub("^Adminis.*", "Administraci\u00f3n P\u00fablica, Defensa y Seguridad Social", !!sym("rama1")),
+      !!sym("rama1") := gsub("^Comercio.*|^Hoteles.*", "Comercio Mayorista/Minorista, Restaurantes y Hoteles", !!sym("rama1")),
+      !!sym("rama1") := gsub("^Constru.*", "Construcci\u00f3n", !!sym("rama1")),
+      !!sym("rama1") := gsub("^Electricidad.*|^Suministro.*", "Electricidad, Gas y Agua", !!sym("rama1")),
+      !!sym("rama1") := gsub("^Estab.*|^Servicios de Gob.*|^Intermed.*|^Admin.*", "Servicios de Gobierno y Financieros/Seguros", !!sym("rama1")),
+      !!sym("rama1") := gsub("^Explo.*", "Explotaci\u00f3n de Minas y Canteras", !!sym("rama1")),
+      !!sym("rama1") := gsub("^Ind.*", "Industrias Manufactureras", !!sym("rama1")),
+      !!sym("rama1") := gsub("^Servicios Comunales.*|^Servicios Sociales.*|^Organizaciones.*|^Actividades In.*|^Ense.*|^Hogares.*|^Otras Activ.*|^Servicios Pers.*", "Servicios Comunitarios, Sociales y Personales", !!sym("rama1")),
+      !!sym("rama1") := gsub("^Transporte.*", "Transporte, Almacenamiento y Comunicaciones", !!sym("rama1"))
+    )
+  
+  d <- d %>% 
+    dplyr::mutate(
+      !!sym("rama1") := gsub("^s/r/*|^Sin Resp.*|^Sin Dato.*|^No Bien.*|^Ocupacion No.*", NA, !!sym("rama1"))
+    )
+  
+  d <- d %>% 
+    dplyr::mutate(!!sym("rama1") := as.factor(!!sym("rama1")))
+  
+  if (marca_rama) {
+    d <- d %>% 
+      dplyr::rename(!!sym("rama") := !!sym("rama1"))
+  }
+  
+  return(d)
+}
+
