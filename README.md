@@ -1,8 +1,8 @@
-# casen <img src="https://pachamaltese.github.io/casen/hexicon.svg" width=150 align="right" alt="sticker"/>
+# casen
 
 <!-- badges: start -->
-[![R build status](https://github.com/pachamaltese/casen/workflows/R-CMD-check/badge.svg)](https://github.com/pachamaltese/casen/actions?workflow=R-CMD-check)
-[![Codecov test coverage](https://codecov.io/gh/pachamaltese/casen/branch/master/graph/badge.svg)](https://codecov.io/gh/pachamaltese/casen?branch=master)
+[![R build status](https://github.com/pachadotdev/casen/workflows/R-CMD-check/badge.svg)](https://github.com/pachadotdev/casen/actions?workflow=R-CMD-check)
+[![Codecov test coverage](https://codecov.io/gh/pachadotdev/casen/branch/master/graph/badge.svg)](https://codecov.io/gh/pachadotdev/casen?branch=master)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/gravity)](https://cran.r-project.org/package=gravity)
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
@@ -31,7 +31,7 @@ install.packages("casen")
 
 Version de desarrollo
 ```
-source("https://install-github.me/pachamaltese/casen")
+source("https://install-github.me/pachadotdev/casen")
 ```
 
 # Encuesta CASEN en formato R
@@ -42,16 +42,16 @@ a formato tidy (todo en minusculas reemplazando puntos y espacios por guion bajo
 
 Links de descarga:
 
-* https://pachamaltese.github.io/casen/data-rds/1990.rds
-* https://pachamaltese.github.io/casen/data-rds/1992.rds
-* https://pachamaltese.github.io/casen/data-rds/1994.rds
-* https://pachamaltese.github.io/casen/data-rds/1996.rds
-* https://pachamaltese.github.io/casen/data-rds/1998.rds
-* https://pachamaltese.github.io/casen/data-rds/2000.rds
-* https://pachamaltese.github.io/casen/data-rds/2003.rds
-* https://pachamaltese.github.io/casen/data-rds/2006.rds
-* https://pachamaltese.github.io/casen/data-rds/2009.rds
-* https://pachamaltese.github.io/casen/data-rds/2011.rds
-* https://pachamaltese.github.io/casen/data-rds/2013.rds
-* https://pachamaltese.github.io/casen/data-rds/2015.rds
-* https://pachamaltese.github.io/casen/data-rds/2017.rds
+* https://pacha.dev/casen/data-rds/1990.rds
+* https://pacha.dev/casen/data-rds/1992.rds
+* https://pacha.dev/casen/data-rds/1994.rds
+* https://pacha.dev/casen/data-rds/1996.rds
+* https://pacha.dev/casen/data-rds/1998.rds
+* https://pacha.dev/casen/data-rds/2000.rds
+* https://pacha.dev/casen/data-rds/2003.rds
+* https://pacha.dev/casen/data-rds/2006.rds
+* https://pacha.dev/casen/data-rds/2009.rds
+* https://pacha.dev/casen/data-rds/2011.rds
+* https://pacha.dev/casen/data-rds/2013.rds
+* https://pacha.dev/casen/data-rds/2015.rds
+* https://pacha.dev/casen/data-rds/2017.rds

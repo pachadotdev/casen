@@ -5,15 +5,15 @@
   "description": "Funciones para realizar estadistica descriptiva e inferencia con el disenio complejo de la Encuesta CASEN (Encuesta de Caracterizacion Socio-Economica). Incluye datasets que permiten armonizar los codigos de comunas que cambian entre anios y permite convertir a los codigos oficiales de SUBDERE. (Functions to compute descriptive and inferential statistics with CASEN Survey [Socio-Economic Characterization Survey] complex design. Includes datasets to harmonize commune codes that change across years and allows to convert to official SUBDERE codes.)",
   "name": "casen: Metodos De Estimacion Con Disenio Probabilistico y Estratificado en \n  Encuesta CASEN (Estimation Methods with Probabilistic Stratified Sampling in \n  CASEN Survey)",
   "codeRepository": "https://github.com/pachadotdev/casen",
-  "issueTracker": "https://github.com/pachamaltese/casen/issues",
-  "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "0.1.4",
+  "issueTracker": "https://github.com/pachadotdev/casen/issues/",
+  "license": "Apache License 2",
+  "version": "0.2.0",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.1.2 (2021-11-01)",
+  "runtimePlatform": "R version 4.2.0 (2022-04-22)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -124,6 +124,18 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=broom"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "janitor",
+      "name": "janitor",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=janitor"
     }
   ],
   "softwareRequirements": {
@@ -147,40 +159,15 @@
     },
     "3": {
       "@type": "SoftwareApplication",
-      "identifier": "Rcpp",
-      "name": "Rcpp",
-      "version": ">= 1.0.2",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=Rcpp"
-    },
-    "4": {
-      "@type": "SoftwareApplication",
       "identifier": "stats",
       "name": "stats"
     },
-    "5": {
+    "4": {
       "@type": "SoftwareApplication",
       "identifier": "utils",
       "name": "utils"
     },
-    "6": {
-      "@type": "SoftwareApplication",
-      "identifier": "fs",
-      "name": "fs",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=fs"
-    },
-    "7": {
+    "5": {
       "@type": "SoftwareApplication",
       "identifier": "dplyr",
       "name": "dplyr",
@@ -192,7 +179,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=dplyr"
     },
-    "8": {
+    "6": {
       "@type": "SoftwareApplication",
       "identifier": "haven",
       "name": "haven",
@@ -204,7 +191,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=haven"
     },
-    "9": {
+    "7": {
       "@type": "SoftwareApplication",
       "identifier": "labelled",
       "name": "labelled",
@@ -216,7 +203,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=labelled"
     },
-    "10": {
+    "8": {
       "@type": "SoftwareApplication",
       "identifier": "glue",
       "name": "glue",
@@ -228,7 +215,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=glue"
     },
-    "11": {
+    "9": {
       "@type": "SoftwareApplication",
       "identifier": "magrittr",
       "name": "magrittr",
@@ -240,7 +227,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=magrittr"
     },
-    "12": {
+    "10": {
       "@type": "SoftwareApplication",
       "identifier": "tidyr",
       "name": "tidyr",
@@ -252,31 +239,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=tidyr"
     },
-    "13": {
-      "@type": "SoftwareApplication",
-      "identifier": "tibble",
-      "name": "tibble",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=tibble"
-    },
-    "14": {
-      "@type": "SoftwareApplication",
-      "identifier": "janitor",
-      "name": "janitor",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=janitor"
-    },
-    "15": {
+    "11": {
       "@type": "SoftwareApplication",
       "identifier": "survey",
       "name": "survey",
@@ -288,7 +251,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=survey"
     },
-    "16": {
+    "12": {
       "@type": "SoftwareApplication",
       "identifier": "srvyr",
       "name": "srvyr",
@@ -300,7 +263,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=srvyr"
     },
-    "17": {
+    "13": {
       "@type": "SoftwareApplication",
       "identifier": "purrr",
       "name": "purrr",
@@ -314,10 +277,10 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "129.05KB",
-  "relatedLink": ["https://pachamaltese.github.io/casen/", "https://CRAN.R-project.org/package=casen"],
+  "fileSize": "128.566KB",
+  "relatedLink": ["https://pacha.dev/casen/", "https://CRAN.R-project.org/package=casen"],
   "readme": "https://github.com/pachadotdev/casen/blob/master/README.md",
-  "contIntegration": ["https://github.com/pachamaltese/casen/actions?workflow=R-CMD-check", "https://codecov.io/gh/pachamaltese/casen?branch=master"],
+  "contIntegration": ["https://github.com/pachadotdev/casen/actions?workflow=R-CMD-check", "https://codecov.io/gh/pachadotdev/casen?branch=master"],
   "developmentStatus": "https://www.repostatus.org/#active",
   "keywords": ["r", "chile", "spss", "stata", "sampling", "tidyverse"]
 }

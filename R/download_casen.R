@@ -1,6 +1,5 @@
 #' Descarga la encuesta CASEN del sitio web del Ministerio de Desarrollo Social
-#' @description Obtiene los archivos de la encuesta en formato RAR o ZIP segun
-#' el anio de la encuesta. No descomprime ni modifica los datasets originales.
+#' @description Obtiene los archivos de la encuesta en formato RAR. No descomprime ni modifica los datasets originales.
 #' @param anios si no se indica un anio, descarga todos los anios disponibles
 #' @param carpeta se debe especificar una carpeta de descarga
 #' @importFrom utils download.file
@@ -28,32 +27,25 @@ descargar_casen_mds <- function(anios = NULL, carpeta = NULL) {
   if (is.null(anios)) {
     anios <- c(seq(1990, 2000, 2), seq(2003, 2009, 3), seq(2011, 2017, 2))
   }
-
+  
   urls <- c(
     paste0(
-      "http://observatorio.ministeriodesarrollosocial.gob.cl/casen/layout/doc/bases/Casen",
-      seq(1990, 1994, 2),
-      ".zip"
+      "http://observatorio.ministeriodesarrollosocial.gob.cl/storage/docs/casen/",
+      c(seq(1990, 2000, 2), seq(2003, 2009, 3)),
+      "/casen",
+      c(seq(1990, 2000, 2), seq(2003, 2009, 3)),
+      "stata.rar"
     ),
-    "http://observatorio.ministeriodesarrollosocial.gob.cl/casen/layout/doc/bases/Casen1996.rar",
-    paste0(
-      "http://observatorio.ministeriodesarrollosocial.gob.cl/casen/layout/doc/bases/Casen",
-      seq(1998, 2000, 2),
-      ".zip"
-    ),
-    "http://observatorio.ministeriodesarrollosocial.gob.cl/casen/layout/doc/bases/Casen2003.zip",
-    "http://observatorio.ministeriodesarrollosocial.gob.cl/casen/layout/doc/bases/casen2006.zip",
-    "http://observatorio.ministeriodesarrollosocial.gob.cl/casen/layout/doc/bases/Casen2009spss.rar",
-    "http://observatorio.ministeriodesarrollosocial.gob.cl/casen/layout/doc/bases/casen2011_octubre2011_enero2012_principal_08032013spss.rar",
-    "http://observatorio.ministeriodesarrollosocial.gob.cl/documentos/CASEN_2013_MN_B_Principal_spss.rar",
-    "http://observatorio.ministeriodesarrollosocial.gob.cl/casen-multidimensional/casen/docs/casen_2015_spss.rar",
-    "http://observatorio.ministeriodesarrollosocial.gob.cl/casen-multidimensional/casen/docs/casen_2017_spss.rar"
+    "http://observatorio.ministeriodesarrollosocial.gob.cl/storage/docs/casen/2011/casen2011stata_03122013stata.rar",
+    "http://observatorio.ministeriodesarrollosocial.gob.cl/storage/docs/casen/2013/casen_2013_mn_b_principal_stata.rar",
+    "http://observatorio.ministeriodesarrollosocial.gob.cl/storage/docs/casen/2015/casen_2015_stata.rar",
+    "http://observatorio.ministeriodesarrollosocial.gob.cl/storage/docs/casen/2017/casen_2017_stata.rar"
   )
 
   links <- data.frame(
     year = all_years,
     url = urls,
-    file = paste0(carpeta, "/", all_years, "_spss", gsub(".*\\.", "\\.", urls)),
+    file = paste0(carpeta, "/", all_years, "_stata", gsub(".*\\.", "\\.", urls)),
     stringsAsFactors = FALSE
   )
 

@@ -16,3 +16,4 @@ windows
 README.md
 ^CODE_OF_CONDUCT\.md$
 ^\.github$
+^CRAN-SUBMISSION$

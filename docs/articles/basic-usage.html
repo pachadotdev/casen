@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,23 +33,17 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">casen</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.4</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -61,8 +57,8 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/pachamaltese/casen/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+  <a href="https://github.com/pachadotdev/casen/" class="external-link">
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -76,518 +72,471 @@
 
       
 
-      </header><script src="basic-usage_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Uso basico del paquete casen</h1>
-                        <h4 class="author">Mauricio Vargas</h4>
+                        <h4 data-toc-skip class="author">Mauricio
+Vargas</h4>
             
-            <h4 class="date">2020-09-06</h4>
+            <h4 data-toc-skip class="date">2022-06-21</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/pachamaltese/casen/blob/master/vignettes/basic-usage.Rmd"><code>vignettes/basic-usage.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/pachadotdev/casen/blob/HEAD/vignettes/basic-usage.Rmd" class="external-link"><code>vignettes/basic-usage.Rmd</code></a></small>
       <div class="hidden name"><code>basic-usage.Rmd</code></div>
 
     </div>
 
     
     
-<div id="datos-de-ejemplo" class="section level1">
-<h1 class="hasAnchor">
-<a href="#datos-de-ejemplo" class="anchor"></a>Datos de ejemplo</h1>
-<p>El uso de este paquete se mostrara a partir de los datos de ejemplo. Vamos a leer un subconjunto de la encuesta CASEN que corresponde a las comunas con representatividad comunal en la Region de los Rios. Estos datos se incluyen, a modo de demostracion, con el paquete casen, no asi las encuestas completas que deben ser descargadas y se provee una funcion para hacerlo.</p>
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">casen</span>)
-<span class="no">casen_2017_los_rios</span></pre></body></html></div>
-<pre><code>## # A tibble: 8,055 x 7
-##     expc varstrat    varunit ytotcorh      sexo         comuna           pobreza
-##    &lt;dbl&gt;    &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl+lbl&gt;      &lt;dbl+lbl&gt;         &lt;dbl+lbl&gt;
-##  1    53   141283    1.41e10   959765 2 [Mujer] 14101 [Valdiv… 3 [No pobres]    
-##  2    53   141283    1.41e10   959765 2 [Mujer] 14101 [Valdiv… 3 [No pobres]    
-##  3    53   141283    1.41e10   959765 2 [Mujer] 14101 [Valdiv… 3 [No pobres]    
-##  4   105   141283    1.41e10   283273 2 [Mujer] 14101 [Valdiv… 2 [Pobres no ext…
-##  5   105   141283    1.41e10   283273 1 [Hombr… 14101 [Valdiv… 2 [Pobres no ext…
-##  6   105   141283    1.41e10   283273 2 [Mujer] 14101 [Valdiv… 2 [Pobres no ext…
-##  7   105   141283    1.41e10   353083 2 [Mujer] 14101 [Valdiv… 3 [No pobres]    
-##  8   105   141283    1.41e10   260000 2 [Mujer] 14101 [Valdiv… 2 [Pobres no ext…
-##  9   105   141283    1.41e10   260000 2 [Mujer] 14101 [Valdiv… 2 [Pobres no ext…
-## 10   105   141283    1.41e10   260000 1 [Hombr… 14101 [Valdiv… 2 [Pobres no ext…
-## # … with 8,045 more rows</code></pre>
+<div class="section level2">
+<h2 id="datos-de-ejemplo">Datos de ejemplo<a class="anchor" aria-label="anchor" href="#datos-de-ejemplo"></a>
+</h2>
+<p>El uso de este paquete se mostrara a partir de los datos de ejemplo.
+Vamos a leer un subconjunto de la encuesta CASEN que corresponde a las
+comunas con representatividad comunal en la Region de los Rios. Estos
+datos se incluyen, a modo de demostracion, con el paquete casen, no asi
+las encuestas completas que deben ser descargadas y se provee una
+funcion para hacerlo.</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://pacha.dev/casen/" class="external-link">casen</a></span><span class="op">)</span>
+<span class="va">casen_2017_los_rios</span></code></pre></div>
+<pre><code><span class="co">## <span style="color: #949494;"># A tibble: 8,055 × 7</span></span>
+<span class="co">##     expc varstrat     varunit ytotcorh       sexo           comuna       pobreza</span>
+<span class="co">##    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl+lbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl+lbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl+lbl&gt;</span></span>
+<span class="co">## <span style="color: #BCBCBC;"> 1</span>    53   <span style="text-decoration: underline;">141</span>283 <span style="text-decoration: underline;">14</span>128<span style="text-decoration: underline;">301</span>184   <span style="text-decoration: underline;">959</span>765 2<span style="color: #949494;"> [Mujer]</span>  <span style="text-decoration: underline;">14</span>101<span style="color: #949494;"> [Valdivia]</span> 3<span style="color: #949494;"> [No pobres]</span></span>
+<span class="co">## <span style="color: #BCBCBC;"> 2</span>    53   <span style="text-decoration: underline;">141</span>283 <span style="text-decoration: underline;">14</span>128<span style="text-decoration: underline;">301</span>184   <span style="text-decoration: underline;">959</span>765 2<span style="color: #949494;"> [Mujer]</span>  <span style="text-decoration: underline;">14</span>101<span style="color: #949494;"> [Valdivia]</span> 3<span style="color: #949494;"> [No pobres]</span></span>
+<span class="co">## <span style="color: #BCBCBC;"> 3</span>    53   <span style="text-decoration: underline;">141</span>283 <span style="text-decoration: underline;">14</span>128<span style="text-decoration: underline;">301</span>184   <span style="text-decoration: underline;">959</span>765 2<span style="color: #949494;"> [Mujer]</span>  <span style="text-decoration: underline;">14</span>101<span style="color: #949494;"> [Valdivia]</span> 3<span style="color: #949494;"> [No pobres]</span></span>
+<span class="co">## <span style="color: #BCBCBC;"> 4</span>   105   <span style="text-decoration: underline;">141</span>283 <span style="text-decoration: underline;">14</span>128<span style="text-decoration: underline;">301</span>184   <span style="text-decoration: underline;">283</span>273 2<span style="color: #949494;"> [Mujer]</span>  <span style="text-decoration: underline;">14</span>101<span style="color: #949494;"> [Valdivia]</span> 2<span style="color: #949494;"> [Pobres no…</span></span>
+<span class="co">## <span style="color: #BCBCBC;"> 5</span>   105   <span style="text-decoration: underline;">141</span>283 <span style="text-decoration: underline;">14</span>128<span style="text-decoration: underline;">301</span>184   <span style="text-decoration: underline;">283</span>273 1<span style="color: #949494;"> [Hombre]</span> <span style="text-decoration: underline;">14</span>101<span style="color: #949494;"> [Valdivia]</span> 2<span style="color: #949494;"> [Pobres no…</span></span>
+<span class="co">## <span style="color: #BCBCBC;"> 6</span>   105   <span style="text-decoration: underline;">141</span>283 <span style="text-decoration: underline;">14</span>128<span style="text-decoration: underline;">301</span>184   <span style="text-decoration: underline;">283</span>273 2<span style="color: #949494;"> [Mujer]</span>  <span style="text-decoration: underline;">14</span>101<span style="color: #949494;"> [Valdivia]</span> 2<span style="color: #949494;"> [Pobres no…</span></span>
+<span class="co">## <span style="color: #BCBCBC;"> 7</span>   105   <span style="text-decoration: underline;">141</span>283 <span style="text-decoration: underline;">14</span>128<span style="text-decoration: underline;">301</span>184   <span style="text-decoration: underline;">353</span>083 2<span style="color: #949494;"> [Mujer]</span>  <span style="text-decoration: underline;">14</span>101<span style="color: #949494;"> [Valdivia]</span> 3<span style="color: #949494;"> [No pobres]</span></span>
+<span class="co">## <span style="color: #BCBCBC;"> 8</span>   105   <span style="text-decoration: underline;">141</span>283 <span style="text-decoration: underline;">14</span>128<span style="text-decoration: underline;">301</span>184   <span style="text-decoration: underline;">260</span>000 2<span style="color: #949494;"> [Mujer]</span>  <span style="text-decoration: underline;">14</span>101<span style="color: #949494;"> [Valdivia]</span> 2<span style="color: #949494;"> [Pobres no…</span></span>
+<span class="co">## <span style="color: #BCBCBC;"> 9</span>   105   <span style="text-decoration: underline;">141</span>283 <span style="text-decoration: underline;">14</span>128<span style="text-decoration: underline;">301</span>184   <span style="text-decoration: underline;">260</span>000 2<span style="color: #949494;"> [Mujer]</span>  <span style="text-decoration: underline;">14</span>101<span style="color: #949494;"> [Valdivia]</span> 2<span style="color: #949494;"> [Pobres no…</span></span>
+<span class="co">## <span style="color: #BCBCBC;">10</span>   105   <span style="text-decoration: underline;">141</span>283 <span style="text-decoration: underline;">14</span>128<span style="text-decoration: underline;">301</span>184   <span style="text-decoration: underline;">260</span>000 1<span style="color: #949494;"> [Hombre]</span> <span style="text-decoration: underline;">14</span>101<span style="color: #949494;"> [Valdivia]</span> 2<span style="color: #949494;"> [Pobres no…</span></span>
+<span class="co">## <span style="color: #949494;"># … with 8,045 more rows</span></span></code></pre>
 </div>
-<div id="descargar-datos-desde-sitio-web-mds" class="section level1">
-<h1 class="hasAnchor">
-<a href="#descargar-datos-desde-sitio-web-mds" class="anchor"></a>Descargar datos desde sitio web MDS</h1>
-<p>Para descargar la encuesta CASEN es posible hacerlo desde el sitio web del Ministerio de Desarrollo Social (oficial) o desde GitHub (no oficial).</p>
-<p>No se daran ejemplos con la encuesta casen completa ya que CRAN limita el tiempo en segundos que puede tomar un ejemplo.</p>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="co"># todos los anios disponibles en carpeta casen-formato-spss</span>
-<span class="fu"><a href="../reference/descargar_casen_mds.html">descargar_casen_mds</a></span>(<span class="st">"casen-formato-spss"</span>)
+<div class="section level2">
+<h2 id="descargar-datos-desde-sitio-web-mds">Descargar datos desde sitio web MDS<a class="anchor" aria-label="anchor" href="#descargar-datos-desde-sitio-web-mds"></a>
+</h2>
+<p>Para descargar la encuesta CASEN es posible hacerlo desde el sitio
+web del Ministerio de Desarrollo Social (oficial) o desde GitHub (no
+oficial).</p>
+<p>No se daran ejemplos con la encuesta casen completa ya que CRAN
+limita el tiempo en segundos que puede tomar un ejemplo.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># todos los anios disponibles en carpeta casen-formato-stata</span>
+<span class="fu"><a href="../reference/descargar_casen_mds.html">descargar_casen_mds</a></span><span class="op">(</span><span class="st">"casen-formato-stata"</span><span class="op">)</span>
 
-<span class="co"># solo anio 2017 en carpeta casen-formato-spss</span>
-<span class="fu"><a href="../reference/descargar_casen_mds.html">descargar_casen_mds</a></span>(<span class="fl">2017</span>, <span class="st">"casen-formato-spss"</span>)
+<span class="co"># solo anio 2017 en carpeta casen-formato-stata</span>
+<span class="fu"><a href="../reference/descargar_casen_mds.html">descargar_casen_mds</a></span><span class="op">(</span><span class="fl">2017</span>, <span class="st">"casen-formato-stata"</span><span class="op">)</span>
 
-<span class="co"># leer encuesta CASEN en formato SAV (SPSS)</span>
+<span class="co"># leer encuesta CASEN en formato DTA (Stata)</span>
 <span class="co"># (se debe descomprimir con winRAR u otro)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">haven</span>)
-<span class="fu"><a href="https://haven.tidyverse.org/reference/read_spss.html">read_sav</a></span>(<span class="st">"casen-formato-spss/2017.sav"</span>)</pre></body></html></div>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://haven.tidyverse.org" class="external-link">haven</a></span><span class="op">)</span>
+<span class="fu"><a href="https://haven.tidyverse.org/reference/read_dta.html" class="external-link">read_stata</a></span><span class="op">(</span><span class="st">"casen-formato-stata/Casen 2017.dta"</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="descargar-datos-desde-github" class="section level1">
-<h1 class="hasAnchor">
-<a href="#descargar-datos-desde-github" class="anchor"></a>Descargar datos desde GitHub</h1>
-<p>En la misma linea de la seccion anterior, es posible descargar la encuesta CASEN en formato R.</p>
-<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="co"># todos los anios disponibles</span>
-<span class="fu"><a href="../reference/descargar_casen_github.html">descargar_casen_github</a></span>(<span class="st">"casen-formato-r"</span>)
+<div class="section level2">
+<h2 id="descargar-datos-desde-github">Descargar datos desde GitHub<a class="anchor" aria-label="anchor" href="#descargar-datos-desde-github"></a>
+</h2>
+<p>En la misma linea de la seccion anterior, es posible descargar la
+encuesta CASEN en formato R.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># todos los anios disponibles</span>
+<span class="fu"><a href="../reference/descargar_casen_github.html">descargar_casen_github</a></span><span class="op">(</span><span class="st">"casen-formato-r"</span><span class="op">)</span>
+
+<span class="co"># solo anio 2017</span>
+<span class="fu"><a href="../reference/descargar_casen_github.html">descargar_casen_github</a></span><span class="op">(</span><span class="fl">2017</span>, <span class="st">"casen-formato-r"</span><span class="op">)</span>
 
 <span class="co"># leer encuesta CASEN en formato RDS (R)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">readRDS</a></span>(<span class="st">"casen-formato-r/2017.rds"</span>)</pre></body></html></div>
+<span class="fu"><a href="https://rdrr.io/r/base/readRDS.html" class="external-link">readRDS</a></span><span class="op">(</span><span class="st">"casen-formato-r/2017.rds"</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="disenios-complejos" class="section level1">
-<h1 class="hasAnchor">
-<a href="#disenios-complejos" class="anchor"></a>Disenios complejos</h1>
-<p>El valor agregado del paquete CASEN es que entrega una forma facil de hacer calculos tomando en cuenta, ademas del disenio complejo, los grados de libertad.</p>
-<p>En el contexto de muestreo bietapico, el calculo de los grados de libertad es un tema no resuelto, pero el paquete casen utiliza la siguiente definicion del INE: “Los grados de libertad corresponden a la diferencia entre el numero de conglomerados no vacios (con presencia de la variable de interes) y el numero de estratos no vacios”.</p>
-<p>En dominios de estimacion pequenios la perdida de grados de libertad se vuelve bastante relevante. Esto es muy importante cuando se hacen calculos agrupando por region, sexo, region y sexo, entre otras.</p>
-<p>Al usar la funcion <code>svyby</code> del paquete survey, la funcion no calcula correctamente los grados de libertad de cada dominio, sino que considera un valor fijo para todos los dominios. Las funciones del paquete casen usan esta funcion pero incluyen una serie de pasos programados para usar los grados de libertad adecuados para cada dominio de estimacion.</p>
-<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="co"># disenio complejo a partir de  los datos de ejemplo</span>
-<span class="no">cd</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/configuracion_disenio.html">configuracion_disenio</a></span>(<span class="no">casen_2017_los_rios</span>, <span class="st">"ytotcorh"</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"comuna"</span>, <span class="st">"sexo"</span>), <span class="st">"expc"</span>)
-<span class="no">cd</span>$<span class="no">disenio</span></pre></body></html></div>
-<pre><code>## Stratified 1 - level Cluster Sampling design (with replacement)
-## With (67) clusters.
-## Called via srvyr
-## Sampling variables:
-##  - ids: varunit
-##  - strata: varstrat
-##  - weights: expc
-## Data variables: ytotcorh (dbl), comuna (dbl+lbl), sexo (dbl+lbl), expc (dbl),
-##   varunit (dbl), varstrat (dbl)</code></pre>
-<div class="sourceCode" id="cb7"><html><body><pre class="r"><span class="no">cd</span>$<span class="no">grupos</span></pre></body></html></div>
-<pre><code>## # A tibble: 12 x 2
-##                 comuna       sexo
-##              &lt;dbl+lbl&gt;  &lt;dbl+lbl&gt;
-##  1 14101 [Valdivia]    2 [Mujer] 
-##  2 14101 [Valdivia]    1 [Hombre]
-##  3 14104 [Los Lagos]   1 [Hombre]
-##  4 14104 [Los Lagos]   2 [Mujer] 
-##  5 14107 [Paillaco]    1 [Hombre]
-##  6 14107 [Paillaco]    2 [Mujer] 
-##  7 14108 [Panguipulli] 2 [Mujer] 
-##  8 14108 [Panguipulli] 1 [Hombre]
-##  9 14201 [La Unión]    1 [Hombre]
-## 10 14201 [La Unión]    2 [Mujer] 
-## 11 14204 [Río Bueno]   1 [Hombre]
-## 12 14204 [Río Bueno]   2 [Mujer]</code></pre>
+<div class="section level2">
+<h2 id="disenios-complejos">Disenios complejos<a class="anchor" aria-label="anchor" href="#disenios-complejos"></a>
+</h2>
+<p>El valor agregado del paquete CASEN es que entrega una forma facil de
+hacer calculos tomando en cuenta, ademas del disenio complejo, los
+grados de libertad.</p>
+<p>En el contexto de muestreo bietapico, el calculo de los grados de
+libertad es un tema no resuelto, pero el paquete casen utiliza la
+siguiente definicion del INE: “Los grados de libertad corresponden a la
+diferencia entre el numero de conglomerados no vacios (con presencia de
+la variable de interes) y el numero de estratos no vacios”.</p>
+<p>En dominios de estimacion pequenios la perdida de grados de libertad
+se vuelve bastante relevante. Esto es muy importante cuando se hacen
+calculos agrupando por region, sexo, region y sexo, entre otras.</p>
+<p>Al usar la funcion <code>svyby</code> del paquete survey, la funcion
+no calcula correctamente los grados de libertad de cada dominio, sino
+que considera un valor fijo para todos los dominios. Las funciones del
+paquete casen usan esta funcion pero incluyen una serie de pasos
+programados para usar los grados de libertad adecuados para cada dominio
+de estimacion.</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># disenio complejo a partir de  los datos de ejemplo</span>
+<span class="va">cd</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/configuracion_disenio.html">configuracion_disenio</a></span><span class="op">(</span><span class="va">casen_2017_los_rios</span>, <span class="st">"ytotcorh"</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"comuna"</span>, <span class="st">"sexo"</span><span class="op">)</span>, <span class="st">"expc"</span><span class="op">)</span>
+<span class="va">cd</span><span class="op">$</span><span class="va">disenio</span></code></pre></div>
+<pre><code><span class="co">## Stratified 1 - level Cluster Sampling design (with replacement)</span>
+<span class="co">## With (67) clusters.</span>
+<span class="co">## Called via srvyr</span>
+<span class="co">## Sampling variables:</span>
+<span class="co">##  - ids: varunit</span>
+<span class="co">##  - strata: varstrat</span>
+<span class="co">##  - weights: expc</span>
+<span class="co">## Data variables: ytotcorh (dbl), comuna (dbl+lbl), sexo (dbl+lbl), expc (dbl),</span>
+<span class="co">##   varunit (dbl), varstrat (dbl)</span></code></pre>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">cd</span><span class="op">$</span><span class="va">grupos</span></code></pre></div>
+<pre><code><span class="co">## <span style="color: #949494;"># A tibble: 12 × 2</span></span>
+<span class="co">##                 comuna       sexo</span>
+<span class="co">##              <span style="color: #949494; font-style: italic;">&lt;dbl+lbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl+lbl&gt;</span></span>
+<span class="co">## <span style="color: #BCBCBC;"> 1</span> <span style="text-decoration: underline;">14</span>101<span style="color: #949494;"> [Valdivia]</span>    2<span style="color: #949494;"> [Mujer]</span> </span>
+<span class="co">## <span style="color: #BCBCBC;"> 2</span> <span style="text-decoration: underline;">14</span>101<span style="color: #949494;"> [Valdivia]</span>    1<span style="color: #949494;"> [Hombre]</span></span>
+<span class="co">## <span style="color: #BCBCBC;"> 3</span> <span style="text-decoration: underline;">14</span>104<span style="color: #949494;"> [Los Lagos]</span>   1<span style="color: #949494;"> [Hombre]</span></span>
+<span class="co">## <span style="color: #BCBCBC;"> 4</span> <span style="text-decoration: underline;">14</span>104<span style="color: #949494;"> [Los Lagos]</span>   2<span style="color: #949494;"> [Mujer]</span> </span>
+<span class="co">## <span style="color: #BCBCBC;"> 5</span> <span style="text-decoration: underline;">14</span>107<span style="color: #949494;"> [Paillaco]</span>    1<span style="color: #949494;"> [Hombre]</span></span>
+<span class="co">## <span style="color: #BCBCBC;"> 6</span> <span style="text-decoration: underline;">14</span>107<span style="color: #949494;"> [Paillaco]</span>    2<span style="color: #949494;"> [Mujer]</span> </span>
+<span class="co">## <span style="color: #BCBCBC;"> 7</span> <span style="text-decoration: underline;">14</span>108<span style="color: #949494;"> [Panguipulli]</span> 2<span style="color: #949494;"> [Mujer]</span> </span>
+<span class="co">## <span style="color: #BCBCBC;"> 8</span> <span style="text-decoration: underline;">14</span>108<span style="color: #949494;"> [Panguipulli]</span> 1<span style="color: #949494;"> [Hombre]</span></span>
+<span class="co">## <span style="color: #BCBCBC;"> 9</span> <span style="text-decoration: underline;">14</span>201<span style="color: #949494;"> [La Unión]</span>    1<span style="color: #949494;"> [Hombre]</span></span>
+<span class="co">## <span style="color: #BCBCBC;">10</span> <span style="text-decoration: underline;">14</span>201<span style="color: #949494;"> [La Unión]</span>    2<span style="color: #949494;"> [Mujer]</span> </span>
+<span class="co">## <span style="color: #BCBCBC;">11</span> <span style="text-decoration: underline;">14</span>204<span style="color: #949494;"> [Río Bueno]</span>   1<span style="color: #949494;"> [Hombre]</span></span>
+<span class="co">## <span style="color: #BCBCBC;">12</span> <span style="text-decoration: underline;">14</span>204<span style="color: #949494;"> [Río Bueno]</span>   2<span style="color: #949494;"> [Mujer]</span></span></code></pre>
 </div>
-<div id="medidas-de-tendencia-central-con-disenio-complejo" class="section level1">
-<h1 class="hasAnchor">
-<a href="#medidas-de-tendencia-central-con-disenio-complejo" class="anchor"></a>Medidas de tendencia central con disenio complejo</h1>
-<p>La funcion <code>estadistica_descriptiva()</code> toma en cuenta el disenio complejo y los grados de libertad. Puedo agrupar por una o mas variables y la funcion entrega, ademas del promedio, el intervalo de confianza.</p>
-<div class="sourceCode" id="cb9"><html><body><pre class="r"><span class="co"># media, mediana y percentil 70</span>
-<span class="fu"><a href="../reference/media_agrupada.html">media_agrupada</a></span>(<span class="no">cd</span>)</pre></body></html></div>
-<pre><code>## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`</code></pre>
-<pre><code>## # A tibble: 12 x 8
-## # Groups:   comuna_etiqueta [6]
-##    comuna_etiqueta sexo_etiqueta comuna_codigo sexo_codigo      comuna
-##          &lt;dbl+lbl&gt; &lt;chr&gt;             &lt;dbl+lbl&gt; &lt;chr&gt;         &lt;dbl+lbl&gt;
-##  1 14101 [Valdivi… Mujer         14101 [Valdi… 2           14101 [Val…
-##  2 14101 [Valdivi… Hombre        14101 [Valdi… 1           14101 [Val…
-##  3 14104 [Los Lag… Hombre        14104 [Los L… 1           14104 [Los…
-##  4 14104 [Los Lag… Mujer         14104 [Los L… 2           14104 [Los…
-##  5 14107 [Paillac… Hombre        14107 [Paill… 1           14107 [Pai…
-##  6 14107 [Paillac… Mujer         14107 [Paill… 2           14107 [Pai…
-##  7 14108 [Panguip… Mujer         14108 [Pangu… 2           14108 [Pan…
-##  8 14108 [Panguip… Hombre        14108 [Pangu… 1           14108 [Pan…
-##  9 14201 [La Unió… Hombre        14201 [La Un… 1           14201 [La …
-## 10 14201 [La Unió… Mujer         14201 [La Un… 2           14201 [La …
-## 11 14204 [Río Bue… Hombre        14204 [Río B… 1           14204 [Río…
-## 12 14204 [Río Bue… Mujer         14204 [Río B… 2           14204 [Río…
-## # … with 3 more variables: media_ytotcorh &lt;dbl&gt;, media_ytotcorh_inf &lt;dbl&gt;,
-## #   media_ytotcorh_sup &lt;dbl&gt;</code></pre>
-<div class="sourceCode" id="cb12"><html><body><pre class="r"><span class="fu"><a href="../reference/mediana_agrupada.html">mediana_agrupada</a></span>(<span class="no">cd</span>)</pre></body></html></div>
-<pre><code>## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`</code></pre>
-<pre><code>## # A tibble: 12 x 8
-## # Groups:   comuna_etiqueta [6]
-##    comuna_etiqueta sexo_etiqueta comuna_codigo sexo_codigo      comuna
-##          &lt;dbl+lbl&gt; &lt;chr&gt;             &lt;dbl+lbl&gt; &lt;chr&gt;         &lt;dbl+lbl&gt;
-##  1 14101 [Valdivi… Mujer         14101 [Valdi… 2           14101 [Val…
-##  2 14101 [Valdivi… Hombre        14101 [Valdi… 1           14101 [Val…
-##  3 14104 [Los Lag… Hombre        14104 [Los L… 1           14104 [Los…
-##  4 14104 [Los Lag… Mujer         14104 [Los L… 2           14104 [Los…
-##  5 14107 [Paillac… Hombre        14107 [Paill… 1           14107 [Pai…
-##  6 14107 [Paillac… Mujer         14107 [Paill… 2           14107 [Pai…
-##  7 14108 [Panguip… Mujer         14108 [Pangu… 2           14108 [Pan…
-##  8 14108 [Panguip… Hombre        14108 [Pangu… 1           14108 [Pan…
-##  9 14201 [La Unió… Hombre        14201 [La Un… 1           14201 [La …
-## 10 14201 [La Unió… Mujer         14201 [La Un… 2           14201 [La …
-## 11 14204 [Río Bue… Hombre        14204 [Río B… 1           14204 [Río…
-## 12 14204 [Río Bue… Mujer         14204 [Río B… 2           14204 [Río…
-## # … with 3 more variables: mediana_ytotcorh &lt;dbl&gt;, mediana_ytotcorh_inf &lt;dbl&gt;,
-## #   mediana_ytotcorh_sup &lt;dbl&gt;</code></pre>
-<div class="sourceCode" id="cb15"><html><body><pre class="r"><span class="fu"><a href="../reference/percentiles_agrupados.html">percentiles_agrupados</a></span>(<span class="no">cd</span>)</pre></body></html></div>
-<pre><code>## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`
-## `mutate_if()` ignored the following grouping variables:
-## Column `comuna`</code></pre>
-<pre><code>## # A tibble: 12 x 8
-## # Groups:   comuna_etiqueta [6]
-##    percentil comuna_etiqueta sexo_etiqueta comuna_codigo sexo_codigo      comuna
-##        &lt;dbl&gt;       &lt;dbl+lbl&gt; &lt;chr&gt;             &lt;dbl+lbl&gt; &lt;chr&gt;         &lt;dbl+lbl&gt;
-##  1       0.7 14101 [Valdivi… Mujer         14101 [Valdi… 2           14101 [Val…
-##  2       0.7 14101 [Valdivi… Hombre        14101 [Valdi… 1           14101 [Val…
-##  3       0.7 14104 [Los Lag… Hombre        14104 [Los L… 1           14104 [Los…
-##  4       0.7 14104 [Los Lag… Mujer         14104 [Los L… 2           14104 [Los…
-##  5       0.7 14107 [Paillac… Hombre        14107 [Paill… 1           14107 [Pai…
-##  6       0.7 14107 [Paillac… Mujer         14107 [Paill… 2           14107 [Pai…
-##  7       0.7 14108 [Panguip… Mujer         14108 [Pangu… 2           14108 [Pan…
-##  8       0.7 14108 [Panguip… Hombre        14108 [Pangu… 1           14108 [Pan…
-##  9       0.7 14201 [La Unió… Hombre        14201 [La Un… 1           14201 [La …
-## 10       0.7 14201 [La Unió… Mujer         14201 [La Un… 2           14201 [La …
-## 11       0.7 14204 [Río Bue… Hombre        14204 [Río B… 1           14204 [Río…
-## 12       0.7 14204 [Río Bue… Mujer         14204 [Río B… 2           14204 [Río…
-## # … with 2 more variables: mediana_ytotcorh &lt;dbl&gt;,
-## #   mediana_ytotcorh_err_est &lt;dbl&gt;</code></pre>
+<div class="section level2">
+<h2 id="medidas-de-tendencia-central-con-disenio-complejo">Medidas de tendencia central con disenio complejo<a class="anchor" aria-label="anchor" href="#medidas-de-tendencia-central-con-disenio-complejo"></a>
+</h2>
+<p>La funcion <code>estadistica_descriptiva()</code> toma en cuenta el
+disenio complejo y los grados de libertad. Puedo agrupar por una o mas
+variables y la funcion entrega, ademas del promedio, el intervalo de
+confianza.</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># media, mediana y percentil 70</span>
+<span class="fu"><a href="../reference/media_agrupada.html">media_agrupada</a></span><span class="op">(</span><span class="va">cd</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## <span style="color: #00BBBB;">•</span> Column `comuna`</span></code></pre>
+<pre><code><span class="co">## <span style="color: #949494;"># A tibble: 12 × 8</span></span>
+<span class="co">## <span style="color: #949494;"># Groups:   comuna_etiqueta [6]</span></span>
+<span class="co">##        comuna_etiqueta sexo_etiqueta       comuna_codigo sexo_codigo      comuna</span>
+<span class="co">##              <span style="color: #949494; font-style: italic;">&lt;dbl+lbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;dbl+lbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl+lbl&gt;</span></span>
+<span class="co">## <span style="color: #BCBCBC;"> 1</span> <span style="text-decoration: underline;">14</span>101<span style="color: #949494;"> [Valdivia]</span>    Mujer         <span style="text-decoration: underline;">14</span>101<span style="color: #949494;"> [Valdivia]</span>    2           <span style="text-decoration: underline;">14</span>101<span style="color: #949494;"> [Val…</span></span>
+<span class="co">## <span style="color: #BCBCBC;"> 2</span> <span style="text-decoration: underline;">14</span>101<span style="color: #949494;"> [Valdivia]</span>    Hombre        <span style="text-decoration: underline;">14</span>101<span style="color: #949494;"> [Valdivia]</span>    1           <span style="text-decoration: underline;">14</span>101<span style="color: #949494;"> [Val…</span></span>
+<span class="co">## <span style="color: #BCBCBC;"> 3</span> <span style="text-decoration: underline;">14</span>104<span style="color: #949494;"> [Los Lagos]</span>   Hombre        <span style="text-decoration: underline;">14</span>104<span style="color: #949494;"> [Los Lagos]</span>   1           <span style="text-decoration: underline;">14</span>104<span style="color: #949494;"> [Los…</span></span>
+<span class="co">## <span style="color: #BCBCBC;"> 4</span> <span style="text-decoration: underline;">14</span>104<span style="color: #949494;"> [Los Lagos]</span>   Mujer         <span style="text-decoration: underline;">14</span>104<span style="color: #949494;"> [Los Lagos]</span>   2           <span style="text-decoration: underline;">14</span>104<span style="color: #949494;"> [Los…</span></span>
+<span class="co">## <span style="color: #BCBCBC;"> 5</span> <span style="text-decoration: underline;">14</span>107<span style="color: #949494;"> [Paillaco]</span>    Hombre        <span style="text-decoration: underline;">14</span>107<span style="color: #949494;"> [Paillaco]</span>    1           <span style="text-decoration: underline;">14</span>107<span style="color: #949494;"> [Pai…</span></span>
+<span class="co">## <span style="color: #BCBCBC;"> 6</span> <span style="text-decoration: underline;">14</span>107<span style="color: #949494;"> [Paillaco]</span>    Mujer         <span style="text-decoration: underline;">14</span>107<span style="color: #949494;"> [Paillaco]</span>    2           <span style="text-decoration: underline;">14</span>107<span style="color: #949494;"> [Pai…</span></span>
+<span class="co">## <span style="color: #BCBCBC;"> 7</span> <span style="text-decoration: underline;">14</span>108<span style="color: #949494;"> [Panguipulli]</span> Mujer         <span style="text-decoration: underline;">14</span>108<span style="color: #949494;"> [Panguipulli]</span> 2           <span style="text-decoration: underline;">14</span>108<span style="color: #949494;"> [Pan…</span></span>
+<span class="co">## <span style="color: #BCBCBC;"> 8</span> <span style="text-decoration: underline;">14</span>108<span style="color: #949494;"> [Panguipulli]</span> Hombre        <span style="text-decoration: underline;">14</span>108<span style="color: #949494;"> [Panguipulli]</span> 1           <span style="text-decoration: underline;">14</span>108<span style="color: #949494;"> [Pan…</span></span>
+<span class="co">## <span style="color: #BCBCBC;"> 9</span> <span style="text-decoration: underline;">14</span>201<span style="color: #949494;"> [La Unión]</span>    Hombre        <span style="text-decoration: underline;">14</span>201<span style="color: #949494;"> [La Unión]</span>    1           <span style="text-decoration: underline;">14</span>201<span style="color: #949494;"> [La …</span></span>
+<span class="co">## <span style="color: #BCBCBC;">10</span> <span style="text-decoration: underline;">14</span>201<span style="color: #949494;"> [La Unión]</span>    Mujer         <span style="text-decoration: underline;">14</span>201<span style="color: #949494;"> [La Unión]</span>    2           <span style="text-decoration: underline;">14</span>201<span style="color: #949494;"> [La …</span></span>
+<span class="co">## <span style="color: #BCBCBC;">11</span> <span style="text-decoration: underline;">14</span>204<span style="color: #949494;"> [Río Bueno]</span>   Hombre        <span style="text-decoration: underline;">14</span>204<span style="color: #949494;"> [Río Bueno]</span>   1           <span style="text-decoration: underline;">14</span>204<span style="color: #949494;"> [Río…</span></span>
+<span class="co">## <span style="color: #BCBCBC;">12</span> <span style="text-decoration: underline;">14</span>204<span style="color: #949494;"> [Río Bueno]</span>   Mujer         <span style="text-decoration: underline;">14</span>204<span style="color: #949494;"> [Río Bueno]</span>   2           <span style="text-decoration: underline;">14</span>204<span style="color: #949494;"> [Río…</span></span>
+<span class="co">## <span style="color: #949494;"># … with 3 more variables: media_ytotcorh &lt;dbl&gt;, media_ytotcorh_inf &lt;dbl&gt;,</span></span>
+<span class="co">## <span style="color: #949494;">#   media_ytotcorh_sup &lt;dbl&gt;</span></span></code></pre>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/mediana_agrupada.html">mediana_agrupada</a></span><span class="op">(</span><span class="va">cd</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## <span style="color: #00BBBB;">•</span> Column `comuna`</span></code></pre>
+<pre><code><span class="co">## <span style="color: #949494;"># A tibble: 12 × 8</span></span>
+<span class="co">## <span style="color: #949494;"># Groups:   comuna_etiqueta [6]</span></span>
+<span class="co">##        comuna_etiqueta sexo_etiqueta       comuna_codigo sexo_codigo      comuna</span>
+<span class="co">##              <span style="color: #949494; font-style: italic;">&lt;dbl+lbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;dbl+lbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl+lbl&gt;</span></span>
+<span class="co">## <span style="color: #BCBCBC;"> 1</span> <span style="text-decoration: underline;">14</span>101<span style="color: #949494;"> [Valdivia]</span>    Mujer         <span style="text-decoration: underline;">14</span>101<span style="color: #949494;"> [Valdivia]</span>    2           <span style="text-decoration: underline;">14</span>101<span style="color: #949494;"> [Val…</span></span>
+<span class="co">## <span style="color: #BCBCBC;"> 2</span> <span style="text-decoration: underline;">14</span>101<span style="color: #949494;"> [Valdivia]</span>    Hombre        <span style="text-decoration: underline;">14</span>101<span style="color: #949494;"> [Valdivia]</span>    1           <span style="text-decoration: underline;">14</span>101<span style="color: #949494;"> [Val…</span></span>
+<span class="co">## <span style="color: #BCBCBC;"> 3</span> <span style="text-decoration: underline;">14</span>104<span style="color: #949494;"> [Los Lagos]</span>   Hombre        <span style="text-decoration: underline;">14</span>104<span style="color: #949494;"> [Los Lagos]</span>   1           <span style="text-decoration: underline;">14</span>104<span style="color: #949494;"> [Los…</span></span>
+<span class="co">## <span style="color: #BCBCBC;"> 4</span> <span style="text-decoration: underline;">14</span>104<span style="color: #949494;"> [Los Lagos]</span>   Mujer         <span style="text-decoration: underline;">14</span>104<span style="color: #949494;"> [Los Lagos]</span>   2           <span style="text-decoration: underline;">14</span>104<span style="color: #949494;"> [Los…</span></span>
+<span class="co">## <span style="color: #BCBCBC;"> 5</span> <span style="text-decoration: underline;">14</span>107<span style="color: #949494;"> [Paillaco]</span>    Hombre        <span style="text-decoration: underline;">14</span>107<span style="color: #949494;"> [Paillaco]</span>    1           <span style="text-decoration: underline;">14</span>107<span style="color: #949494;"> [Pai…</span></span>
+<span class="co">## <span style="color: #BCBCBC;"> 6</span> <span style="text-decoration: underline;">14</span>107<span style="color: #949494;"> [Paillaco]</span>    Mujer         <span style="text-decoration: underline;">14</span>107<span style="color: #949494;"> [Paillaco]</span>    2           <span style="text-decoration: underline;">14</span>107<span style="color: #949494;"> [Pai…</span></span>
+<span class="co">## <span style="color: #BCBCBC;"> 7</span> <span style="text-decoration: underline;">14</span>108<span style="color: #949494;"> [Panguipulli]</span> Mujer         <span style="text-decoration: underline;">14</span>108<span style="color: #949494;"> [Panguipulli]</span> 2           <span style="text-decoration: underline;">14</span>108<span style="color: #949494;"> [Pan…</span></span>
+<span class="co">## <span style="color: #BCBCBC;"> 8</span> <span style="text-decoration: underline;">14</span>108<span style="color: #949494;"> [Panguipulli]</span> Hombre        <span style="text-decoration: underline;">14</span>108<span style="color: #949494;"> [Panguipulli]</span> 1           <span style="text-decoration: underline;">14</span>108<span style="color: #949494;"> [Pan…</span></span>
+<span class="co">## <span style="color: #BCBCBC;"> 9</span> <span style="text-decoration: underline;">14</span>201<span style="color: #949494;"> [La Unión]</span>    Hombre        <span style="text-decoration: underline;">14</span>201<span style="color: #949494;"> [La Unión]</span>    1           <span style="text-decoration: underline;">14</span>201<span style="color: #949494;"> [La …</span></span>
+<span class="co">## <span style="color: #BCBCBC;">10</span> <span style="text-decoration: underline;">14</span>201<span style="color: #949494;"> [La Unión]</span>    Mujer         <span style="text-decoration: underline;">14</span>201<span style="color: #949494;"> [La Unión]</span>    2           <span style="text-decoration: underline;">14</span>201<span style="color: #949494;"> [La …</span></span>
+<span class="co">## <span style="color: #BCBCBC;">11</span> <span style="text-decoration: underline;">14</span>204<span style="color: #949494;"> [Río Bueno]</span>   Hombre        <span style="text-decoration: underline;">14</span>204<span style="color: #949494;"> [Río Bueno]</span>   1           <span style="text-decoration: underline;">14</span>204<span style="color: #949494;"> [Río…</span></span>
+<span class="co">## <span style="color: #BCBCBC;">12</span> <span style="text-decoration: underline;">14</span>204<span style="color: #949494;"> [Río Bueno]</span>   Mujer         <span style="text-decoration: underline;">14</span>204<span style="color: #949494;"> [Río Bueno]</span>   2           <span style="text-decoration: underline;">14</span>204<span style="color: #949494;"> [Río…</span></span>
+<span class="co">## <span style="color: #949494;"># … with 3 more variables: mediana_ytotcorh &lt;dbl&gt;, mediana_ytotcorh_inf &lt;dbl&gt;,</span></span>
+<span class="co">## <span style="color: #949494;">#   mediana_ytotcorh_sup &lt;dbl&gt;</span></span></code></pre>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/percentiles_agrupados.html">percentiles_agrupados</a></span><span class="op">(</span><span class="va">cd</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## `mutate_if()` ignored the following grouping variables:</span>
+<span class="co">## <span style="color: #00BBBB;">•</span> Column `comuna`</span></code></pre>
+<pre><code><span class="co">## <span style="color: #949494;"># A tibble: 12 × 8</span></span>
+<span class="co">## <span style="color: #949494;"># Groups:   comuna_etiqueta [6]</span></span>
+<span class="co">##    percentil comuna_etiqueta sexo_etiqueta comuna_codigo sexo_codigo      comuna</span>
+<span class="co">##        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl+lbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;dbl+lbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl+lbl&gt;</span></span>
+<span class="co">## <span style="color: #BCBCBC;"> 1</span>       0.7 <span style="text-decoration: underline;">14</span>101<span style="color: #949494;"> [Valdivi…</span> Mujer         <span style="text-decoration: underline;">14</span>101<span style="color: #949494;"> [Valdi…</span> 2           <span style="text-decoration: underline;">14</span>101<span style="color: #949494;"> [Val…</span></span>
+<span class="co">## <span style="color: #BCBCBC;"> 2</span>       0.7 <span style="text-decoration: underline;">14</span>101<span style="color: #949494;"> [Valdivi…</span> Hombre        <span style="text-decoration: underline;">14</span>101<span style="color: #949494;"> [Valdi…</span> 1           <span style="text-decoration: underline;">14</span>101<span style="color: #949494;"> [Val…</span></span>
+<span class="co">## <span style="color: #BCBCBC;"> 3</span>       0.7 <span style="text-decoration: underline;">14</span>104<span style="color: #949494;"> [Los Lag…</span> Hombre        <span style="text-decoration: underline;">14</span>104<span style="color: #949494;"> [Los L…</span> 1           <span style="text-decoration: underline;">14</span>104<span style="color: #949494;"> [Los…</span></span>
+<span class="co">## <span style="color: #BCBCBC;"> 4</span>       0.7 <span style="text-decoration: underline;">14</span>104<span style="color: #949494;"> [Los Lag…</span> Mujer         <span style="text-decoration: underline;">14</span>104<span style="color: #949494;"> [Los L…</span> 2           <span style="text-decoration: underline;">14</span>104<span style="color: #949494;"> [Los…</span></span>
+<span class="co">## <span style="color: #BCBCBC;"> 5</span>       0.7 <span style="text-decoration: underline;">14</span>107<span style="color: #949494;"> [Paillac…</span> Hombre        <span style="text-decoration: underline;">14</span>107<span style="color: #949494;"> [Paill…</span> 1           <span style="text-decoration: underline;">14</span>107<span style="color: #949494;"> [Pai…</span></span>
+<span class="co">## <span style="color: #BCBCBC;"> 6</span>       0.7 <span style="text-decoration: underline;">14</span>107<span style="color: #949494;"> [Paillac…</span> Mujer         <span style="text-decoration: underline;">14</span>107<span style="color: #949494;"> [Paill…</span> 2           <span style="text-decoration: underline;">14</span>107<span style="color: #949494;"> [Pai…</span></span>
+<span class="co">## <span style="color: #BCBCBC;"> 7</span>       0.7 <span style="text-decoration: underline;">14</span>108<span style="color: #949494;"> [Panguip…</span> Mujer         <span style="text-decoration: underline;">14</span>108<span style="color: #949494;"> [Pangu…</span> 2           <span style="text-decoration: underline;">14</span>108<span style="color: #949494;"> [Pan…</span></span>
+<span class="co">## <span style="color: #BCBCBC;"> 8</span>       0.7 <span style="text-decoration: underline;">14</span>108<span style="color: #949494;"> [Panguip…</span> Hombre        <span style="text-decoration: underline;">14</span>108<span style="color: #949494;"> [Pangu…</span> 1           <span style="text-decoration: underline;">14</span>108<span style="color: #949494;"> [Pan…</span></span>
+<span class="co">## <span style="color: #BCBCBC;"> 9</span>       0.7 <span style="text-decoration: underline;">14</span>201<span style="color: #949494;"> [La Unió…</span> Hombre        <span style="text-decoration: underline;">14</span>201<span style="color: #949494;"> [La Un…</span> 1           <span style="text-decoration: underline;">14</span>201<span style="color: #949494;"> [La …</span></span>
+<span class="co">## <span style="color: #BCBCBC;">10</span>       0.7 <span style="text-decoration: underline;">14</span>201<span style="color: #949494;"> [La Unió…</span> Mujer         <span style="text-decoration: underline;">14</span>201<span style="color: #949494;"> [La Un…</span> 2           <span style="text-decoration: underline;">14</span>201<span style="color: #949494;"> [La …</span></span>
+<span class="co">## <span style="color: #BCBCBC;">11</span>       0.7 <span style="text-decoration: underline;">14</span>204<span style="color: #949494;"> [Río Bue…</span> Hombre        <span style="text-decoration: underline;">14</span>204<span style="color: #949494;"> [Río B…</span> 1           <span style="text-decoration: underline;">14</span>204<span style="color: #949494;"> [Río…</span></span>
+<span class="co">## <span style="color: #BCBCBC;">12</span>       0.7 <span style="text-decoration: underline;">14</span>204<span style="color: #949494;"> [Río Bue…</span> Mujer         <span style="text-decoration: underline;">14</span>204<span style="color: #949494;"> [Río B…</span> 2           <span style="text-decoration: underline;">14</span>204<span style="color: #949494;"> [Río…</span></span>
+<span class="co">## <span style="color: #949494;"># … with 2 more variables: mediana_ytotcorh &lt;dbl&gt;,</span></span>
+<span class="co">## <span style="color: #949494;">#   mediana_ytotcorh_err_est &lt;dbl&gt;</span></span></code></pre>
 </div>
-<div id="uso-de-las-funciones-de-casen-y-dplyr" class="section level1">
-<h1 class="hasAnchor">
-<a href="#uso-de-las-funciones-de-casen-y-dplyr" class="anchor"></a>Uso de las funciones de casen y dplyr</h1>
-<p>Las funciones de <code>casen</code> estan pensadas para usarse en conjunto con las de <code>dplyr</code>. Un ejemplo simple de esto es el calculo del porcentaje de hogares pobres.</p>
-<p>Veamos el caso puntual de las funciones <code>mutate</code> y <code>filter</code> de dplyr.</p>
-<div class="sourceCode" id="cb18"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">dplyr</span>)</pre></body></html></div>
-<pre><code>## 
-## Attaching package: 'dplyr'</code></pre>
-<pre><code>## The following objects are masked from 'package:stats':
-## 
-##     filter, lag</code></pre>
-<pre><code>## The following objects are masked from 'package:base':
-## 
-##     intersect, setdiff, setequal, union</code></pre>
-<div class="sourceCode" id="cb22"><html><body><pre class="r"><span class="co"># convierto pobreza a una variable binaria</span>
-<span class="no">casen_2017_los_rios</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="kw">pobreza</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span>(<span class="no">pobreza</span> <span class="kw">&lt;=</span> <span class="fl">2</span>, <span class="fl">1</span>, <span class="fl">0</span>)) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="../reference/configuracion_disenio.html">configuracion_disenio</a></span>(<span class="st">"pobreza"</span>, <span class="st">"comuna"</span>, <span class="st">"expc"</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="../reference/media_agrupada.html">media_agrupada</a></span>()</pre></body></html></div>
-<pre><code>## # A tibble: 6 x 5
-##   comuna_etiqueta comuna_codigo media_pobreza media_pobreza_inf media_pobreza_s…
-##   &lt;chr&gt;           &lt;chr&gt;                 &lt;dbl&gt;             &lt;dbl&gt;            &lt;dbl&gt;
-## 1 Valdivia        14101                0.0753            0.0513           0.0993
-## 2 Los Lagos       14104                0.156             0.104            0.209 
-## 3 Paillaco        14107                0.209            -0.0754           0.494 
-## 4 Panguipulli     14108                0.133             0.0928           0.173 
-## 5 La Unión        14201                0.132             0.0656           0.198 
-## 6 Río Bueno       14204                0.170             0.0736           0.266</code></pre>
+<div class="section level2">
+<h2 id="uso-de-las-funciones-de-casen-y-dplyr">Uso de las funciones de casen y dplyr<a class="anchor" aria-label="anchor" href="#uso-de-las-funciones-de-casen-y-dplyr"></a>
+</h2>
+<p>Las funciones de <code>casen</code> estan pensadas para usarse en
+conjunto con las de <code>dplyr</code>. Un ejemplo simple de esto es el
+calculo del porcentaje de hogares pobres.</p>
+<p>Veamos el caso puntual de las funciones <code>mutate</code> y
+<code>filter</code> de dplyr.</p>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## </span>
+<span class="co">## Attaching package: 'dplyr'</span></code></pre>
+<pre><code><span class="co">## The following objects are masked from 'package:stats':</span>
+<span class="co">## </span>
+<span class="co">##     filter, lag</span></code></pre>
+<pre><code><span class="co">## The following objects are masked from 'package:base':</span>
+<span class="co">## </span>
+<span class="co">##     intersect, setdiff, setequal, union</span></code></pre>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># convierto pobreza a una variable binaria</span>
+<span class="va">casen_2017_los_rios</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>pobreza <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="va">pobreza</span> <span class="op">&lt;=</span> <span class="fl">2</span>, <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
+  <span class="fu"><a href="../reference/configuracion_disenio.html">configuracion_disenio</a></span><span class="op">(</span><span class="st">"pobreza"</span>, <span class="st">"comuna"</span>, <span class="st">"expc"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
+  <span class="fu"><a href="../reference/media_agrupada.html">media_agrupada</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## <span style="color: #949494;"># A tibble: 6 × 5</span></span>
+<span class="co">##   comuna_etiqueta comuna_codigo media_pobreza media_pobreza_inf media_pobreza_s…</span>
+<span class="co">##   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="co">## <span style="color: #BCBCBC;">1</span> Valdivia        14101                0.075<span style="text-decoration: underline;">3</span>            0.051<span style="text-decoration: underline;">3</span>           0.099<span style="text-decoration: underline;">3</span></span>
+<span class="co">## <span style="color: #BCBCBC;">2</span> Los Lagos       14104                0.156             0.104            0.209 </span>
+<span class="co">## <span style="color: #BCBCBC;">3</span> Paillaco        14107                0.209            -<span style="color: #BB0000;">0.075</span><span style="color: #BB0000; text-decoration: underline;">4</span>           0.494 </span>
+<span class="co">## <span style="color: #BCBCBC;">4</span> Panguipulli     14108                0.133             0.092<span style="text-decoration: underline;">8</span>           0.173 </span>
+<span class="co">## <span style="color: #BCBCBC;">5</span> La Unión        14201                0.132             0.065<span style="text-decoration: underline;">6</span>           0.198 </span>
+<span class="co">## <span style="color: #BCBCBC;">6</span> Río Bueno       14204                0.170             0.073<span style="text-decoration: underline;">6</span>           0.266</span></code></pre>
 </div>
-<div id="inferencia-con-disenios-complejos" class="section level1">
-<h1 class="hasAnchor">
-<a href="#inferencia-con-disenios-complejos" class="anchor"></a>Inferencia con disenios complejos</h1>
-<p>El paquete casen provee dos funciones para sacar el maximo partido a las funciones de R tomando en cuenta el disenio complejo y los grados de libertad.</p>
+<div class="section level2">
+<h2 id="inferencia-con-disenios-complejos">Inferencia con disenios complejos<a class="anchor" aria-label="anchor" href="#inferencia-con-disenios-complejos"></a>
+</h2>
+<p>El paquete casen provee dos funciones para sacar el maximo partido a
+las funciones de R tomando en cuenta el disenio complejo y los grados de
+libertad.</p>
 <p>Ajuste del modelo:</p>
-<div class="sourceCode" id="cb24"><html><body><pre class="r"><span class="co"># modelo: ytotcorh = b0 + b1 comuna + b2 sexo + e</span>
-<span class="no">mod</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/modelo_lineal_generalizado.html">modelo_lineal_generalizado</a></span>(<span class="no">cd</span>, <span class="st">"ytotcorh ~ comuna + sexo"</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span>(<span class="no">mod</span>)</pre></body></html></div>
-<pre><code>## 
-## Call:
-## svyglm(formula = stats::as.formula(modelo), design = disenio$disenio)
-## 
-## Survey design:
-## Called via srvyr
-## 
-## Coefficients:
-##               Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept) 55655084.7 13884444.7   4.008 0.000192 ***
-## comuna         -3860.7      977.4  -3.950 0.000232 ***
-## sexo          -58713.5    23514.9  -2.497 0.015672 *  
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-## 
-## (Dispersion parameter for gaussian family taken to be 1.491064e+12)
-## 
-## Number of Fisher Scoring iterations: 2</code></pre>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># modelo: ytotcorh = b0 + b1 comuna + b2 sexo + e</span>
+<span class="va">mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/modelo_lineal_generalizado.html">modelo_lineal_generalizado</a></span><span class="op">(</span><span class="va">cd</span>, <span class="st">"ytotcorh ~ comuna + sexo"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">mod</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## </span>
+<span class="co">## Call:</span>
+<span class="co">## svyglm(formula = stats::as.formula(modelo), design = disenio$disenio)</span>
+<span class="co">## </span>
+<span class="co">## Survey design:</span>
+<span class="co">## Called via srvyr</span>
+<span class="co">## </span>
+<span class="co">## Coefficients:</span>
+<span class="co">##               Estimate Std. Error t value Pr(&gt;|t|)    </span>
+<span class="co">## (Intercept) 55655084.7 13884444.7   4.008 0.000192 ***</span>
+<span class="co">## comuna         -3860.7      977.4  -3.950 0.000232 ***</span>
+<span class="co">## sexo          -58713.5    23514.9  -2.497 0.015672 *  </span>
+<span class="co">## ---</span>
+<span class="co">## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
+<span class="co">## </span>
+<span class="co">## (Dispersion parameter for gaussian family taken to be 1.491064e+12)</span>
+<span class="co">## </span>
+<span class="co">## Number of Fisher Scoring iterations: 2</span></code></pre>
 </div>
-<div id="uso-de-las-funciones-de-casen-con-paquetes-tidy" class="section level1">
-<h1 class="hasAnchor">
-<a href="#uso-de-las-funciones-de-casen-con-paquetes-tidy" class="anchor"></a>Uso de las funciones de casen con paquetes “tidy”</h1>
-<p>Ademas de dplyr, casen se integra perfectamente con los paquetes del <a href="https://www.tidyverse.org/">Tidyverse</a> y otros paquetes afines.</p>
-<p>Por ejemplo, el paquete broom permite obtener una tabla con los intervalos de confianza para los betas estimados del modelo.</p>
-<div class="sourceCode" id="cb26"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">broom</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">survey</span>)</pre></body></html></div>
-<pre><code>## Loading required package: grid</code></pre>
-<pre><code>## Loading required package: Matrix</code></pre>
-<pre><code>## Loading required package: survival</code></pre>
-<pre><code>## 
-## Attaching package: 'survey'</code></pre>
-<pre><code>## The following object is masked from 'package:graphics':
-## 
-##     dotchart</code></pre>
-<div class="sourceCode" id="cb32"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">janitor</span>)</pre></body></html></div>
-<pre><code>## 
-## Attaching package: 'janitor'</code></pre>
-<pre><code>## The following objects are masked from 'package:stats':
-## 
-##     chisq.test, fisher.test</code></pre>
-<div class="sourceCode" id="cb35"><html><body><pre class="r"><span class="co"># usamos ddf y degf del paquete survey para hacer el mismo calculo</span>
+<div class="section level2">
+<h2 id="uso-de-las-funciones-de-casen-con-paquetes-tidy">Uso de las funciones de casen con paquetes “tidy”<a class="anchor" aria-label="anchor" href="#uso-de-las-funciones-de-casen-con-paquetes-tidy"></a>
+</h2>
+<p>Ademas de dplyr, casen se integra perfectamente con los paquetes del
+<a href="https://www.tidyverse.org/" class="external-link">Tidyverse</a> y otros paquetes
+afines.</p>
+<p>Por ejemplo, el paquete broom permite obtener una tabla con los
+intervalos de confianza para los betas estimados del modelo.</p>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://broom.tidymodels.org/" class="external-link">broom</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://r-survey.r-forge.r-project.org/survey/" class="external-link">survey</a></span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## Loading required package: grid</span></code></pre>
+<pre><code><span class="co">## Loading required package: Matrix</span></code></pre>
+<pre><code><span class="co">## Loading required package: survival</span></code></pre>
+<pre><code><span class="co">## </span>
+<span class="co">## Attaching package: 'survey'</span></code></pre>
+<pre><code><span class="co">## The following object is masked from 'package:graphics':</span>
+<span class="co">## </span>
+<span class="co">##     dotchart</span></code></pre>
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/sfirke/janitor" class="external-link">janitor</a></span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## </span>
+<span class="co">## Attaching package: 'janitor'</span></code></pre>
+<pre><code><span class="co">## The following objects are masked from 'package:stats':</span>
+<span class="co">## </span>
+<span class="co">##     chisq.test, fisher.test</span></code></pre>
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># usamos ddf y degf del paquete survey para hacer el mismo calculo</span>
 <span class="co"># que realiza Stata</span>
-<span class="no">mod_conf</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://broom.tidymodels.org/reference/confint_tidy.html">confint_tidy</a></span>(<span class="no">mod</span>, <span class="kw">ddf</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/pkg/survey/man/svychisq.html">degf</a></span>(<span class="no">cd</span>$<span class="no">disenio</span>))</pre></body></html></div>
-<pre><code>## Warning: confint_tidy is now deprecated and will be removed from a future
-## release of broom. Please use the applicable confint method.</code></pre>
-<div class="sourceCode" id="cb37"><html><body><pre class="r"><span class="no">mod_conf</span></pre></body></html></div>
-<pre><code>## # A tibble: 3 x 2
-##    conf.low conf.high
-##       &lt;dbl&gt;     &lt;dbl&gt;
-## 1 27830036. 83480134.
-## 2    -5820.    -1902.
-## 3  -105838.   -11589.</code></pre>
-<p>Lo anterior se puede ordenar y presentar los betas junto con los intervalos de confianza.</p>
-<div class="sourceCode" id="cb39"><html><body><pre class="r"><span class="co"># ordenamos la salida del modelo</span>
-<span class="no">mod_betas</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://broom.tidymodels.org/reference/reexports.html">tidy</a></span>(<span class="no">mod</span>)
+<span class="va">mod_conf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://broom.tidymodels.org/reference/confint_tidy.html" class="external-link">confint_tidy</a></span><span class="op">(</span><span class="va">mod</span>, ddf <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/survey/man/svychisq.html" class="external-link">degf</a></span><span class="op">(</span><span class="va">cd</span><span class="op">$</span><span class="va">disenio</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## Warning: confint_tidy is now deprecated and will be removed from a future</span>
+<span class="co">## release of broom. Please use the applicable confint method.</span></code></pre>
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">mod_conf</span></code></pre></div>
+<pre><code><span class="co">## <span style="color: #949494;"># A tibble: 3 × 2</span></span>
+<span class="co">##    conf.low conf.high</span>
+<span class="co">##       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="co">## <span style="color: #BCBCBC;">1</span> 27<span style="text-decoration: underline;">830</span>036. 83<span style="text-decoration: underline;">480</span>134.</span>
+<span class="co">## <span style="color: #BCBCBC;">2</span>    -<span style="color: #BB0000; text-decoration: underline;">5</span><span style="color: #BB0000;">820.</span>    -<span style="color: #BB0000; text-decoration: underline;">1</span><span style="color: #BB0000;">902.</span></span>
+<span class="co">## <span style="color: #BCBCBC;">3</span>  -<span style="color: #BB0000; text-decoration: underline;">105</span><span style="color: #BB0000;">838.</span>   -<span style="color: #BB0000; text-decoration: underline;">11</span><span style="color: #BB0000;">589.</span></span></code></pre>
+<p>Lo anterior se puede ordenar y presentar los betas junto con los
+intervalos de confianza.</p>
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># ordenamos la salida del modelo</span>
+<span class="va">mod_betas</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html" class="external-link">tidy</a></span><span class="op">(</span><span class="va">mod</span><span class="op">)</span>
 
 <span class="co"># pegamos las columnas</span>
-<span class="no">mod_betas</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind.html">bind_cols</a></span>(<span class="no">mod_betas</span>, <span class="no">mod_conf</span>)
+<span class="va">mod_betas</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind.html" class="external-link">bind_cols</a></span><span class="op">(</span><span class="va">mod_betas</span>, <span class="va">mod_conf</span><span class="op">)</span>
 
 <span class="co"># ordenamos los nombres de las columnas</span>
-<span class="no">mod_betas</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/janitor/man/clean_names.html">clean_names</a></span>(<span class="no">mod_betas</span>)
+<span class="va">mod_betas</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/janitor/man/clean_names.html" class="external-link">clean_names</a></span><span class="op">(</span><span class="va">mod_betas</span><span class="op">)</span>
 
-<span class="no">mod_betas</span></pre></body></html></div>
-<pre><code>## # A tibble: 3 x 7
-##   term         estimate std_error statistic  p_value  conf_low conf_high
-##   &lt;chr&gt;           &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
-## 1 (Intercept) 55655085. 13884445.      4.01 0.000192 27830036. 83480134.
-## 2 comuna         -3861.      977.     -3.95 0.000232    -5820.    -1902.
-## 3 sexo          -58714.    23515.     -2.50 0.0157    -105838.   -11589.</code></pre>
+<span class="va">mod_betas</span></code></pre></div>
+<pre><code><span class="co">## <span style="color: #949494;"># A tibble: 3 × 7</span></span>
+<span class="co">##   term         estimate std_error statistic  p_value  conf_low conf_high</span>
+<span class="co">##   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="co">## <span style="color: #BCBCBC;">1</span> (Intercept) 55<span style="text-decoration: underline;">655</span>085. 13<span style="text-decoration: underline;">884</span>445.      4.01 0.000<span style="text-decoration: underline;">192</span> 27<span style="text-decoration: underline;">830</span>036. 83<span style="text-decoration: underline;">480</span>134.</span>
+<span class="co">## <span style="color: #BCBCBC;">2</span> comuna         -<span style="color: #BB0000; text-decoration: underline;">3</span><span style="color: #BB0000;">861.</span>      977.     -<span style="color: #BB0000;">3.95</span> 0.000<span style="text-decoration: underline;">232</span>    -<span style="color: #BB0000; text-decoration: underline;">5</span><span style="color: #BB0000;">820.</span>    -<span style="color: #BB0000; text-decoration: underline;">1</span><span style="color: #BB0000;">902.</span></span>
+<span class="co">## <span style="color: #BCBCBC;">3</span> sexo          -<span style="color: #BB0000; text-decoration: underline;">58</span><span style="color: #BB0000;">714.</span>    <span style="text-decoration: underline;">23</span>515.     -<span style="color: #BB0000;">2.50</span> 0.015<span style="text-decoration: underline;">7</span>    -<span style="color: #BB0000; text-decoration: underline;">105</span><span style="color: #BB0000;">838.</span>   -<span style="color: #BB0000; text-decoration: underline;">11</span><span style="color: #BB0000;">589.</span></span></code></pre>
 </div>
-<div id="comparabilidad-entre-encuestas" class="section level1">
-<h1 class="hasAnchor">
-<a href="#comparabilidad-entre-encuestas" class="anchor"></a>Comparabilidad entre encuestas</h1>
-<p>El paquete casen provee un conjunto de datos con la correspondencia de los codigos de comunas.</p>
-<p>Veamos como convertir los codigos de la encuesta CASEN 1990 a codigos SUBDERE 2017.</p>
-<div class="sourceCode" id="cb41"><html><body><pre class="r"><span class="no">codigos_casen</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="no">valido_desde</span> <span class="kw">==</span> <span class="fl">1990</span>)</pre></body></html></div>
-<pre><code>## # A tibble: 323 x 4
-## # Groups:   codigo_casen, codigo_subdere_2017 [323]
-##    valido_desde valido_hasta codigo_casen codigo_subdere_2017
-##           &lt;dbl&gt;        &lt;dbl&gt;        &lt;int&gt; &lt;chr&gt;              
-##  1         1990         2017        11201 11201              
-##  2         1990         2003         5605 05602              
-##  3         1990         2003        13504 13502              
-##  4         1990         2003         3304 03302              
-##  5         1990         2003         1307 01107              
-##  6         1990         2003        10402 10202              
-##  7         1990         2003         4104 04103              
-##  8         1990         2003         9101 09201              
-##  9         1990         2003         2301 02101              
-## 10         1990         2003         8204 08302              
-## # … with 313 more rows</code></pre>
-<div class="sourceCode" id="cb43"><html><body><pre class="r"><span class="no">casen1990</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/read_spss.html">read_sav</a></span>(<span class="st">"casen-formato-spss/1990.sav"</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="kw">comu</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/integer.html">as.integer</a></span>(<span class="no">comu</span>)) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span>(
-    <span class="no">codigos_casen</span> <span class="kw">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="no">valido_desde</span> <span class="kw">==</span> <span class="fl">1990</span>) <span class="kw">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(<span class="fu"><a href="https://dplyr.tidyverse.org/reference/reexports.html">starts_with</a></span>(<span class="st">"codigo"</span>)),
-    <span class="kw">by</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"comu"</span> <span class="kw">=</span> <span class="st">"codigo_casen"</span>)
-  )</pre></body></html></div>
+<div class="section level2">
+<h2 id="comparabilidad-entre-encuestas">Comparabilidad entre encuestas<a class="anchor" aria-label="anchor" href="#comparabilidad-entre-encuestas"></a>
+</h2>
+<p>El paquete casen provee un conjunto de datos con la correspondencia
+de los codigos de comunas.</p>
+<p>Veamos como convertir los codigos de la encuesta CASEN 1990 a codigos
+SUBDERE 2017.</p>
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">codigos_casen</span> <span class="op"><a href="https://rdrr.io/pkg/janitor/man/pipe.html" class="external-link">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">valido_desde</span> <span class="op">==</span> <span class="fl">1990</span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## <span style="color: #949494;"># A tibble: 323 × 4</span></span>
+<span class="co">## <span style="color: #949494;"># Groups:   codigo_casen, codigo_subdere_2017 [323]</span></span>
+<span class="co">##    valido_desde valido_hasta codigo_casen codigo_subdere_2017</span>
+<span class="co">##           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              </span>
+<span class="co">## <span style="color: #BCBCBC;"> 1</span>         <span style="text-decoration: underline;">1</span>990         <span style="text-decoration: underline;">2</span>017        <span style="text-decoration: underline;">11</span>201 11201              </span>
+<span class="co">## <span style="color: #BCBCBC;"> 2</span>         <span style="text-decoration: underline;">1</span>990         <span style="text-decoration: underline;">2</span>003         <span style="text-decoration: underline;">5</span>605 05602              </span>
+<span class="co">## <span style="color: #BCBCBC;"> 3</span>         <span style="text-decoration: underline;">1</span>990         <span style="text-decoration: underline;">2</span>003        <span style="text-decoration: underline;">13</span>504 13502              </span>
+<span class="co">## <span style="color: #BCBCBC;"> 4</span>         <span style="text-decoration: underline;">1</span>990         <span style="text-decoration: underline;">2</span>003         <span style="text-decoration: underline;">3</span>304 03302              </span>
+<span class="co">## <span style="color: #BCBCBC;"> 5</span>         <span style="text-decoration: underline;">1</span>990         <span style="text-decoration: underline;">2</span>003         <span style="text-decoration: underline;">1</span>307 01107              </span>
+<span class="co">## <span style="color: #BCBCBC;"> 6</span>         <span style="text-decoration: underline;">1</span>990         <span style="text-decoration: underline;">2</span>003        <span style="text-decoration: underline;">10</span>402 10202              </span>
+<span class="co">## <span style="color: #BCBCBC;"> 7</span>         <span style="text-decoration: underline;">1</span>990         <span style="text-decoration: underline;">2</span>003         <span style="text-decoration: underline;">4</span>104 04103              </span>
+<span class="co">## <span style="color: #BCBCBC;"> 8</span>         <span style="text-decoration: underline;">1</span>990         <span style="text-decoration: underline;">2</span>003         <span style="text-decoration: underline;">9</span>101 09201              </span>
+<span class="co">## <span style="color: #BCBCBC;"> 9</span>         <span style="text-decoration: underline;">1</span>990         <span style="text-decoration: underline;">2</span>003         <span style="text-decoration: underline;">2</span>301 02101              </span>
+<span class="co">## <span style="color: #BCBCBC;">10</span>         <span style="text-decoration: underline;">1</span>990         <span style="text-decoration: underline;">2</span>003         <span style="text-decoration: underline;">8</span>204 08302              </span>
+<span class="co">## <span style="color: #949494;"># … with 313 more rows</span></span></code></pre>
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">casen1990</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/read_spss.html" class="external-link">read_sav</a></span><span class="op">(</span><span class="st">"casen-formato-spss/1990.sav"</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/pkg/janitor/man/pipe.html" class="external-link">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>comu <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/integer.html" class="external-link">as.integer</a></span><span class="op">(</span><span class="va">comu</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/pkg/janitor/man/pipe.html" class="external-link">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span>
+    <span class="va">codigos_casen</span> <span class="op"><a href="https://rdrr.io/pkg/janitor/man/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">valido_desde</span> <span class="op">==</span> <span class="fl">1990</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/pkg/janitor/man/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html" class="external-link">starts_with</a></span><span class="op">(</span><span class="st">"codigo"</span><span class="op">)</span><span class="op">)</span>,
+    by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"comu"</span> <span class="op">=</span> <span class="st">"codigo_casen"</span><span class="op">)</span>
+  <span class="op">)</span></code></pre></div>
 </div>
   </div>
 
@@ -602,11 +551,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Mauricio Vargas.</p>
+  <p></p>
+<p>Developed by Mauricio Vargas.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
       </footer>
@@ -614,6 +565,8 @@
 
   
 
+
+  
 
   </body>
 </html>

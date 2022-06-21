@@ -3,7 +3,7 @@ Type: Package
 Title: Metodos De Estimacion Con Disenio Probabilistico y Estratificado en 
   Encuesta CASEN (Estimation Methods with Probabilistic Stratified Sampling in 
   CASEN Survey)
-Version: 0.1.4
+Version: 0.2.0
 Authors@R: c(
       person(given = "Mauricio",
         family = "Vargas",
@@ -23,8 +23,8 @@ Authors@R: c(
       person(family = "Subsecretaria de Desarrollo Regional (SUBDERE)",
         role = "dtc")
     )
-URL: https://pachamaltese.github.io/casen/
-BugReports: https://github.com/pachamaltese/casen/issues
+URL: https://pacha.dev/casen/
+BugReports: https://github.com/pachadotdev/casen/issues/
 Description: Funciones para realizar estadistica descriptiva e inferencia con el
  disenio complejo de la Encuesta CASEN (Encuesta de Caracterizacion 
  Socio-Economica). Incluye datasets que permiten armonizar los codigos de 
@@ -34,22 +34,18 @@ Description: Funciones para realizar estadistica descriptiva e inferencia con el
  Survey [Socio-Economic Characterization Survey] complex design. Includes 
  datasets to harmonize commune codes that change across years and allows to 
  convert to official SUBDERE codes.)
-License: GPL-3
+License: Apache License (>= 2)
 Depends: R (>= 3.5.0)
 Imports: 
     rlang,
-    Rcpp (>= 1.0.2),
     stats,
     utils,
-    fs,
     dplyr,
     haven,
     labelled,
     glue,
     magrittr,
     tidyr,
-    tibble,
-    janitor,
     survey,
     srvyr,
     purrr
@@ -58,7 +54,8 @@ Suggests:
     rmarkdown,
     covr,
     testthat,
-    broom
+    broom,
+    janitor
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.1
