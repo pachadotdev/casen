@@ -1,7 +1,6 @@
 # casen
 
 <!-- badges: start -->
-[![R build status](https://github.com/pachadotdev/casen/workflows/R-CMD-check/badge.svg)](https://github.com/pachadotdev/casen/actions?workflow=R-CMD-check)
 [![Codecov test coverage](https://codecov.io/gh/pachadotdev/casen/branch/master/graph/badge.svg)](https://codecov.io/gh/pachadotdev/casen?branch=master)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/gravity)](https://cran.r-project.org/package=gravity)
